@@ -17,5 +17,15 @@ public class IndiceDeMasaCorporal {
         float imc = peso / (estatura * estatura);
         // 3. Desplegar el imc calculado
         System.out.println("Bienvenido " + nombre + " Su indice de masa corporal es: " + imc);
+
+        if (imc < 18.5) {
+            System.out.println("Tienes bajo peso, cuidado");
+        } else if (imc < 25) {
+            System.out.println("IMC ideal, vas bien");
+        } else if (imc < 30) {
+            System.out.println("Tienes sobrepeso, cuidate");
+        } else {
+            System.out.println("Tienes obesidad");
+        }
     }
 }
