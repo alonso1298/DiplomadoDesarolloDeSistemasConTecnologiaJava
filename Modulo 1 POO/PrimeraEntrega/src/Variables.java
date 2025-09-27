@@ -5,10 +5,13 @@ public class Variables {
 
         // Definicion e inicializar variables
         int edad = 99;
+        int otorNumero = numero = 100; // En java 8 no funciona
 
         // Uso de variable
         System.out.println(edad);
+        System.out.println(numero);
+        System.out.println(otorNumero);
 
-        // System.out.println(numero); ERROR por lo que las variables: 1. Se define
+        System.out.println(edad=edad+10);
     }
 }
