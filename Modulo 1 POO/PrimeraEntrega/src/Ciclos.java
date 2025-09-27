@@ -34,5 +34,11 @@ public class Ciclos {
         } while (numero != aleatorio);{
             System.out.println("Fin del programa");
         }
+
+        // for (inicio; condicion; final) bloque
+        numero = 7; // Para imprimir la tabla de ese numero
+        for (int i = 1; i < 11; i++) {
+            System.out.println(i);
+        }
     }
 }
