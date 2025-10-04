@@ -21,6 +21,7 @@ public class IndiceDeMasaCorporalFunciones {
         System.out.println("Hola " + nombre + " gracias por usar el programa IMC");
         System.out.println("Tu Indice de masa corporal es: " + imc);
         System.out.println("Y tu valoracion es la siguiente: ");
+        // Manda a imprimir la funcion estado con la variable imc para el calculo
         System.out.println(estado(imc));
     }
 
