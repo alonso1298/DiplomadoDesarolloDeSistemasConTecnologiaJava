@@ -6,6 +6,7 @@ public class Practica1 {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
 
+        // Captura de datos
         System.out.println("Bienvenido a la universidad");
         System.out.println("Porfavor ingrese su nombre: ");
         String nombre = teclado.nextLine();
