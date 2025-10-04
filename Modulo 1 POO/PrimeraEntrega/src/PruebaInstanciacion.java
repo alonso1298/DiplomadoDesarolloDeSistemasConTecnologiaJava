@@ -23,9 +23,15 @@ public class PruebaInstanciacion {
         System.out.println("\n");
 
         nuevaCasa = casaMauricio;
-        System.out.println("Casa de Nueva pisos: " + casaMauricio.pisos);
-        System.out.println("Casa de Nueva precio: $ " + casaMauricio.precio);
-        System.out.println("Casa de Nueva ventanas: " + casaMauricio.ventanas);
-        System.out.println("Casa de Nueva color: " + casaMauricio.color);
+        System.out.println("Casa de Nueva pisos: " + nuevaCasa.pisos);
+        System.out.println("Casa de Nueva precio: $ " + nuevaCasa.precio);
+        System.out.println("Casa de Nueva ventanas: " + nuevaCasa.ventanas);
+        System.out.println("Casa de Nueva color: " + nuevaCasa.color);
+
+        Casa unaCasa = new Casa();
+        Casa otraCasa = new Casa();
+
+        System.out.println(unaCasa == otraCasa);  // false porque son referencias diferentes
+        System.out.println(casaMauricio == nuevaCasa); // true porque es la misma casa
     }
 }
