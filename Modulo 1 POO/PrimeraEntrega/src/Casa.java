@@ -8,4 +8,11 @@ public class Casa {
     int ventanas;
 
     // Metodos (Procedimientos y Funciones)
+    public void pintar (String nuevoColor){
+        this.color = nuevoColor;
+    }
+    public void vender(String nuevoPropietario){
+        this.propietario = nuevoPropietario;
+        this.precio = -1; // Significa que no esta a la venta
+    }
 }
