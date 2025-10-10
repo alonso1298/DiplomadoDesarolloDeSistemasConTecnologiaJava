@@ -29,5 +29,9 @@ public class PruebaDeLaCuentaBancaria {
         }else {
             System.out.println("Operacion rechazada");
         }
+
+        /* Lectura de un cliente */
+        CuentaBancaria objeto2 = new CuentaBancaria(55123);
+        System.out.println("Segunda cuenta: " + objeto2.getTitular() + " $" + objeto2.getSaldo());
     }
 }

@@ -11,6 +11,32 @@ public class CuentaBancaria {
         this.saldo = 0;
     }
 
+    public CuentaBancaria(int valor){
+        // Simular que "Buscamos" en la BD la cuenta que llega de entrada
+        /* 55123, Eligio, 100
+           44123, Alonso, 1000
+           22123, Luz, 1500
+        */
+        this(); // Cuando se utiliza como nombre de funcion ejecuta el constructor sin parametros de entrada CuentaBancaria()
+        switch (valor){
+            case 55123:
+                this.titular = "Eligio";
+                this.numero = valor;
+                this.saldo = 100;
+                break;
+            case 44123:
+                this.titular = "Alonso";
+                this.numero = valor;
+                this.saldo = 1000;
+                break;
+            case 22123:
+                this.titular = "Luz";
+                this.numero = valor;
+                this.saldo = 1500;
+                break;
+        }
+    }
+
     // Metodos set (para modificar un atributo) y  get (para "ver un atributo)
 
 
