@@ -37,6 +37,11 @@ public class CuentaBancaria {
         }
     }
 
+    public CuentaBancaria(String nombre){
+        this(45); // Ejecuta el constructor que recibe un int
+        // Lo demas..
+    }
+
     // Metodos set (para modificar un atributo) y  get (para "ver un atributo)
 
 
@@ -80,6 +85,4 @@ public class CuentaBancaria {
         }
         return resultado;
     }
-
-
 }
