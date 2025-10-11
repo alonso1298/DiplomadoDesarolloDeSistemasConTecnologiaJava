@@ -15,10 +15,10 @@ public class Herencia {
         // Medico
         Medico o3 = new Medico();
         System.out.println(o3);
-        o3.setNombre("Dr. Lopez");
-        o3.setEspecialidad("Gereatria");
-        o3.setEdad(33);
-        System.out.println(o3);
+        o3.setNombre("Dr. Lopez"); //setNombre fue definido en Persons
+        o3.setEspecialidad("Gereatria"); //setEspecialidad fue definido en medico
+        o3.setEdad(33); // Utiliza setEdad de Medico
+        System.out.println(o3); // utiliza toString() de Medico
 
 
     }
