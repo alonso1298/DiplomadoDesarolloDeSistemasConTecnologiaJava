@@ -4,6 +4,7 @@ public class Personaje {
     private int vida;
     boolean escogido;
     boolean vivo;
+    private int fuerza;
 
     // Metodos
 
@@ -23,15 +24,19 @@ public class Personaje {
         switch (id){
             case 1:
                 this.nombre = "ChunLin";
+                this.fuerza = 5;
                 break;
             case 2:
                 this.nombre = "Rugal";
+                this.fuerza = 8;
                 break;
             case 3:
                 this.nombre = "Ryu";
+                this.fuerza = 5;
                 break;
             case 4:
                 this.nombre = "Takuma";
+                this.fuerza = 7;
                 break;
         }
     }
@@ -72,14 +77,21 @@ public class Personaje {
         this.vivo = vivo;
     }
 
-
-    // golpear()
-    public void golpear(int fuerza, Personaje oponente){
-        oponente.setVida(oponente.getVida() - fuerza);
+    public int getFuerza() {
+        return fuerza;
     }
 
-    public void patear(int fuerza, Personaje oponente){
-        oponente.setVida(oponente.getVida() - fuerza);
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    // golpear()
+    public void golpear(Personaje oponente){
+        oponente.setVida(oponente.getVida() - this.getFuerza());
+    }
+
+    public void patear(Personaje oponente){
+        oponente.setVida(oponente.getVida() - this.getFuerza());
     }
 
     // toString()

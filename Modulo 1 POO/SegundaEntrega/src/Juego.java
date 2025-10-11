@@ -17,12 +17,12 @@ public class Juego {
 
         // Pelea
         // Que jugador 1 golpee a jugador 2
-        jugador1.golpear(5, jugador2);
+        jugador1.golpear(jugador2);
         System.out.println(jugador1 + "\t\t\t\t" + jugador2);
 
         // Que jugador 2 golpea a jugador 1 2 veces
-        jugador2.golpear(11, jugador1);
-        jugador2.golpear(11, jugador1);
+        jugador2.golpear(jugador1);
+        jugador2.golpear(jugador1);
 
         System.out.println(jugador1 + "\t\t\t\t" + jugador2);
     }
