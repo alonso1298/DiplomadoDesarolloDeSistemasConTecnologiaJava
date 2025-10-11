@@ -33,4 +33,9 @@ public class Paciente extends Persona{
                 ", padeciento='" + padeciento + '\'' +
                 '}';
     }
+
+    public static String listaDePacientes(){
+        // Ejecutamos un SELECT nombre FROM tablaDePacientes en la BD
+        return "Eligio\nAlonso\nLucia\nJose";
+    }
 }
