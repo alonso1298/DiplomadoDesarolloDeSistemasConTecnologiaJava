@@ -92,7 +92,17 @@ public class CuentaBancaria {
         boolean resultado = false;
         if (this.retirar(monto) && destino.depositar(monto))
             resultado = true; // Cuando pudo retirar en el origen y pudo depositar en el destino
-
+        monto = monto * 100;
         return resultado;
+    }
+
+    @Override
+    public String toString() {
+        // Cuando Java necesita "convertir" el objeto a String (para imprimirlo, p. ej.) se ejecuta este metodo
+        return "CuentaBancaria{" +
+                "titular='" + titular + '\'' +
+                ", numero=" + numero +
+                ", saldo=" + saldo +
+                '}';
     }
 }

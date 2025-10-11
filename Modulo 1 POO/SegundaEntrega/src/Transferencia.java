@@ -8,11 +8,13 @@ public class Transferencia {
         int origen = teclado.nextInt();
         CuentaBancaria cuentaOrigen = new CuentaBancaria(origen);
         System.out.println(cuentaOrigen.getTitular() + " $" + cuentaOrigen.getSaldo());
+        System.out.println(cuentaOrigen);
 
         System.out.println("Dame la cuenta destino: ");
         int destino = teclado.nextInt();
         CuentaBancaria cuentaDestino = new CuentaBancaria(destino);
         System.out.println(cuentaDestino.getTitular() + " $" + cuentaDestino.getSaldo());
+        System.out.println(cuentaDestino);
 
         System.out.println("Cual es el monto que quieres transferir: ");
         double monto = teclado.nextDouble();
@@ -27,8 +29,8 @@ public class Transferencia {
             System.out.println("Transferencia Realizada");
         else
             System.out.println("Transferencia declinada");
-
-        System.out.println(cuentaOrigen.getTitular() + " $" + cuentaOrigen.getSaldo());
-        System.out.println(cuentaDestino.getTitular() + " $" + cuentaDestino.getSaldo());
+        System.out.println("Monto de la transferencia: " + monto);
+        System.out.println(cuentaOrigen);
+        System.out.println(cuentaDestino);
     }
 }
