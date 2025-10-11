@@ -9,7 +9,7 @@ public class Herencia {
         System.out.println(o1);
 
         // Pacientes
-        Paciente o2 = new Paciente();
+        PacientePrimeraEntrega o2 = new PacientePrimeraEntrega();
         System.out.println(o2);
 
         // Medico

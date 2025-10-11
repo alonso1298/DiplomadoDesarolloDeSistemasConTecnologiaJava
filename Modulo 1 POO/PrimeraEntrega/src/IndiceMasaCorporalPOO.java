@@ -5,7 +5,7 @@ public class IndiceMasaCorporalPOO {
         System.out.println("Calculo del IMC");
 
         // Perdir datos
-        Paciente objeto = new Paciente();
+        PacientePrimeraEntrega objeto = new PacientePrimeraEntrega();
         objeto.nombre = "Lucia";
         objeto.edad = 90;
         objeto.genero = 'F';

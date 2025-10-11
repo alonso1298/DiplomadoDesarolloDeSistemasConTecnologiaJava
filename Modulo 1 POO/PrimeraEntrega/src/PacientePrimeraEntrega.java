@@ -1,4 +1,4 @@
-public class Paciente {
+public class PacientePrimeraEntrega {
     //Define a los pacientes de un consultorio de nutricion
     // Atributos(nombre, edad, genero, peso, estatura, ...)
     public String nombre;
