@@ -17,7 +17,7 @@ public class CuentaBancaria {
            44123, Alonso, 1000
            22123, Luz, 1500
         */
-        this(); // Cuando se utiliza como nombre de funcion ejecuta el constructor sin parametros de entrada CuentaBancaria()
+        // this(); // Cuando se utiliza como nombre de funcion ejecuta el constructor sin parametros de entrada CuentaBancaria()
         switch (valor){
             case 55123:
                 this.titular = "Eligio";
@@ -83,6 +83,16 @@ public class CuentaBancaria {
             this.saldo -= monto; // this.saldo = this.saldo - monto
             resultado = true;
         }
+        return resultado;
+    }
+
+    public boolean transferir(CuentaBancaria destino, double monto){
+        // trsnsferir se debe ejecutar en la cuenta de origen (this)
+
+        boolean resultado = false;
+        if (this.retirar(monto) && destino.depositar(monto))
+            resultado = true; // Cuando pudo retirar en el origen y pudo depositar en el destino
+
         return resultado;
     }
 }
