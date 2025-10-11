@@ -4,4 +4,9 @@ public class Radio  extends AparatoElectronico {
         this.volumen--;
         return this.volumen;
     }
+
+    public static int existencias (){
+        // SELECT COUNT (*) FROM existencias WHERE tipo = "Radio";
+        return 10;
+    }
 }

@@ -32,6 +32,8 @@ public class FinalAbstract {
 
         Radio.mensaje();
 
+        RadioDigital rd = new RadioDigital(); // 3
+        Radio.mensaje();
         System.out.println("Pacientes Registrados \n\n" + Paciente.listaDePacientes());
     }
 }
