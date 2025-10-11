@@ -6,5 +6,5 @@ public abstract class AparatoElectronico {
         this.volumen++;
 
     }
-    public abstract void bajaVolumen(); // Solo se define que ba a existir
+    public abstract int bajaVolumen(); // Solo se define que ba a existir
 }
