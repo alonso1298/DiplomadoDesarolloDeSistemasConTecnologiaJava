@@ -52,6 +52,8 @@ public class Personaje {
 
     public void setVida(int vida) {
         this.vida = vida;
+        if (vida <= 0)
+            this.vivo = false;
     }
 
     public boolean isEscogido() {
@@ -72,10 +74,15 @@ public class Personaje {
 
 
     // golpear()
+    public void golpear(int fuerza, Personaje oponente){
+        oponente.setVida(oponente.getVida() - fuerza);
+    }
+
+    public void patear(int fuerza, Personaje oponente){
+        oponente.setVida(oponente.getVida() - fuerza);
+    }
 
     // toString()
-
-
     @Override
     public String toString() {
         return nombre.toUpperCase() + "["+vida+"]";
