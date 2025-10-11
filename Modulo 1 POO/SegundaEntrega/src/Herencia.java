@@ -11,5 +11,13 @@ public class Herencia {
         // Pacientes
         Paciente o2 = new Paciente();
         System.out.println(o2);
+
+        // Medico
+        Medico o3 = new Medico();
+        System.out.println(o3);
+        o3.setNombre("Dr. Lopez");
+        o3.setEspecialidad("Gereatria");
+        o3.setEdad(33);
+        System.out.println(o3);
     }
 }
