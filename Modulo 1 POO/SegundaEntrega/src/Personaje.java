@@ -38,8 +38,46 @@ public class Personaje {
 
     // setters y getters
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public boolean isEscogido() {
+        return escogido;
+    }
+
+    public void setEscogido(boolean escogido) {
+        this.escogido = escogido;
+    }
+
+    public boolean isVivo() {
+        return vivo;
+    }
+
+    public void setVivo(boolean vivo) {
+        this.vivo = vivo;
+    }
+
+
     // golpear()
 
     // toString()
 
+
+    @Override
+    public String toString() {
+        return nombre.toUpperCase() + "["+vida+"]";
+    }
 }
