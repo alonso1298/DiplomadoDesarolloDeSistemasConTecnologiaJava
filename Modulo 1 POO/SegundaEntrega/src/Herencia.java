@@ -19,5 +19,7 @@ public class Herencia {
         o3.setEspecialidad("Gereatria");
         o3.setEdad(33);
         System.out.println(o3);
+
+
     }
 }
