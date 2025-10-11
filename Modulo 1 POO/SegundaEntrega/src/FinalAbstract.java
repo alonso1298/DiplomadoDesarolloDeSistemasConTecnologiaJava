@@ -12,5 +12,7 @@ public class FinalAbstract {
 
         final double IVA = 0.16; // Constante
         System.out.println("IVA de " + IVA);
+
+        objeto.bajaVolumen();
     }
 }
