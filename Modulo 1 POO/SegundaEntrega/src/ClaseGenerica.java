@@ -10,8 +10,9 @@ public class ClaseGenerica<T> {
         // this.edad = 18; Ya no es posible asignar un int a edad
     }
 
-    public void imprime(){
+    public void imprime(T otro){
         System.out.println("En edad tengo " + edad);
+        System.out.println("Y ne llegó otro valor: " + otro);
     }
 
     @Override
