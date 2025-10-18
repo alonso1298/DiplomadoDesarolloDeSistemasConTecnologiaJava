@@ -39,12 +39,25 @@ public class Libro {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Libro libro = (Libro) o;
-        return getEdicion() == libro.getEdicion() && Objects.equals(getTitulo(), libro.getTitulo()) && Objects.equals(getAutor(), libro.getAutor());
+        return Objects.equals(getTitulo(), libro.getTitulo()) && Objects.equals(getAutor(), libro.getAutor());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTitulo(), getAutor(), getEdicion());
+        return Objects.hash(getTitulo(), getAutor());
+    }
+
+    public int compareTo(Libro otrolibro){
+        // Un libro esta antes que otro si el nombte es, alfabeticamente, menos que el otro
+        // Y que la edicion sea menor (en cado de que los titulos sean iguales)
+        int regreso = this.getTitulo().compareTo((otrolibro.getTitulo()));
+        if (regreso == 0) // Son uguales los titulos
+            if (this.getEdicion() > otrolibro.getEdicion()){
+                regreso = 1;
+            }else {
+                regreso = -1;
+            }
+        return regreso;
     }
 
     @Override
