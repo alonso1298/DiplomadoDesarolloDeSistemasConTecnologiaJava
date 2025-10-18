@@ -1,12 +1,13 @@
-public class ClaseGenerica {
+public class ClaseGenerica<T> {
+    // El parametro de tipo siempre debe ser una clase
     public String nombre;
     public double promedio;
-    public int edad;
+    public T edad;
 
     public ClaseGenerica(){
         this.nombre = "Desconocido";
-        this.edad = 5;
-        this.edad = 18;
+        this.promedio = 5;
+        // this.edad = 18; Ya no es posible asignar un int a edad
     }
 
     public void imprime(){
