@@ -40,4 +40,29 @@ public class Medico extends Persona{
         return super.toString() + " . Medico{" +
                 "especialidad='" + especialidad + " Consulta $" + precioConsulta;
     }
+
+    // IControles Comunes
+    @Override
+    public boolean create() {
+        // INSERT INTO personalMedico...
+        return false;
+    }
+
+    @Override
+    public boolean read() {
+        // SELECT * FROM personalMedico
+        return false;
+    }
+
+    @Override
+    public int update() {
+        // UPDATE personalMedico
+        return 0;
+    }
+
+    @Override
+    public int delete() {
+        // DELETE/UPDATE personalMedico WHERE....
+        return 0;
+    }
 }

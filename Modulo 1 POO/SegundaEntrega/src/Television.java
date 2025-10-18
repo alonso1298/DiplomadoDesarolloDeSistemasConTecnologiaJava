@@ -1,4 +1,4 @@
-public class Television extends Radio implements IControlesComunes{
+public class Television extends Radio implements IControlesComunes, ICrud{
     public boolean encendido;
     public double volumen;
     public double canal;
@@ -30,5 +30,30 @@ public class Television extends Radio implements IControlesComunes{
     public boolean apagar() {
         this.encendido = false;
         return this.encendido;
+    }
+
+    // IControles Comunes
+    @Override
+    public boolean create() {
+        // INSERT INTO televisiones...
+        return false;
+    }
+
+    @Override
+    public boolean read() {
+        // SELECT * FROM televisiones
+        return false;
+    }
+
+    @Override
+    public int update() {
+        // UPDATE televisiones
+        return 0;
+    }
+
+    @Override
+    public int delete() {
+        // DELETE/UPDATE televisiones WHERE....
+        return 0;
     }
 }

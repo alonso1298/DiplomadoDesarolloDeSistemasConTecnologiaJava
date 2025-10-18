@@ -1,4 +1,4 @@
-public class Persona {
+public class Persona implements ICrud {
     // Será la superclase para otras dos subclases
     //  padre/madre hijos/hijas
 
@@ -44,5 +44,30 @@ public class Persona {
     @Override
     public String toString() {
         return this.nombre + " (" + this.genero + "). " + this.edad + " años";
+    }
+
+    // IControles Comunes
+    @Override
+    public boolean create() {
+        // INSERT INTO ...
+        return false;
+    }
+
+    @Override
+    public boolean read() {
+        // SELECT * FROM
+        return false;
+    }
+
+    @Override
+    public int update() {
+        // UPDATE
+        return 0;
+    }
+
+    @Override
+    public int delete() {
+        // DELETE/UPDATE  WHERE....
+        return 0;
     }
 }
