@@ -24,3 +24,5 @@ UPDATE usuario u SET nombre = "Juan Antonio Perez"
 DELETE FROM usuario WHERE correo_electronico = "juan@aunam.mx";
 
 SELECT * FROM usuario;
+
+SELECT * FROM usuario ORDER BY nombre DESC;
