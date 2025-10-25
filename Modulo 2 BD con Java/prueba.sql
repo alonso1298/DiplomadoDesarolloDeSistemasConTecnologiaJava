@@ -35,3 +35,7 @@ SELECT * FROM usuario ORDER BY nombre DESC;
 INSERT INTO usuario VALUES ("Alonso Sagrero", "alonso@unam.mx", "Fisica");
 
 SELECT carrera, COUNT(*) as numero_usuario FROM usuario GROUP BY carrera ORDER BY carrera DESC;
+
+GRANT ALL PRIVILEGES ON prueba.* TO cursos@localhost;
+
+FLUSH PRIVILEGES;
