@@ -20,3 +20,5 @@ insert into usuario (correo_electronico, nombre) values('JUAN RODRÍGUEZ', 'juan
 
 UPDATE usuario u SET nombre = "Juan Antonio Perez"
 	WHERE u.correo_electronico = "juan@aunam.mx";
+
+DELETE FROM usuario WHERE correo_electronico = "juan@aunam.mx";
