@@ -17,3 +17,6 @@ drop database prueba;
 
 insert into usuario values('JUAN RODRÍGUEZ', 'juan@unam.mx');
 insert into usuario (correo_electronico, nombre) values('JUAN RODRÍGUEZ', 'juan@unam.mx');
+
+UPDATE usuario u SET nombre = "Juan Antonio Perez"
+	WHERE u.correo_electronico = "juan@aunam.mx";
