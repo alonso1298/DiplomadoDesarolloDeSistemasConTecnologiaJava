@@ -18,7 +18,7 @@ public class FiguraDAODB implements IFiguraDAO {
 
     @Override
     public List<Figura> listarTodos() {
-        String sql = "SELECT * FOM figura ORDER BY id";
+        String sql = "SELECT * FROM figura ORDER BY id";
         List<Figura> figuras = new ArrayList<>();
         try (
                 Connection conexion = conexionDB.getConnection();

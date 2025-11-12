@@ -21,6 +21,10 @@ public class Figura {
         this.idEdicion = idEdicion;
     }
 
+    public Figura(){
+
+    }
+
     public int getId() {
         return id;
     }
