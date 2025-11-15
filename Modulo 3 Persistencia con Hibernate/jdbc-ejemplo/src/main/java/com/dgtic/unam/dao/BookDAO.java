@@ -7,28 +7,26 @@ import java.util.List;
 public class BookDAO {
     // SEELECT * WHERE
     public Book findById(String id){
-
-        return null;
+        throw new UnsupportedOperationException("Not Soported Jet.");
     }
 
     // SELECT *
     public List<Book> findAll(){
-
-        return List.of();
+        throw new UnsupportedOperationException("Not Soported Jet.");
     }
 
     // INSERT
     public void save(){
-
+        throw new UnsupportedOperationException("Not Soported Jet.");
     }
 
     // UPDATE
     public void update(Book book){
-
+        throw new UnsupportedOperationException("Not Soported Jet.");
     }
 
     // DELETE FROM
     public void delete(Book book){
-
+        throw new UnsupportedOperationException("Not Soported Jet.");
     }
 }
