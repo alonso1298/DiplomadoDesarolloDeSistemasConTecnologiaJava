@@ -47,12 +47,10 @@ public class BookstoreService {
             // 5. Close Statement
             stmt.close();
 
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
+        finally {
             if (connection != null) {
                 try {
                     connection.close();
@@ -91,12 +89,10 @@ public class BookstoreService {
 
             return books;
 
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
+        finally {
             if (connection != null) {
                 try {
                     connection.close();
@@ -128,12 +124,10 @@ public class BookstoreService {
             }
             return book;
 
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
+        finally {
             if (connection != null) {
                 try {
                     connection.close();
