@@ -26,7 +26,7 @@ public class BookstoreService {
     public void insertBook(Book book) {
         try{
             // 1. Load Driver
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             String DBNAME = "bookstore";
             String URL = "jdbc:mariadb://localhost:3307/"+DBNAME;
             String USER = "dgtic";
@@ -68,7 +68,7 @@ public class BookstoreService {
         List<Book> books = new ArrayList<Book>();
         try{
             // 1. Load Driver
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             // 2. Create Connection
             connection = this.buildConnection();
@@ -112,7 +112,7 @@ public class BookstoreService {
         // Implementation for retrieving a book by its ISBN from the database
         Book book = null;
         try{
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = this.buildConnection();
 
             var sql="SELECT isbn, book_name, publisher_code FROM BOOK WHERE isbn = ?";
@@ -147,9 +147,9 @@ public class BookstoreService {
 
     private Connection buildConnection() throws SQLException {
         String DBNAME = "bookstore";
-        String URL = "jdbc:mariadb://localhost:3307/"+DBNAME;
-        String USER = "dgtic";
-        String PASS = "dgtic1234";
+        String URL = "jdbc:mysql://localhost:3306/"+DBNAME;
+        String USER = "root";
+        String PASS = "56457977Ac*";
         return java.sql.DriverManager.getConnection(URL, USER, PASS);
     }
 
