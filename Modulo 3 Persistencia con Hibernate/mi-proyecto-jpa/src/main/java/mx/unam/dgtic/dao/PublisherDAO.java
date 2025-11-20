@@ -25,26 +25,27 @@ public class PublisherDAO implements BookStoreDAO<Publisher> {
 
     @Override
     public List<Publisher> findAll() {
+        em.createQuery("SELECT p FROM Publisher p");
         return List.of();
     }
 
     @Override
-    public Publisher findById(String isbn) {
-        return null;
+    public Publisher findById(String code) {
+        return em.find(Publisher.class, code);
     }
 
     @Override
-    public void save(Publisher book) {
-
+    public void save(Publisher publisher) {
+        em.persist(publisher);
     }
 
     @Override
-    public void update(Publisher book) {
-
+    public void update(Publisher publisher) {
+        em.merge(publisher);
     }
 
     @Override
-    public void delete(String isbn) {
-
+    public void delete(String code) {
+        em.remove(em.find(Publisher.class, code));
     }
 }
