@@ -14,14 +14,14 @@ public class Book {
     @Column(name = "BOOK_NAME")
     private String bookName;
     @Column(name = "PUBLISHER_CODE")
-    private String publishesCode;
+    private String publisherCode;
 
     public Book(){}
 
-    public Book(String isbn, String bookName, String publishesCode) {
+    public Book(String isbn, String bookName, String publisherCode) {
         this.isbn = isbn;
         this.bookName = bookName;
-        this.publishesCode = publishesCode;
+        this.publisherCode = publisherCode;
     }
 
     public String getIsbn() {
@@ -40,11 +40,11 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public String getPublishesCode() {
-        return publishesCode;
+    public String getPublisherCode() {
+        return publisherCode;
     }
 
-    public void setPublishesCode(String publishesCode) {
-        this.publishesCode = publishesCode;
+    public void setPublisherCode(String publisherCode) {
+        this.publisherCode = publisherCode;
     }
 }
