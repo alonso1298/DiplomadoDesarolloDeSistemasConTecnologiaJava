@@ -10,8 +10,8 @@ import java.util.List;
 public class BookDAO  implements BookStoreDAO<Book> {
 
     // Importar EntityManager Y EntityManagerFactory
-    private EntityManager em;
-    private EntityManagerFactory emf;
+    private final EntityManager em;
+    private final EntityManagerFactory emf;
 
     public BookDAO(){
         // Creando un EntityMnager de la configuracion que tengo en persistence.xml
@@ -32,8 +32,7 @@ public class BookDAO  implements BookStoreDAO<Book> {
 
     @Override
     public Book findById(String isbn) {
-        Book book = em.find(Book.class, isbn);
-        return book;
+        return em.find(Book.class, isbn);
     }
 
     @Override
