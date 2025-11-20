@@ -3,10 +3,11 @@ package mx.unam.dgtic.dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import mx.unam.dgtic.entities.Book;
 
 import java.util.List;
 
-public class BookDAO  implements BookStoreDAO{
+public class BookDAO  implements BookStoreDAO<Book> {
 
     // Importar EntityManager Y EntityManagerFactory
     private EntityManager em;
@@ -22,27 +23,31 @@ public class BookDAO  implements BookStoreDAO{
     }
 
     @Override
-    public List findAll() {
+    public List<Book> findAll() {
+        // JPQL
+        // GQL
+        em.createQuery("SELECT b FROM Book b");
         return List.of();
     }
 
     @Override
-    public Object findById(String isbn) {
-        return null;
+    public Book findById(String isbn) {
+        Book book = em.find(Book.class, isbn);
+        return book;
     }
 
     @Override
-    public void save(Object book) {
-
+    public void save(Book book) {
+        em.persist(book);
     }
 
     @Override
-    public void update(Object book) {
-
+    public void update(Book book) {
+        em.merge(book);
     }
 
     @Override
     public void delete(String isbn) {
-
+        em.remove(em.find(Book.class, isbn));
     }
 }
