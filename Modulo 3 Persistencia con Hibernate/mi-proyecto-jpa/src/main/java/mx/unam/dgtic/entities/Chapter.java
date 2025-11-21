@@ -17,8 +17,8 @@ public class Chapter {
 
     public Chapter(){}
 
-    public Chapter(String bookIBN, int chapterNum, String title) {
-        this.bookIBN = bookIBN;
+    public Chapter(String bookISBN, int chapterNum, String title) {
+        this.bookIBN = bookISBN;
         this.chapterNum = chapterNum;
         this.title = title;
     }

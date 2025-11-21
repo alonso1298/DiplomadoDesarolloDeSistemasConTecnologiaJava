@@ -46,6 +46,6 @@ public class ChapterDAO implements BookStoreDAO<Chapter>{
 
     @Override
     public void delete(String bookIsbn) {
-        em.remove(em.find(Publisher.class, bookIsbn));
+        em.remove(em.find(Chapter.class, bookIsbn));
     }
 }
