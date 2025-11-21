@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import mx.unam.dgtic.entities.Chapter;
+import mx.unam.dgtic.entities.Publisher;
 
 import java.util.List;
 
@@ -24,26 +25,27 @@ public class ChapterDAO implements BookStoreDAO<Chapter>{
 
     @Override
     public List<Chapter> findAll() {
+        em.createQuery("SELECT c FROM Chapter c");
         return List.of();
     }
 
     @Override
-    public Chapter findById(String isbn) {
-        return null;
+    public Chapter findById(String bookIsbn) {
+        return em.find(Chapter.class, bookIsbn);
     }
 
     @Override
-    public void save(Chapter book) {
-
+    public void save(Chapter chapter) {
+        em.persist(chapter);
     }
 
     @Override
-    public void update(Chapter book) {
-
+    public void update(Chapter chapter) {
+        em.merge(chapter);
     }
 
     @Override
-    public void delete(String isbn) {
-
+    public void delete(String bookIsbn) {
+        em.remove(em.find(Publisher.class, bookIsbn));
     }
 }

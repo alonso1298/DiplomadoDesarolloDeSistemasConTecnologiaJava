@@ -41,6 +41,7 @@ public class PublisherDAO implements BookStoreDAO<Publisher> {
 
     @Override
     public void update(Publisher publisher) {
+
         em.merge(publisher);
     }
 
