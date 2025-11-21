@@ -1,34 +1,40 @@
 package mx.unam.dgtic.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import mx.unam.dgtic.entities.pk.ChapterPK;
 
 @Entity
 @Table(name = "CHAPTER")
+@IdClass(ChapterPK.class)
 public class Chapter {
+
     @Id
-    private String bookIBN;
-    @Column(name = "BOOK_ISBN")
+    @Column(name = "BOOK_ISBN"
+    )
+    private String bookISBN;
+
+    @Id
+    @Column(name = "CHAPTER_NUM")
     private int chapterNum;
+
     @Column(name = "TITLE")
     private String title;
 
-    public Chapter(){}
+    public Chapter() {}
 
     public Chapter(String bookISBN, int chapterNum, String title) {
-        this.bookIBN = bookISBN;
+        this.bookISBN = bookISBN;
         this.chapterNum = chapterNum;
         this.title = title;
     }
 
-    public String getBookIBN() {
-        return bookIBN;
+    public String getBookISBN() {
+        return bookISBN;
     }
 
-    public void setBookIBN(String bookIBN) {
-        this.bookIBN = bookIBN;
+    public void setBookISBN(String bookISBN) {
+        this.bookISBN = bookISBN;
     }
 
     public int getChapterNum() {

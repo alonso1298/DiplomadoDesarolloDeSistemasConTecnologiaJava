@@ -1,4 +1,4 @@
-package mx.unam.dgtic.entities;
+package mx.unam.dgtic.entities.pk;
 
 import java.io.Serializable;
 import java.util.Objects;
