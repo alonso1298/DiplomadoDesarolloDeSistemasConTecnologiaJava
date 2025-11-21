@@ -1,7 +1,12 @@
 package mx.unam.dgtic.entities;
 
+import jakarta.persistence.Id;
+
+
 public class Chapter {
+    @Id
     private String bookIBN;
+
     private int chapterNum;
     private String title;
 
