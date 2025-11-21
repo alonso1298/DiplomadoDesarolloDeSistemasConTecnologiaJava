@@ -31,7 +31,13 @@ public class ChapterDAO implements BookStoreDAO<Chapter>{
     }
 
     @Override
-    public Chapter findById(ChapterPK pk) {
+    public Chapter findById(String key) {
+        // Divides el String para reconstruir el PK
+        String[] parts = key.split(":");
+        String isbn = parts[0];
+        int number = Integer.parseInt(parts[1]);
+
+        ChapterPK pk = new ChapterPK(isbn, number);
         return em.find(Chapter.class, pk);
     }
 
@@ -46,7 +52,16 @@ public class ChapterDAO implements BookStoreDAO<Chapter>{
     }
 
     @Override
-    public void delete(String bookIsbn) {
-        em.remove(em.find(Chapter.class, bookIsbn));
+    public void delete(String key) {
+        String[] parts = key.split(":");
+        String isbn = parts[0];
+        int number = Integer.parseInt(parts[1]);
+
+        ChapterPK pk = new ChapterPK(isbn, number);
+
+        Chapter chapter = em.find(Chapter.class, pk);
+        if (chapter != null) {
+            em.remove(chapter);
+        }
     }
 }
