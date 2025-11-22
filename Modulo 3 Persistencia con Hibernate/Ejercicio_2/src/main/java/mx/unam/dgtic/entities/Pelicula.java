@@ -13,6 +13,7 @@ public class Pelicula {
     @Column(name = "duracion")
     private int duracion;
     @Id
+    @Column(name = "id_pelicula")
     private int idPelicula;
     @Column(name = "titulo")
     private String titulo;

@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface ICineCRUD<T> {
     List<T> findAll();
-    T findById(String id);
+    T findById(int id);
     void save(T pelicula);
     void update(T pelicula);
-    void delete(String id);
+    void delete(int id);
 }

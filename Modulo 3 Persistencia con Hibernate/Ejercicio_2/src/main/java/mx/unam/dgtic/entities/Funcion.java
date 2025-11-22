@@ -15,6 +15,7 @@ public class Funcion {
     @Column(name = "hora")
     private Date hora;
     @Id
+    @Column(name = "id_funcion")
     private int idFuncion;
     @Id
     @Column(name = "id_pelicula")

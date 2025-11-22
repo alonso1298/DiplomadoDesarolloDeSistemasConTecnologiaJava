@@ -24,7 +24,7 @@ public class PeliculaDAO implements ICineCRUD<Pelicula> {
     }
 
     @Override
-    public Pelicula findById(String id) {
+    public Pelicula findById(int id) {
         return em.find(Pelicula.class, id);
     }
 
@@ -39,7 +39,7 @@ public class PeliculaDAO implements ICineCRUD<Pelicula> {
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
         em.remove(em.find(Pelicula.class, id));
     }
 }
