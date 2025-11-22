@@ -42,4 +42,12 @@ public class PeliculaDAO implements ICineCRUD<Pelicula> {
     public void delete(int id) {
         em.remove(em.find(Pelicula.class, id));
     }
+
+    // Metodos JPQL extra
+    //Buscar una pelicual que sea mayor a X minutos
+    public List<Pelicula> findByDuracionMayor (int minutos){
+        return em.createQuery(
+                        "SELECT p FROM Pelicula p WHERE p.duracion > :min",
+                        Pelicula.class).setParameter("min", minutos).getResultList();
+    }
 }
