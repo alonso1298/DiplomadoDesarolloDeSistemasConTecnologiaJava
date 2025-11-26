@@ -1,0 +1,50 @@
+package mx.unam.dgtic.entities;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "salas")
+public class Sala {
+    @Id
+    @Column(name = "id_sala")
+    private int idSala;
+    @Column
+    private String nombre;
+    @Column
+    private int capacidad;
+
+    public Sala(){}
+
+    public Sala(int idSala, String nombre, int capacidad) {
+        this.idSala = idSala;
+        this.nombre = nombre;
+        this.capacidad = capacidad;
+    }
+
+    public int getIdSala() {
+        return idSala;
+    }
+
+    public void setIdSala(int idSala) {
+        this.idSala = idSala;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+}

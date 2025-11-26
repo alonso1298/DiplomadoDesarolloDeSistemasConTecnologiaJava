@@ -19,8 +19,8 @@ public class PeliculaDAO implements ICineCRUD<Pelicula> {
 
     @Override
     public List<Pelicula> findAll() {
-        return em.createQuery("SELECT c FROM Pelicula c", Pelicula.class)
-                .getResultList();
+        em.createQuery("SELECT c FROM Pelicula c");
+        return List.of();
     }
 
     @Override
@@ -30,9 +30,7 @@ public class PeliculaDAO implements ICineCRUD<Pelicula> {
 
     @Override
     public void save(Pelicula pelicula) {
-        em.getTransaction().begin();
         em.persist(pelicula);
-        em.getTransaction().commit();
     }
 
     @Override
@@ -42,11 +40,23 @@ public class PeliculaDAO implements ICineCRUD<Pelicula> {
 
     @Override
     public void delete(int id) {
-        Pelicula pelicula = em.find(Pelicula.class, id);
-        if (pelicula != null) {
-            em.getTransaction().begin();
-            em.remove(pelicula);
-            em.getTransaction().commit();
-        }
+        em.remove(em.find(Pelicula.class, id));
+    }
+
+    // Metodos JPQL extra
+
+    //Buscar una pelicula que sea mayor a X minutos
+    public List<Pelicula> findByDuracionMayor (int minutos){
+        return em.createQuery(
+                "SELECT p FROM Pelicula p WHERE p.duracion > :min", Pelicula.class)
+                 .setParameter("min", minutos).getResultList();
+    }
+
+    // Buscar pelicula por nombre
+    public List<Pelicula> findByName(String titulo){
+        return em.createQuery(
+                "SELECT p FROM pelicula p WHERE p.titulo LIKE :tit", Pelicula.class)
+                .setParameter("tit",  "%" + titulo + "%").getResultList();
+
     }
 }

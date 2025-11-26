@@ -1,0 +1,11 @@
+package mx.unam.dgtic.dao;
+
+import java.util.List;
+
+public interface ICineCRUD<T> {
+    List<T> findAll();
+    T findById(int id);
+    void save(T pelicula);
+    void update(T pelicula);
+    void delete(int id);
+}
