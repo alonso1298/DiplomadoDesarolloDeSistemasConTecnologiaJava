@@ -1,27 +1,29 @@
 package mx.unam.dgtic.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "funciones")
 public class Funcion {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_funcion")
+    private int idFuncion;
+
     @Column(name = "fecha")
     private Date fecha;
     @Column(name = "hora")
     private Date hora;
-    @Id
-    @Column(name = "id_funcion")
-    private int idFuncion;
-    @Id
-    @Column(name = "id_pelicula")
+
+    @ManyToOne
+    @JoinColumn(name = "id_pelicula")
     private int idPelicula;
-    @Id
-    @Column(name = "id_sala")
+
+    @ManyToOne
+    @JoinColumn(name = "id_sala")
     private int idSala;
 
     public Funcion(){}
