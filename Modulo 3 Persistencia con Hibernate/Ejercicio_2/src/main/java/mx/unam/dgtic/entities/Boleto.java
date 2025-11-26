@@ -2,6 +2,7 @@ package mx.unam.dgtic.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -15,19 +16,19 @@ public class Boleto {
 
     @ManyToOne
     @JoinColumn(name = "id_funcion")
-    private int idFuncion;
+    private Funcion funcion;
 
     @Column
     private int asiento;
 
     @Column(name = "fecha_compra")
-    private Date fechaCompra;
+    private LocalDateTime fechaCompra;
 
     public Boleto(){}
 
-    public Boleto(int idBoleto, int idFuncion, int asiento, Date fechaCompra) {
+    public Boleto(int idBoleto, Funcion funcion, int asiento, LocalDateTime fechaCompra) {
         this.idBoleto = idBoleto;
-        this.idFuncion = idFuncion;
+        this.funcion = funcion;
         this.asiento = asiento;
         this.fechaCompra = fechaCompra;
     }
@@ -40,12 +41,12 @@ public class Boleto {
         this.idBoleto = idBoleto;
     }
 
-    public int getIdFuncion() {
-        return idFuncion;
+    public Funcion getFuncion() {
+        return funcion;
     }
 
-    public void setIdFuncion(int idFuncion) {
-        this.idFuncion = idFuncion;
+    public void setFuncion(Funcion funcion) {
+        this.funcion = funcion;
     }
 
     public int getAsiento() {
@@ -56,11 +57,21 @@ public class Boleto {
         this.asiento = asiento;
     }
 
-    public Date getFechaCompra() {
+    public LocalDateTime getFechaCompra() {
         return fechaCompra;
     }
 
-    public void setFechaCompra(Date fechaCompra) {
+    public void setFechaCompra(LocalDateTime fechaCompra) {
         this.fechaCompra = fechaCompra;
+    }
+
+    @Override
+    public String toString() {
+        return "Boleto{" +
+                "idBoleto=" + idBoleto +
+                ", funcion=" + funcion +
+                ", asiento=" + asiento +
+                ", fechaCompra=" + fechaCompra +
+                '}';
     }
 }

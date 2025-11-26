@@ -47,4 +47,13 @@ public class Sala {
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
+
+    @Override
+    public String toString() {
+        return "Sala{" +
+                "idSala=" + idSala +
+                ", nombre='" + nombre + '\'' +
+                ", capacidad=" + capacidad +
+                '}';
+    }
 }
