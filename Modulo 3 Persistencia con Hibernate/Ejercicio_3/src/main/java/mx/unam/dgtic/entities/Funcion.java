@@ -2,6 +2,7 @@ package mx.unam.dgtic.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -14,7 +15,7 @@ public class Funcion {
     private int idFuncion;
 
     @Column(name = "fecha")
-    private Date fecha;
+    private LocalDateTime fecha;
     @Column(name = "hora")
     private Date hora;
 
@@ -28,7 +29,7 @@ public class Funcion {
 
     public Funcion(){}
 
-    public Funcion(Date fecha, Date hora, int idFuncion, Pelicula idPelicula, Sala idSala) {
+    public Funcion(LocalDateTime fecha, Date hora, int idFuncion, Pelicula idPelicula, Sala idSala) {
         this.fecha = fecha;
         this.hora = hora;
         this.idFuncion = idFuncion;
@@ -36,11 +37,11 @@ public class Funcion {
         this.idSala = idSala;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
