@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import mx.unam.dgtic.entities.Funcion;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class FuncionDAO implements ICineCRUD<Funcion> {
@@ -12,15 +13,14 @@ public class FuncionDAO implements ICineCRUD<Funcion> {
     private final EntityManager em;
     private final EntityManagerFactory emf;
 
-    public FuncionDAO(){
+    public FuncionDAO() {
         emf = Persistence.createEntityManagerFactory("cine-pu");
         em = emf.createEntityManager();
     }
 
     @Override
     public List<Funcion> findAll() {
-        em.createQuery("SELECT f FROM Funcion f");
-        return List.of();
+        return em.createQuery("SELECT f FROM Funcion f", Funcion.class).getResultList();
     }
 
     @Override
@@ -30,16 +30,41 @@ public class FuncionDAO implements ICineCRUD<Funcion> {
 
     @Override
     public void save(Funcion funcion) {
+        em.getTransaction().begin();
         em.persist(funcion);
+        em.getTransaction().commit();
     }
 
     @Override
     public void update(Funcion funcion) {
+        em.getTransaction().begin();
         em.merge(funcion);
+        em.getTransaction().commit();
     }
 
     @Override
     public void delete(int id) {
-        em.remove(em.find(Funcion.class, id));
+        em.getTransaction().begin();
+        Funcion f = em.find(Funcion.class, id);
+        if (f != null) em.remove(f);
+        em.getTransaction().commit();
+    }
+
+    // Consultas JPQL extras
+
+    public List<Funcion> buscarPorFecha(LocalDate fecha) {
+        return em.createQuery(
+                        "SELECT f FROM Funcion f WHERE f.fecha = :fecha",
+                        Funcion.class)
+                .setParameter("fecha", fecha)
+                .getResultList();
+    }
+
+    public List<Funcion> buscarPorPelicula(int idPelicula) {
+        return em.createQuery(
+                        "SELECT f FROM Funcion f WHERE f.pelicula.id = :idPelicula",
+                        Funcion.class)
+                .setParameter("idPelicula", idPelicula)
+                .getResultList();
     }
 }
