@@ -43,7 +43,7 @@ public class PeliculaDAO implements ICineCRUD<Pelicula> {
         em.remove(em.find(Pelicula.class, id));
     }
 
-    // Metodos JPQL extra
+    // Consultas JPQL extra
 
     //Buscar una pelicula que sea mayor a X minutos
     public List<Pelicula> findByDuracionMayor (int minutos){
@@ -58,5 +58,14 @@ public class PeliculaDAO implements ICineCRUD<Pelicula> {
                 "SELECT p FROM pelicula p WHERE p.titulo LIKE :tit", Pelicula.class)
                 .setParameter("tit",  "%" + titulo + "%").getResultList();
 
+    }
+
+    // Buscar películas por clasificación (PG, PG-13, etc.)
+    public List<Pelicula> buscarPorClasificacion(String clasificacion) {
+        return em.createQuery(
+                        "SELECT p FROM Pelicula p WHERE p.clasificacion = :clasificacion",
+                        Pelicula.class)
+                .setParameter("clasificacion", clasificacion)
+                .getResultList();
     }
 }
