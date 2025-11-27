@@ -19,14 +19,14 @@ public class Boleto {
     private Funcion funcion;
 
     @Column
-    private int asiento;
+    private String asiento;
 
     @Column(name = "fecha_compra")
     private LocalDateTime fechaCompra;
 
     public Boleto(){}
 
-    public Boleto(int idBoleto, Funcion funcion, int asiento, LocalDateTime fechaCompra) {
+    public Boleto(int idBoleto, Funcion funcion, String asiento, LocalDateTime fechaCompra) {
         this.idBoleto = idBoleto;
         this.funcion = funcion;
         this.asiento = asiento;
@@ -49,11 +49,11 @@ public class Boleto {
         this.funcion = funcion;
     }
 
-    public int getAsiento() {
+    public String getAsiento() {
         return asiento;
     }
 
-    public void setAsiento(int asiento) {
+    public void setAsiento(String asiento) {
         this.asiento = asiento;
     }
 
