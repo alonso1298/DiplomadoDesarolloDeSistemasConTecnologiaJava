@@ -68,8 +68,9 @@ public class FuncionDAO implements ICineCRUD<Funcion> {
 
     public List<Funcion> buscarPorPelicula(int idPelicula) {
         return em.createQuery(
-                        "SELECT f FROM Funcion f WHERE f.pelicula.id = :idPelicula",
-                        Funcion.class)
+                        "SELECT f FROM Funcion f WHERE f.idPelicula.idPelicula = :idPelicula",
+                        Funcion.class
+                )
                 .setParameter("idPelicula", idPelicula)
                 .getResultList();
     }
