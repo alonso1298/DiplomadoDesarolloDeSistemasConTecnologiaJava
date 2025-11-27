@@ -60,7 +60,7 @@ public class PeliculaDAO implements ICineCRUD<Pelicula> {
 
     }
 
-    // Buscar películas por clasificación (PG, PG-13, etc.)
+    // Buscar películas por clasificación
     public List<Pelicula> buscarPorClasificacion(String clasificacion) {
         return em.createQuery(
                         "SELECT p FROM Pelicula p WHERE p.clasificacion = :clasificacion",
