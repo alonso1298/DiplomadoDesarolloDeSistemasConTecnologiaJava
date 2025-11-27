@@ -20,15 +20,15 @@ public class Funcion {
 
     @ManyToOne
     @JoinColumn(name = "id_pelicula")
-    private int idPelicula;
+    private Pelicula idPelicula;
 
     @ManyToOne
     @JoinColumn(name = "id_sala")
-    private int idSala;
+    private Sala idSala;
 
     public Funcion(){}
 
-    public Funcion(Date fecha, Date hora, int idFuncion, int idPelicula, int idSala) {
+    public Funcion(Date fecha, Date hora, int idFuncion, Pelicula idPelicula, Sala idSala) {
         this.fecha = fecha;
         this.hora = hora;
         this.idFuncion = idFuncion;
@@ -60,19 +60,19 @@ public class Funcion {
         this.idFuncion = idFuncion;
     }
 
-    public int getIdPelicula() {
+    public Pelicula getIdPelicula() {
         return idPelicula;
     }
 
-    public void setIdPelicula(int idPelicula) {
+    public void setIdPelicula(Pelicula idPelicula) {
         this.idPelicula = idPelicula;
     }
 
-    public int getIdSala() {
+    public Sala getIdSala() {
         return idSala;
     }
 
-    public void setIdSala(int idSala) {
+    public void setIdSala(Sala idSala) {
         this.idSala = idSala;
     }
 
