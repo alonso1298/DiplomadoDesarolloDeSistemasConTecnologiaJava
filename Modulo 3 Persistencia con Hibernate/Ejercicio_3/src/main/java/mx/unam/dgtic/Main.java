@@ -46,8 +46,8 @@ public class Main {
         Sala salaPorNombre = salaDAO.buscarPorNombre("Sala 1 IMAX");
         System.out.println("Sala exacta: " + salaPorNombre);
 
-        List<Funcion> funcionesHoy = funcionDAO.buscarPorFecha(LocalDate.of(2025, 2, 15));
-        System.out.println("Funciones el 2025-02-15: " + funcionesHoy);
+        List<Funcion> funciones = funcionDAO.buscarPorFecha(LocalDate.of(2025, 2, 15));
+        System.out.println("Funciones el 2025-02-15: " + funciones);
 
         List<Funcion> funcionesPelicula = funcionDAO.buscarPorPelicula(2);
         System.out.println("Funciones de película con ID 2: " + funcionesPelicula);

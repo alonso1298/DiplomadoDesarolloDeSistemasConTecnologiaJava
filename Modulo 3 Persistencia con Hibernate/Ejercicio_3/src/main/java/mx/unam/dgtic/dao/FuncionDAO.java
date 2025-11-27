@@ -6,6 +6,7 @@ import jakarta.persistence.Persistence;
 import mx.unam.dgtic.entities.Funcion;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class FuncionDAO implements ICineCRUD<Funcion> {
@@ -53,10 +54,15 @@ public class FuncionDAO implements ICineCRUD<Funcion> {
     // Consultas JPQL extras
 
     public List<Funcion> buscarPorFecha(LocalDate fecha) {
+        LocalDateTime inicioDia = fecha.atStartOfDay();
+        LocalDateTime finDia = fecha.atTime(23, 59, 59);
+
         return em.createQuery(
-                        "SELECT f FROM Funcion f WHERE f.fecha = :fecha",
-                        Funcion.class)
-                .setParameter("fecha", fecha)
+                        "SELECT f FROM Funcion f WHERE f.fecha BETWEEN :inicio AND :fin",
+                        Funcion.class
+                )
+                .setParameter("inicio", inicioDia)
+                .setParameter("fin", finDia)
                 .getResultList();
     }
 
