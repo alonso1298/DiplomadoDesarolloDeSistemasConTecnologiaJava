@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mi-proyecto-jpa" />
+        <module name="Ejercicio_3" />
       </profile>
     </annotationProcessing>
   </component>
