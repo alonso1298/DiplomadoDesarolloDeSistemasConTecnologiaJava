@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface ITipoDomicilioRepository {
 
     Collection<TipoDomicilio> findAll();
-    TipoDomicilio findById(Integer id);
+    Optional<TipoDomicilio> findById(Integer id);
 
 }

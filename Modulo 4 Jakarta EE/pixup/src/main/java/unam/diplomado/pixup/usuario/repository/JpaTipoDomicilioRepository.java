@@ -8,6 +8,7 @@ import unam.diplomado.pixup.usuario.domain.TipoDomicilio;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped // Todas se hacen es una sola instancia (singleton)
 public class JpaTipoDomicilioRepository implements ITipoDomicilioRepository{
@@ -24,9 +25,10 @@ public class JpaTipoDomicilioRepository implements ITipoDomicilioRepository{
     }
 
     @Override
-    public TipoDomicilio findById(Integer id) {
-        TipoDomicilio tipoDomicilio = 
+    public Optional<TipoDomicilio> findById(Integer id) {
+        TipoDomicilio tipoDomicilio =
                 entityManager.find(TipoDomicilio.class, id);
-        return tipoDomicilio;
+        return tipoDomicilio != null ?
+                Optional.of(tipoDomicilio) : Optional.empty();
     }
 }
