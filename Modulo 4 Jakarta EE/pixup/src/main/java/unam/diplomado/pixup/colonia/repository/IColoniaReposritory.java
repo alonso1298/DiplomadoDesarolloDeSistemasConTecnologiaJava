@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface IColoniaReposritory {
 
-    List<Colonia> findByCp(String cp);
+    List<Colonia> finByCp(String cp);
     Optional<Colonia> findById(Integer id);
     Colonia saveOrUpdate(Colonia colonia);
     void delete(Colonia colonia);

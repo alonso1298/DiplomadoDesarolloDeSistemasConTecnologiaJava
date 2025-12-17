@@ -28,4 +28,19 @@ public class JpaColoniaRepository implements IColoniaReposritory{
         Colonia colonia = entityManager.find(Colonia.class, id);
         return colonia != null ? Optional.of(colonia) : Optional.empty();
     }
+
+    @Override
+    public Colonia saveOrUpdate(Colonia colonia) {
+        return null;
+    }
+
+    @Override
+    public void delete(Colonia colonia) {
+
+    }
+
+    @Override
+    public Optional<Colonia> findByCpAndNombre(String cp, String nombre) {
+        return Optional.empty();
+    }
 }
