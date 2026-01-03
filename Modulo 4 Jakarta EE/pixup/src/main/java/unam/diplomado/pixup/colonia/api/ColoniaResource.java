@@ -2,6 +2,7 @@ package unam.diplomado.pixup.colonia.api;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.core.Response;
 import unam.diplomado.pixup.colonia.domain.Colonia;
 import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
 
@@ -15,15 +16,18 @@ public class ColoniaResource implements IColoniaApi{
     private IColoniaReposritory coloniaReposritory;
 
     @Override
-    public Colonia getColoniaById(Integer id) {
+    public Response getColoniaById(Integer id) {
         Optional<Colonia> colonia = coloniaReposritory.findById(id);
-        return colonia.orElse(null);
-        /*
-        if (colonia.isPresent()) {
-            return colonia.get();
+        if(colonia.isPresent()){
+            return Response
+                    .status(Response.Status.OK)
+                    .entity(colonia.get())
+                    .build();
         }
-        return null;
-         */
+        return Response
+                .status(Response.Status.NOT_FOUND)
+                .entity(null)
+                .build();
     }
 
     @Override

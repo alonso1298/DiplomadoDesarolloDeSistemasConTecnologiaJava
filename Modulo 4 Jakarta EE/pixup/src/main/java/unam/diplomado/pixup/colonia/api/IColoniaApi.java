@@ -3,6 +3,7 @@ package unam.diplomado.pixup.colonia.api;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import unam.diplomado.pixup.colonia.domain.Colonia;
 
 import java.util.Collection;
@@ -14,7 +15,7 @@ public interface IColoniaApi {
 
     @GET
     @Path("{id}")
-    Colonia getColoniaById(@PathParam("id") Integer id); //@PathParam("id") liga el valor para hacer la busqueda correspondiente
+    Response getColoniaById(@PathParam("id") Integer id); //@PathParam("id") liga el valor para hacer la busqueda correspondiente
     
     @GET
     Collection<Colonia> getColoniasByCp(@NotBlank @QueryParam("cp") String cp); // @QueryParam("cp") hace el ligado del valor
