@@ -15,7 +15,7 @@ public class Colonia implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
-    private String codigoPostal;
+    private String cp;
     @ManyToOne(targetEntity = Municipio.class)
     @JoinColumn(name = "id_municipio", nullable = false)
     private Municipio municipio;
