@@ -4,6 +4,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Response;
 import unam.diplomado.pixup.colonia.domain.Colonia;
+import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
 import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
 import unam.diplomado.pixup.colonia.service.ColoniaServiceImpl;
 
@@ -20,17 +21,18 @@ public class ColoniaResource implements IColoniaApi{
 
     @Override
     public Response getColoniaById(Integer id) {
-        Optional<Colonia> colonia = coloniaReposritory.findById(id);
-        if(colonia.isPresent()){
+        try {
+            Colonia colonia = coloniaService.obtenerColoniaPorId(id);
             return Response
                     .status(Response.Status.OK)
-                    .entity(colonia.get())
+                    .entity(colonia)
+                    .build();
+        } catch (ColoniaNotFoudException e) {
+            return Response
+                    .status(Response.Status.NOT_FOUND)
+                    .entity(e.getMessage())
                     .build();
         }
-        return Response
-                .status(Response.Status.NOT_FOUND)
-                .entity(null)
-                .build();
     }
 
     @Override
