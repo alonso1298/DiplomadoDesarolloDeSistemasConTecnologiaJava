@@ -3,6 +3,7 @@ package unam.diplomado.pixup.colonia.service;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import unam.diplomado.pixup.colonia.domain.Colonia;
+import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
 import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
 
 import java.util.Optional;
@@ -19,7 +20,7 @@ public class ColoniaServiceImpl implements IColoniaService {
         if (colonia.isPresent()) {
             return colonia.get();
         }
-        return null;
+        throw new ColoniaNotFoudException(id);
     }
 
     @Override

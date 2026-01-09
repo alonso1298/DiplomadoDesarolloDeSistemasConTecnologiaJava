@@ -5,6 +5,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Response;
 import unam.diplomado.pixup.colonia.domain.Colonia;
 import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
+import unam.diplomado.pixup.colonia.service.ColoniaServiceImpl;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -14,6 +15,8 @@ public class ColoniaResource implements IColoniaApi{
 
     @Inject
     private IColoniaReposritory coloniaReposritory;
+    @Inject
+    private ColoniaServiceImpl coloniaService;
 
     @Override
     public Response getColoniaById(Integer id) {
