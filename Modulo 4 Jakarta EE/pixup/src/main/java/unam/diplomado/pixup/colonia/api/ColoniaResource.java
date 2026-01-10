@@ -3,12 +3,13 @@ package unam.diplomado.pixup.colonia.api;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Response;
+import unam.diplomado.pixup.colonia.api.dto.ColoniaDTO;
+import unam.diplomado.pixup.colonia.api.dto.ColoniaMapper;
 import unam.diplomado.pixup.colonia.domain.Colonia;
-import unam.diplomado.pixup.colonia.domain.ColoniaAlreradyExistsException;
-import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
 import unam.diplomado.pixup.repository.IColoniaReposritory;
 import unam.diplomado.pixup.colonia.service.IColoniaService;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @RequestScoped // Por cada peticion se creara un nuevo objeto
@@ -18,6 +19,8 @@ public class ColoniaResource implements IColoniaApi{
     private IColoniaReposritory coloniaReposritory;
     @Inject
     private IColoniaService coloniaService;
+    @Inject
+    private ColoniaMapper coloniaMapper;
 
     @Override
     public Colonia getColoniaById(Integer id) {
@@ -25,8 +28,13 @@ public class ColoniaResource implements IColoniaApi{
     }
 
     @Override
-    public Collection<Colonia> getColoniasByCp(String cp) {
-        return coloniaReposritory.finByCp(cp);
+    public Collection<ColoniaDTO> getColoniasByCp(String cp) {
+        Collection<Colonia> colonias = coloniaReposritory.finByCp(cp);
+        Collection<ColoniaDTO> coloniasDTO = new ArrayList<>();
+        for (Colonia colonia: colonias){
+            coloniasDTO.add(coloniaMapper.toDto(colonia));
+        }
+        return coloniasDTO;
     }
 
     @Override

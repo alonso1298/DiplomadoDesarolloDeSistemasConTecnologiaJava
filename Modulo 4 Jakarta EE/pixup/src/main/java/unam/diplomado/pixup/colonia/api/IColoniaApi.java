@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import unam.diplomado.pixup.colonia.api.dto.ColoniaDTO;
 import unam.diplomado.pixup.colonia.domain.Colonia;
 
 import java.util.Collection;
@@ -20,7 +21,7 @@ public interface IColoniaApi {
     Colonia getColoniaById(@PathParam("id") Integer id); //@PathParam("id") liga el valor para hacer la busqueda correspondiente
     
     @GET
-    Collection<Colonia> getColoniasByCp(@NotBlank @QueryParam("cp") String cp); // @QueryParam("cp") hace el ligado del valor
+    Collection<ColoniaDTO> getColoniasByCp(@NotBlank @QueryParam("cp") String cp); // @QueryParam("cp") hace el ligado del valor
       // @NotBlank por medio de la anotacion se puede aplicar validaciones en este caso que el valor no venga en blanco
 
     @DELETE
