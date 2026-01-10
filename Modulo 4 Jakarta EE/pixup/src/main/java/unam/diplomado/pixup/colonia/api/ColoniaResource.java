@@ -61,7 +61,7 @@ public class ColoniaResource implements IColoniaApi{
                         .build();
             }
             return Response
-                    .status(Response.Status.CONFLICT)
+                    .status(Response.Status.PRECONDITION_REQUIRED)
                     .entity(coloniaCreada)
                     .build();
         }

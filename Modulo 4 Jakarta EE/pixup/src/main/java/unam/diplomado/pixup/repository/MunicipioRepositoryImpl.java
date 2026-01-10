@@ -8,7 +8,7 @@ import jakarta.persistence.PersistenceContext;
 import unam.diplomado.pixup.colonia.domain.Municipio;
 
 @ApplicationScoped
-public class MunicipioRepositoryImpl implements IMunicipioRepository {
+public class MunicipioRepositoryImpl implements IMunicipioRepositoryImpl {
 
     @PersistenceContext(unitName = "pixup")
     private EntityManager entityManager;

@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import unam.diplomado.pixup.colonia.domain.Municipio;
 
-public interface IMunicipioRepository {
+public interface IMunicipioRepositoryImpl {
     
      Optional<Municipio> findById(Integer id);
 

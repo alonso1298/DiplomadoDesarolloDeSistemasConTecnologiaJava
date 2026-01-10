@@ -8,7 +8,7 @@ import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
 import unam.diplomado.pixup.colonia.domain.Municipio;
 import unam.diplomado.pixup.colonia.domain.MunicipioNotFoundException;
 import unam.diplomado.pixup.repository.IColoniaReposritory;
-import unam.diplomado.pixup.repository.IMunicipioRepository;
+import unam.diplomado.pixup.repository.IMunicipioRepositoryImpl;
 
 import java.util.Optional;
 
@@ -18,7 +18,7 @@ public class ColoniaServiceImpl implements IColoniaService {
     @Inject
     private IColoniaReposritory coloniaRepository;
     @Inject
-    private IMunicipioRepository municipioRepository;
+    private IMunicipioRepositoryImpl municipioRepository;
 
     @Override
     public Colonia obtenerColoniaPorId(Integer id) {
