@@ -39,4 +39,19 @@ public class ColoniaResource implements IColoniaApi{
     public Collection<Colonia> getColoniasByCp(String cp) {
         return coloniaReposritory.finByCp(cp);
     }
+
+    @Override
+    public void deleteColonia(Integer id) {
+
+    }
+
+    @Override
+    public Response createColonia(Colonia colonia) {
+        return null;
+    }
+
+    @Override
+    public void updateColonia(Integer id, Colonia colonia) {
+
+    }
 }
