@@ -46,7 +46,30 @@ public class ColoniaServiceImpl implements IColoniaService {
 
     @Override
     public Colonia actualizarColonia(Colonia colonia) {
+        Optional<Colonia> coloniaExistente = coloniaRepository.findById(colonia.getId());
+        if (coloniaExistente.isEmpty()) {
+            throw new ColoniaNotFoudException(colonia.getId());
+        }
 
+        Optional<Colonia> coloniaExistente2 =
+                coloniaRepository.findByCpAndNombre(colonia.getCp(), colonia.getNombre());
+        if (coloniaExistente2.isPresent()) {
+            throw new ColoniaAlreradyExistsException(colonia.getCp(), colonia.getNombre());
+        }
+
+        Optional<Municipio> municipioExistente =
+                municipioRepository.findById(colonia.getMunicipio().getId());
+        if (municipioExistente.isEmpty()) {
+            throw new MunicipioNotFoundException(colonia.getMunicipio().getId());
+        }
+
+        Colonia coloniaActualizar = coloniaExistente.get();
+        coloniaActualizar.setMunicipio(municipioExistente.get());
+        coloniaActualizar.setNombre(colonia.getNombre());
+        coloniaActualizar.setCp(colonia.getCp());
+
+        coloniaRepository.saveOrUpdate(coloniaActualizar);
+        return coloniaActualizar;
     }
 
     @Override

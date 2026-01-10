@@ -10,8 +10,7 @@ public interface IColoniaService {
 
     Colonia obtenerColoniaPorId(Integer id);
     Colonia crearColonia(Colonia colonia);
-    Collection<Colonia> obtenerColoniaPorCp(String cp);
-    void eliminarColonia(Integer id, Colonia colonia);
-    Colonia actualizarColonia(Integer id, Colonia colonia);
+    Colonia actualizarColonia(Colonia colonia);
+    void eliminarColoniaPorId(Integer id);
 
 }
