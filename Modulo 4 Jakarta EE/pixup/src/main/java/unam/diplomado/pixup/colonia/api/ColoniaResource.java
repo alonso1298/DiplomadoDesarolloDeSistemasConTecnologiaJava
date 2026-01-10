@@ -6,10 +6,9 @@ import jakarta.ws.rs.core.Response;
 import unam.diplomado.pixup.colonia.api.dto.ColoniaDTO;
 import unam.diplomado.pixup.colonia.api.dto.ColoniaMapper;
 import unam.diplomado.pixup.colonia.domain.Colonia;
-import unam.diplomado.pixup.repository.IColoniaReposritory;
+import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
 import unam.diplomado.pixup.colonia.service.IColoniaService;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 @RequestScoped // Por cada peticion se creara un nuevo objeto

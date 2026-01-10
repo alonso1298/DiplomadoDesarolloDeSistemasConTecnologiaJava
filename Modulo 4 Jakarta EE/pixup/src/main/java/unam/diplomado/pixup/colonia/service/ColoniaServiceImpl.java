@@ -3,8 +3,8 @@ package unam.diplomado.pixup.colonia.service;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import unam.diplomado.pixup.colonia.domain.*;
-import unam.diplomado.pixup.repository.IColoniaReposritory;
-import unam.diplomado.pixup.repository.IMunicipioRepository;
+import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
+import unam.diplomado.pixup.colonia.repository.IMunicipioRepository;
 
 import java.util.Optional;
 
