@@ -29,12 +29,19 @@ public class ColoniaResource implements IColoniaApi{
 
     @Override
     public Collection<ColoniaDTO> getColoniasByCp(String cp) {
+        /*
         Collection<Colonia> colonias = coloniaReposritory.finByCp(cp);
         Collection<ColoniaDTO> coloniasDTO = new ArrayList<>();
         for (Colonia colonia: colonias){
             coloniasDTO.add(coloniaMapper.toDto(colonia));
         }
         return coloniasDTO;
+         */
+        return coloniaReposritory
+                .finByCp(cp)
+                .stream()
+                .map(colonia -> coloniaMapper.toDto(colonia))
+                .toList();
     }
 
     @Override
