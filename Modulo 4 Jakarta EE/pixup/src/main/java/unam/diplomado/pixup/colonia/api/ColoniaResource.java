@@ -6,7 +6,7 @@ import jakarta.ws.rs.core.Response;
 import unam.diplomado.pixup.colonia.domain.Colonia;
 import unam.diplomado.pixup.colonia.domain.ColoniaAlreradyExistsException;
 import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
-import unam.diplomado.pixup.repository.IColoniaReposritory;
+import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
 import unam.diplomado.pixup.colonia.service.IColoniaService;
 
 import java.util.Collection;
