@@ -2,11 +2,7 @@ package unam.diplomado.pixup.colonia.service;
 
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
-import unam.diplomado.pixup.colonia.domain.Colonia;
-import unam.diplomado.pixup.colonia.domain.ColoniaAlreradyExistsException;
-import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
-import unam.diplomado.pixup.colonia.domain.Municipio;
-import unam.diplomado.pixup.colonia.domain.MunicipioNotFoundException;
+import unam.diplomado.pixup.colonia.domain.*;
 import unam.diplomado.pixup.repository.IColoniaReposritory;
 import unam.diplomado.pixup.repository.IMunicipioRepositoryImpl;
 
@@ -50,11 +46,18 @@ public class ColoniaServiceImpl implements IColoniaService {
 
     @Override
     public Colonia actualizarColonia(Colonia colonia) {
-        return null;
+
     }
 
     @Override
     public void eliminarColoniaPorId(Integer id) {
-
+        /*
+        Optional<Colonia> colonia = coloniaRepository.findById(id);
+        if (colonia.isPresent()){
+            coloniaRepository.delete(colonia.get());
+        }
+        */
+        coloniaRepository.findById(id)
+                .ifPresent(colonia -> coloniaRepository.delete(colonia));
     }
 }
