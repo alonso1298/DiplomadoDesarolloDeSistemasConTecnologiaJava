@@ -4,12 +4,12 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Response;
 import unam.diplomado.pixup.colonia.domain.Colonia;
+import unam.diplomado.pixup.colonia.domain.ColoniaAlreradyExistsException;
 import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
-import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
+import unam.diplomado.pixup.repository.IColoniaReposritory;
 import unam.diplomado.pixup.colonia.service.ColoniaServiceImpl;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @RequestScoped // Por cada peticion se creara un nuevo objeto
 public class ColoniaResource implements IColoniaApi{
@@ -47,7 +47,25 @@ public class ColoniaResource implements IColoniaApi{
 
     @Override
     public Response createColonia(Colonia colonia) {
-        return null;
+        Colonia coloniaCreada = coloniaService.crearColonia(colonia);
+        try {
+            return Response
+                    .status(Response.Status.CREATED)
+                    .entity(coloniaCreada)
+                    .build();
+        }catch (Exception e) {
+            if (e instanceof ColoniaAlreradyExistsException) {
+                return Response
+                        .status(Response.Status.CONFLICT)
+                        .entity(coloniaCreada)
+                        .build();
+            }
+            return Response
+                    .status(Response.Status.CONFLICT)
+                    .entity(coloniaCreada)
+                    .build();
+        }
+
     }
 
     @Override

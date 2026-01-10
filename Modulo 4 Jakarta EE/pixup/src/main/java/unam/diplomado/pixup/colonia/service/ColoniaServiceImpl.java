@@ -3,8 +3,12 @@ package unam.diplomado.pixup.colonia.service;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import unam.diplomado.pixup.colonia.domain.Colonia;
+import unam.diplomado.pixup.colonia.domain.ColoniaAlreradyExistsException;
 import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
-import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
+import unam.diplomado.pixup.colonia.domain.Municipio;
+import unam.diplomado.pixup.colonia.domain.MunicipioNotFoundException;
+import unam.diplomado.pixup.repository.IColoniaReposritory;
+import unam.diplomado.pixup.repository.IMunicipioRepository;
 
 import java.util.Optional;
 
@@ -13,6 +17,8 @@ public class ColoniaServiceImpl implements IColoniaService {
 
     @Inject
     private IColoniaReposritory coloniaRepository;
+    @Inject
+    private IMunicipioRepository municipioRepository;
 
     @Override
     public Colonia obtenerColoniaPorId(Integer id) {
@@ -25,7 +31,21 @@ public class ColoniaServiceImpl implements IColoniaService {
 
     @Override
     public Colonia crearColonia(Colonia colonia) {
-        return null;
+        Optional<Colonia> coloniaExistente =
+            coloniaRepository.findByCpAndNombre(colonia.getCp(), colonia.getNombre());
+        if (coloniaExistente.isPresent()) {
+            throw new ColoniaAlreradyExistsException(colonia.getCp(), colonia.getNombre());
+        }
+
+        Optional<Municipio> municipíoExistente =
+            municipioRepository.findById(colonia.getMunicipio().getId());
+        if (municipíoExistente.isEmpty()) {
+            throw new MunicipioNotFoundException(colonia.getMunicipio().getId());
+        }
+        colonia.setMunicipio(municipíoExistente.get());
+
+        coloniaRepository.saveOrUpdate(colonia);
+        return colonia;
     }
 
     @Override

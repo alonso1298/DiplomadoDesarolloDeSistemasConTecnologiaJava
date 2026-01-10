@@ -1,4 +1,4 @@
-package unam.diplomado.pixup.colonia.repository;
+package unam.diplomado.pixup.repository;
 
 import unam.diplomado.pixup.colonia.domain.Colonia;
 

@@ -1,4 +1,4 @@
-package unam.diplomado.pixup.colonia.repository;
+package unam.diplomado.pixup.repository;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
