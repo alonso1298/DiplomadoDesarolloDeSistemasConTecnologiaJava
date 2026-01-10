@@ -20,19 +20,8 @@ public class ColoniaResource implements IColoniaApi{
     private IColoniaService coloniaService;
 
     @Override
-    public Response getColoniaById(Integer id) {
-        try {
-            Colonia colonia = coloniaService.obtenerColoniaPorId(id);
-            return Response
-                    .status(Response.Status.OK)
-                    .entity(colonia)
-                    .build();
-        } catch (ColoniaNotFoudException e) {
-            return Response
-                    .status(Response.Status.NOT_FOUND)
-                    .entity(e.getMessage())
-                    .build();
-        }
+    public Colonia getColoniaById(Integer id) {
+        return coloniaService.obtenerColoniaPorId(id);
     }
 
     @Override
@@ -48,24 +37,10 @@ public class ColoniaResource implements IColoniaApi{
     @Override
     public Response createColonia(Colonia colonia) {
         Colonia coloniaCreada = coloniaService.crearColonia(colonia);
-        try {
-            return Response
-                    .status(Response.Status.CREATED)
-                    .entity(coloniaCreada)
-                    .build();
-        }catch (Exception e) {
-            if (e instanceof ColoniaAlreradyExistsException) {
-                return Response
-                        .status(Response.Status.CONFLICT)
-                        .entity(coloniaCreada)
-                        .build();
-            }
-            return Response
-                    .status(Response.Status.PRECONDITION_REQUIRED)
-                    .entity(coloniaCreada)
-                    .build();
-        }
-
+        return Response
+                .status(Response.Status.CREATED)
+                .entity(coloniaCreada)
+                .build();
     }
 
     @Override

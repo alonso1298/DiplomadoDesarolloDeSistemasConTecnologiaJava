@@ -17,7 +17,7 @@ public interface IColoniaApi {
 
     @GET
     @Path("{id}")
-    Response getColoniaById(@PathParam("id") Integer id); //@PathParam("id") liga el valor para hacer la busqueda correspondiente
+    Colonia getColoniaById(@PathParam("id") Integer id); //@PathParam("id") liga el valor para hacer la busqueda correspondiente
     
     @GET
     Collection<Colonia> getColoniasByCp(@NotBlank @QueryParam("cp") String cp); // @QueryParam("cp") hace el ligado del valor
