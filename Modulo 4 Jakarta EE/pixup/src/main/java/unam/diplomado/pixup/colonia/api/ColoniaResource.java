@@ -7,7 +7,7 @@ import unam.diplomado.pixup.colonia.domain.Colonia;
 import unam.diplomado.pixup.colonia.domain.ColoniaAlreradyExistsException;
 import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
 import unam.diplomado.pixup.repository.IColoniaReposritory;
-import unam.diplomado.pixup.colonia.service.ColoniaServiceImpl;
+import unam.diplomado.pixup.colonia.service.IColoniaService;
 
 import java.util.Collection;
 
@@ -17,7 +17,7 @@ public class ColoniaResource implements IColoniaApi{
     @Inject
     private IColoniaReposritory coloniaReposritory;
     @Inject
-    private ColoniaServiceImpl coloniaService;
+    private IColoniaService coloniaService;
 
     @Override
     public Response getColoniaById(Integer id) {
@@ -69,7 +69,8 @@ public class ColoniaResource implements IColoniaApi{
     }
 
     @Override
-    public void updateColonia(Integer id, Colonia colonia) {
-
+    public Colonia updateColonia(Integer id, Colonia colonia) {
+        colonia.setId(id);
+        return coloniaService.actualizarColonia(colonia);
     }
 }

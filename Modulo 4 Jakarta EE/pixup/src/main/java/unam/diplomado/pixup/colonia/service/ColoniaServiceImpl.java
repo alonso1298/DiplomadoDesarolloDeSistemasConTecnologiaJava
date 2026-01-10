@@ -4,7 +4,7 @@ import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import unam.diplomado.pixup.colonia.domain.*;
 import unam.diplomado.pixup.repository.IColoniaReposritory;
-import unam.diplomado.pixup.repository.IMunicipioRepositoryImpl;
+import unam.diplomado.pixup.repository.IMunicipioRepository;
 
 import java.util.Optional;
 
@@ -14,7 +14,7 @@ public class ColoniaServiceImpl implements IColoniaService {
     @Inject
     private IColoniaReposritory coloniaRepository;
     @Inject
-    private IMunicipioRepositoryImpl municipioRepository;
+    private IMunicipioRepository municipioRepository;
 
     @Override
     public Colonia obtenerColoniaPorId(Integer id) {

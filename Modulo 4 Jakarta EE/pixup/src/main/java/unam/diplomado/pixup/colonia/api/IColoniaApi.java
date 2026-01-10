@@ -32,6 +32,6 @@ public interface IColoniaApi {
 
     @PUT
     @Path("{id}")
-    void updateColonia(@PathParam("id") Integer id, Colonia colonia);
+    Colonia updateColonia(@PathParam("id") Integer id, Colonia colonia);
 
 }
