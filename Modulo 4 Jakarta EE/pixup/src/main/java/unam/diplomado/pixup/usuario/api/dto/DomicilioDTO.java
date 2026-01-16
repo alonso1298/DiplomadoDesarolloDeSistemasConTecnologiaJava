@@ -1,0 +1,19 @@
+package unam.diplomado.pixup.usuario.api.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+public class DomicilioDTO {
+
+    @NotBlank(message = "Calle es requerida")
+    private String calle;
+    private String numExterior;
+    private String numInterior;
+    @NotBlank(message = "Colonia es requerida")
+    private Integer colonia;
+    private Integer tipoDomicilio;
+
+}
