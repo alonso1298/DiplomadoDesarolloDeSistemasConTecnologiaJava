@@ -2,6 +2,7 @@ package unam.diplomado.pixup.usuario.service;
 
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import unam.diplomado.pixup.colonia.domain.Colonia;
 import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
 import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
@@ -26,6 +27,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     private IColoniaReposritory coloniaReposritory;
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRED)
     public Usuario registrarUsuario(Usuario usuario, Domicilio domicilio) {
         // validacion usuario duplicado (unicidad)
         Optional<Usuario> usuarioExistente = usuarioRepository.findByEmail(usuario.getEmail());
