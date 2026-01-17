@@ -5,6 +5,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Response;
 import unam.diplomado.pixup.colonia.api.dto.ColoniaDTO;
 import unam.diplomado.pixup.colonia.api.dto.ColoniaMapper;
+import unam.diplomado.pixup.colonia.api.dto.ColoniaRequestDTO;
 import unam.diplomado.pixup.colonia.domain.Colonia;
 import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
 import unam.diplomado.pixup.colonia.service.IColoniaService;
@@ -49,7 +50,9 @@ public class ColoniaResource implements IColoniaApi{
     }
 
     @Override
-    public Response createColonia(Colonia colonia) {
+    public Response createColonia(ColoniaRequestDTO coloniaRequestDTO) {
+        // Transformacion DTO - Entity
+        Colonia colonia = coloniaMapper.toColonia(coloniaRequestDTO);
         Colonia coloniaCreada = coloniaService.crearColonia(colonia);
         return Response
                 .status(Response.Status.CREATED)
