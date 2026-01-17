@@ -6,7 +6,9 @@ import jakarta.transaction.Transactional;
 import unam.diplomado.pixup.colonia.domain.Colonia;
 import unam.diplomado.pixup.colonia.domain.ColoniaNotFoudException;
 import unam.diplomado.pixup.colonia.repository.IColoniaReposritory;
+import unam.diplomado.pixup.notification.domain.Notificacion;
 import unam.diplomado.pixup.usuario.domain.*;
+import unam.diplomado.pixup.usuario.messaging.INotificacionProducer;
 import unam.diplomado.pixup.usuario.repository.IDomicilioRepository;
 import unam.diplomado.pixup.usuario.repository.ITipoDomicilioRepository;
 import unam.diplomado.pixup.usuario.repository.IUsuarioRepository;
@@ -25,6 +27,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
     private ITipoDomicilioRepository tipoDomicilioRepository;
     @Inject
     private IColoniaReposritory coloniaReposritory;
+    @Inject
+    private INotificacionProducer notificacionProducer;
 
     @Override
     @Transactional(value = Transactional.TxType.REQUIRED)
@@ -52,6 +56,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
         usuarioRepository.save(usuario);
         domicilio.setUsuario(usuario);
         domicilioRepository.save(domicilio);
+
+        // Envio mensaje
+        notificacionProducer.enviarNotificacionAltaUsuario(
+                usuario.getId(), usuario.getEmail()
+        );
 
         return usuario;
     }
