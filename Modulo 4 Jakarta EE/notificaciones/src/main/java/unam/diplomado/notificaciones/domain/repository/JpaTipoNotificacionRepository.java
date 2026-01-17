@@ -1,4 +1,4 @@
-package unam.diplomado.pixup.usuario.repository;
+package unam.diplomado.notificaciones.domain.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

@@ -1,4 +1,4 @@
-package unam.diplomado.pixup.usuario.domain.repository;
+package unam.diplomado.pixup.usuario.repository;
 
 import unam.diplomado.pixup.usuario.domain.Usuario;
 

@@ -1,4 +1,4 @@
-package unam.diplomado.pixup.usuario.domain.repository;
+package unam.diplomado.pixup.usuario.repository;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;

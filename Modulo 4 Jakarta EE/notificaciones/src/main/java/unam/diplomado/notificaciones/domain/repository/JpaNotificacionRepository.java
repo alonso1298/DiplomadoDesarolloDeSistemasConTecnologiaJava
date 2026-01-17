@@ -1,8 +1,10 @@
-package unam.diplomado.pixup.usuario.repository;
+package unam.diplomado.notificaciones.domain.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import unam.diplomado.notificaciones.domain.Notificacion;
+
+import java.util.Date;
 
 public class JpaNotificacionRepository implements INotificacionRepository{
     @PersistenceContext(unitName="pixup")
