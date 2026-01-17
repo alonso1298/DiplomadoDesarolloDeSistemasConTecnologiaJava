@@ -59,8 +59,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
         // Envio mensaje
         notificacionProducer.enviarNotificacionAltaUsuario(
-                usuario.getId(), usuario.getEmail()
-        );
+                usuario.getId(), usuario.getEmail());
+
+        String a = null;
+        a.toString();
 
         return usuario;
     }
