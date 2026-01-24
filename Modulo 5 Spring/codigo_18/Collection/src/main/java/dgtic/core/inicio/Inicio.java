@@ -1,6 +1,7 @@
 package dgtic.core.inicio;
 
 import dgtic.core.modelo.Empleado;
+import dgtic.core.modelo.EmpleadoM;
 import dgtic.core.modelo.IActividades;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -22,6 +23,13 @@ public class Inicio {
         System.out.println(empleadoDos);
         for(IActividades actividades:empleadoDos.getActividades()) {
             actividades.realizar();
+        }
+        System.out.println("-----------------------------------------------");
+        EmpleadoM empleadoTres = contexto.getBean("empleadoTres", EmpleadoM.class);
+        System.out.println(empleadoTres);
+        for(String llave:empleadoTres.getActividades().keySet()){
+            System.out.println("Llave: " + llave);
+            empleadoTres.getActividades().get(llave).realizar();
         }
 
         ((ClassPathXmlApplicationContext) contexto).close();

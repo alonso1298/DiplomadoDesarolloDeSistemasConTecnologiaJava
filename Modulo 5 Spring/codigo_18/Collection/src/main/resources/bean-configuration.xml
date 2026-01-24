@@ -26,6 +26,18 @@
             </set>
         </property>
     </bean>
+    <bean id="empleadoTres" class="dgtic.core.modelo.EmpleadoM">
+        <property name="nombre" value="Carlos"/>
+        <property name="edad" value="34"/>
+        <property name="actividades">
+            <map>
+                <entry key="uno" value-ref="gestionProyectos"/>
+                <entry key="dos" value-ref="intercambioConocimientos"/>
+                <entry key="tres" value-ref="planficacionProyectos"/>
+                <entry key="cuatro" value-ref="gestionProyectos"/>
+            </map>
+        </property>
+    </bean>
 
     <bean id="gestionProyectos" class="dgtic.core.modelo.GestionProyectos"/>
     <bean id="intercambioConocimientos" class="dgtic.core.modelo.IntercambioConocimientos"/>
