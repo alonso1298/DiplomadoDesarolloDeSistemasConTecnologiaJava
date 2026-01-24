@@ -1,25 +1,22 @@
 package dgtic.core.modelo;
 
-import java.util.Collection;
-
-public class Empleado {
-
+public class EmpleadoM {
     private String nombre;
     private int edad;
-    private Collection<IActividades> actividades;
+    private Map<String,IActividades> actividades;
 
-    public Empleado() {
+    public EmpleadoM() {
     }
 
-    public Empleado(String nombre) {
+    public EmpleadoM(String nombre) {
         this.nombre = nombre;
     }
 
-    public Collection<IActividades> getActividades() {
+    public Map<String, IActividades> getActividades() {
         return actividades;
     }
 
-    public void setActividades(Collection<IActividades> actividades) {
+    public void setActividades(Map<String, IActividades> actividades) {
         this.actividades = actividades;
     }
 
