@@ -1,4 +1,4 @@
-package unam.core.modelo;
+package dgtic.core.modelo;
 
 public class Persona {
 
