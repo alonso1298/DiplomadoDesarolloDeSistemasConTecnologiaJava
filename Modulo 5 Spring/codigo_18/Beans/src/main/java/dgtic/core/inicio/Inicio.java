@@ -25,6 +25,11 @@ public class Inicio {
         System.out.println(empleadoDos);
         empleadoDos.getActividades().realizar();
 
+        System.out.println("..................");
+        Empleado empleadoTres = contexto.getBean("empleadoTres", Empleado.class);
+        System.out.println(empleadoTres);
+        empleadoTres.getActividades().realizar();
+
         ((ClassPathXmlApplicationContext) contexto).close();
     }
 }
