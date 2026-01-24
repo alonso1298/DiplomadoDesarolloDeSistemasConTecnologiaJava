@@ -22,7 +22,7 @@ public class Inicio {
         PredeterminadoServicio servTres=(PredeterminadoServicio) contexto.getBean("servicioLocal");
         servTres.getEmpleadoServicio().servicioEmpleado();
         servTres.getReporteEmpleadoServicio().reporteDiario();
-        
+
         ((ClassPathXmlApplicationContext) contexto).close();
     }
 }
