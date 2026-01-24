@@ -38,6 +38,16 @@
             </map>
         </property>
     </bean>
+    <bean id="empleadoCuatro" class="dgtic.core.modelo.EmpleadoP">
+        <property name="nombre" value="Alonso"/>
+        <property name="edad" value="27"/>
+        <property name="actividades">
+            <props>
+                <prop key="uno">"Gestion de Proyectos"</prop>
+                <prop key="dos">"Analisis de Proyectos"</prop>
+            </props>
+        </property>
+    </bean>
 
     <bean id="gestionProyectos" class="dgtic.core.modelo.GestionProyectos"/>
     <bean id="intercambioConocimientos" class="dgtic.core.modelo.IntercambioConocimientos"/>
