@@ -18,7 +18,7 @@ public class Inicio {
         profesor1.getResponsabilidades().add(reportes);
 
         //---------------------NO HACER----------------------
-        profesor1.getResponsabilidades().add(calificar);
+        profesor1.getResponsabilidades().add(calificar); // Se pasa el mismo objeto de Profesor
         //-------------------SI HACER-----------------------
         profesor1.getResponsabilidades().add(new Calificar());
         profesor1.getResponsabilidades().remove(0); // Se elimina una respondabilidad del profesor
