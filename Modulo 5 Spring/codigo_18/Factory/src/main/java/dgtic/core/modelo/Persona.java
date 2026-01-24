@@ -6,12 +6,12 @@ public class Persona {
 
     public Persona(){}
 
-    public String getNomebre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNomebre(String nombre) {
-        this.nombre = nomebre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public FabricaCoches getCoche() {
