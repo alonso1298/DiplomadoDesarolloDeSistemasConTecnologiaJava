@@ -1,31 +1,31 @@
 package dgtic.core.modelo;
 
 public class Persona {
-
     private String nombre;
-    private Integer edad;
+    private FabricaCoches coche;
 
-    public Persona() {
-    }
+    public Persona(){}
 
-    public String getNombre() {
+    public String getNomebre() {
         return nombre;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    public void setNomebre(String nombre) {
+        this.nombre = nomebre;
     }
-    public Integer getEdad() {
-        return edad;
+
+    public FabricaCoches getCoche() {
+        return coche;
     }
-    public void setEdad(Integer edad) {
-        this.edad = edad;
+
+    public void setCoche(FabricaCoches coche) {
+        this.coche = coche;
     }
 
     @Override
     public String toString() {
         return "Persona{" +
                 "nombre='" + nombre + '\'' +
-                ", edad=" + edad +
                 '}';
     }
 }

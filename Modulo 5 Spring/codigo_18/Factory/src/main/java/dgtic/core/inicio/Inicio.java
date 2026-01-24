@@ -1,13 +1,7 @@
 package dgtic.core.inicio;
 
-import dgtic.core.modelo.Empleado;
-import dgtic.core.modelo.EmpleadoM;
-import dgtic.core.modelo.EmpleadoP;
-import dgtic.core.modelo.IActividades;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.Iterator;
 
 
 public class Inicio {

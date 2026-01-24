@@ -3,16 +3,4 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="empleado" class="dgtic.core.modelo.Empleado"
-        autowire="constructor">
-        <property name="nombre" value="Tomas"/>
-        <property name="edad" value="23"/>
-    </bean>
-
-<!--    <bean id="gestionProyectos" class="dgtic.core.modelo.GestionProyectos"/>-->
-<!--    <bean id="intercambioConocimientos" class="dgtic.core.modelo.IntercambioConocimientos"/>-->
-<!--    <bean id="planficacionProyectos" class="dgtic.core.modelo.PlanificacionProyectos" />-->
-
-    <bean id="actividades" class="dgtic.core.modelo.GestionProyectos" />
-<!--    <bean id="actividadesNueva" class="dgtic.core.modelo.PlanificacionProyectos" />-->
 </beans>
