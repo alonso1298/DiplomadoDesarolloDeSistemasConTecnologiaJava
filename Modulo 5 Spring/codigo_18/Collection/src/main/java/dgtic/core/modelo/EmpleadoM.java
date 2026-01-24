@@ -1,5 +1,7 @@
 package dgtic.core.modelo;
 
+import java.util.Map;
+
 public class EmpleadoM {
     private String nombre;
     private int edad;

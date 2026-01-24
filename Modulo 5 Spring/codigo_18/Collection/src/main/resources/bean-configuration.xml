@@ -2,34 +2,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!-- bean definitions here -->
     <bean id="empleado" class="dgtic.core.modelo.Empleado">
-        <constructor-arg value="Rebeca"/>
-        <!-- Cuando se hace referencia a un valor es con value-->
-        <property name="edad" value="34"/>
-        <!-- Cuando se hace referencia a un bean es con ref-->
-        <property name="actividades" ref="GestionProyectos"/>
-    </bean>
-    <bean id="empleadoDos" class="dgtic.core.modelo.Empleado">
-        <!--Se inicializa a travez de constructor-->
-            <constructor-arg ref="Conocimientos"/>
-    </bean>
-    <bean id="empleadoTres" class="dgtic.core.modelo.Empleado">
-        <property name="actividades">
-            <bean class="dgtic.core.modelo.PlanificacionProyectos"/>
-        </property>
-        <property name="edad" value="34"/>
-        <property name="nombre" value="Saul"/>
-    </bean>
-    <!--Bean interno-->
-    <bean id="empleadoCuatro" class="dgtic.core.modelo.Empleado">
-        <constructor-arg>
-            <bean class="dgtic.core.modelo.PlanificacionProyectos"/>
-        </constructor-arg>
-        <property name="edad" value="44"/>
         <property name="nombre" value="Tomas"/>
+        <property name="edad" value="23"/>
+        <property name="actividades">
+            <list>
+                <ref bean="gestionProyectos"/>
+                <ref bean="intercambioConocimientos"/>
+                <ref bean="planficacionProyectos"/>
+                <ref bean="gestionProyectos"/>
+            </list>
+        </property>
     </bean>
-    <!-- Se crea un bean de gestion de proyectos -->
-    <bean id="GestionProyectos" class="dgtic.core.modelo.GestionProyectos"/>
-    <bean id="Conocimientos" class="dgtic.core.modelo.IntercambioConocimientos"/>
+
+    <bean id="gestionProyectos" class="dgtic.core.modelo.GestionProyectos"/>
+    <bean id="intercambioConocimientos" class="dgtic.core.modelo.IntercambioConocimientos"/>
+    <bean id="planficacionProyectos" class="dgtic.core.modelo.PlanificacionProyectos" />
 </beans>
