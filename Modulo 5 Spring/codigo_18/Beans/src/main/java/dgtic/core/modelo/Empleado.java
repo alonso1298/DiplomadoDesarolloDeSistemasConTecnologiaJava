@@ -35,4 +35,12 @@ public class Empleado {
     public void setActividades(IActividades actividades) {
         this.actividades = actividades;
     }
+
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                '}';
+    }
 }
