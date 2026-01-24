@@ -4,6 +4,9 @@ public class Empleado {
 
     private String nombre;
     private int edad;
+    private IActividades actividades;
+
+    public Empleado(){}
 
     public Empleado(String nombre) {
         this.nombre = nombre;
@@ -23,5 +26,13 @@ public class Empleado {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public IActividades getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(IActividades actividades) {
+        this.actividades = actividades;
     }
 }

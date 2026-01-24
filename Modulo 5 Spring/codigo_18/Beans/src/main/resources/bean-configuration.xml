@@ -3,5 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- bean definitions here -->
-    <bean id="persona" class="dgtic.core.modelo.Persona"/>
+    <bean id="empleado" class="dgtic.core.modelo.Empleado">
+        <constructor-arg value="Rebeca"/>
+        <property name="edad" value="34"/>
+    </bean>
 </beans>
