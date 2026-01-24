@@ -1,22 +1,25 @@
 package dgtic.core.inicio;
 
 import dgtic.core.modelo.Persona;
+import dgtic.core.modelo.Servicio;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 public class Inicio {
     public static void main(String[] args) {
-        final Resource resource = new ClassPathResource("bean-configuration.xml");
-        final DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        final XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
-        xmlBeanDefinitionReader.loadBeanDefinitions(resource);
-        Persona per=(Persona)beanFactory.getBean("persona");
-        System.out.println(per);
-        System.out.println(beanFactory.isSingleton("persona"));
-        System.out.println(beanFactory.getBean("persona") instanceof Persona);
-        System.out.println(beanFactory.isTypeMatch("persona", Persona.class));
-        System.out.println(beanFactory.getAliases("persona").length>0);
+        ApplicationContext contexto=
+                new ClassPathXmlApplicationContext(new String[] {
+                        "bean-configuration.xml",
+                        "bean-service.xml" });
+        Servicio ser=(Servicio)contexto.getBean("servicio");
+        ser.getPersona().setNombre("Miguel");
+        ser.getPersona().setEdad(23);
+
+        System.out.println(ser.toString());
+        ((ClassPathXmlApplicationContext) contexto).close();
     }
 }

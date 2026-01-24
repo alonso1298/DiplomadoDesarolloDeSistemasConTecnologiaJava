@@ -11,4 +11,10 @@ public class Servicio {
         this.persona = persona;
     }
 
+    @Override
+    public String toString() {
+        return "Servicio{" +
+                "persona=" + persona +
+                '}';
+    }
 }
