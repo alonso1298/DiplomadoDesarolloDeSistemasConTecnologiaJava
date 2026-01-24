@@ -17,6 +17,13 @@ public class Inicio {
             actividades.realizar();
         }
 
+        System.out.println("-----------------------------------------------");
+        Empleado empleadoDos = contexto.getBean("empleadoDos", Empleado.class);
+        System.out.println(empleadoDos);
+        for(IActividades actividades:empleadoDos.getActividades()) {
+            actividades.realizar();
+        }
+
         ((ClassPathXmlApplicationContext) contexto).close();
     }
 }

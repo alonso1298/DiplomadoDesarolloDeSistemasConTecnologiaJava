@@ -14,6 +14,18 @@
             </list>
         </property>
     </bean>
+    <bean id="empleadoDos" class="dgtic.core.modelo.Empleado">
+        <property name="nombre" value="Ana"/>
+        <property name="edad" value="24"/>
+        <property name="actividades">
+            <set>
+                <ref bean="gestionProyectos"/>
+                <ref bean="intercambioConocimientos"/>
+                <ref bean="planficacionProyectos"/>
+                <ref bean="gestionProyectos"/>
+            </set>
+        </property>
+    </bean>
 
     <bean id="gestionProyectos" class="dgtic.core.modelo.GestionProyectos"/>
     <bean id="intercambioConocimientos" class="dgtic.core.modelo.IntercambioConocimientos"/>
