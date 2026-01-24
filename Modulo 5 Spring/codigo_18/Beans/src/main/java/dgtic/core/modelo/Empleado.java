@@ -12,6 +12,10 @@ public class Empleado {
         this.nombre = nombre;
     }
 
+    public Empleado(IActividades actividades) {
+        this.actividades = actividades;
+    }
+
     public String getNombre() {
         return nombre;
     }

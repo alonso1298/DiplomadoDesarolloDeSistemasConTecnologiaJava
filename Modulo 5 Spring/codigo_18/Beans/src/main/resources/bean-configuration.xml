@@ -6,5 +6,13 @@
     <bean id="empleado" class="dgtic.core.modelo.Empleado">
         <constructor-arg value="Rebeca"/>
         <property name="edad" value="34"/>
+        <!-- Cuando se hace referencia a un bean es con ref-->
+        <property name="actividades" ref="GestionProyectos"/>
     </bean>
+    <bean id="empleadoDos" class="dgtic.core.modelo.Empleado">
+            <constructor-arg ref="Conocimientos"/>
+    </bean>
+    <!-- Se crea un bean de gestion de proyectos -->
+    <bean id="GestionProyectos" class="dgtic.core.modelo.GestionProyectos"/>
+    <bean id="Conocimientos" class="dgtic.core.modelo.IntercambioConocimientos"/>
 </beans>
