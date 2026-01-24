@@ -1,7 +1,8 @@
 package dgtic.core.inicio;
 
-import dgtic.core.modelo.Persona;
-import dgtic.core.modelo.TipoCarro;
+import dgtic.core.servicio.IEmpleadoServicio;
+import dgtic.core.servicio.IReporteEmpleadoServicio;
+import dgtic.core.servicio.PredeterminadoServicio;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,13 +13,16 @@ public class Inicio {
                 new ClassPathXmlApplicationContext(new String[] {
                         "bean-configuration.xml",
                         "bean-service.xml"});
-        Persona persona = contexto.getBean("persona", Persona.class);
-        try {
-            persona.getCoche().getModeloCoche(TipoCarro.DEPORTIVO).crear();
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-
+        //factory-bean
+        IEmpleadoServicio servUno=(IEmpleadoServicio) contexto.getBean("empleadoServicio");
+        servUno.servicioEmpleado();
+        IReporteEmpleadoServicio servDos=(IReporteEmpleadoServicio) contexto.getBean("empleadoServicioReporte");
+        servDos.reporteDiario();
+        System.out.println("----");
+        PredeterminadoServicio servTres=(PredeterminadoServicio) contexto.getBean("servicioLocal");
+        servTres.getEmpleadoServicio().servicioEmpleado();
+        servTres.getReporteEmpleadoServicio().reporteDiario();
+        
         ((ClassPathXmlApplicationContext) contexto).close();
     }
 }
