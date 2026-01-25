@@ -35,6 +35,5 @@ public class Disco {
     @ManyToOne
     @JoinColumn(name = "genero_musical", nullable = false)
     @NotNull(message = " Un genero musical debe estar asociada a un disco")
-    @Column(name = "genero_musical")
     private GeneroMusical generoMusical;
 }
