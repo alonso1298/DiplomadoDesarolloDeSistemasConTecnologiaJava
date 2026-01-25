@@ -23,7 +23,7 @@ public class Colonia implements Serializable {
     private String cp;
     @ManyToOne(targetEntity = Municipio.class)
     @JoinColumn(name = "id_municipio", nullable = false)
-    @NotNull(message = " La colonia debe star asociada a un municipio")
+    @NotNull(message = " La colonia debe estar asociada a un municipio")
     private Municipio municipio;
 
 }
