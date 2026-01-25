@@ -5,5 +5,5 @@ import unam.diplomado.pixup.disco.domain.Disquera;
 import java.util.Optional;
 
 public interface IDisqueraRepository {
-    Optional<Disquera> finById(Integer id);
+    Optional<Disquera> findById(Integer id);
 }
