@@ -8,7 +8,6 @@ import unam.diplomado.pixup.disco.repository.IArtistaRepository;
 import unam.diplomado.pixup.disco.repository.IDiscoRepository;
 import unam.diplomado.pixup.disco.repository.IDisqueraRepository;
 import unam.diplomado.pixup.disco.repository.IGeneroMusicalRepository;
-import unam.diplomado.pixup.usuario.domain.UsuarioAlreadyExistsException;
 
 import java.util.Optional;
 
@@ -30,25 +29,25 @@ public class DiscoServiceImpl implements IDiscoService{
         // Validar disquera
         Optional<Disquera> disqueraExistente = disqueraRepository.findById(disco.getDisquera().getId());
         if (disqueraExistente.isEmpty()) {
-            throw new DisqueraNotFoundException(disqueraExistente.get().getId());
+            throw new DisqueraNotFoundException(disco.getDisquera().getId());
         }
         disco.setDisquera(disqueraExistente.get());
         // Valisa Artista
-        Optional<Artista> artistaExistente = artistaRepository.finById(disco.getArtista().getId());
+        Optional<Artista> artistaExistente = artistaRepository.findById(disco.getArtista().getId());
         if (artistaExistente.isEmpty()){
-            throw new ArtistaNotFoudException(disco.getArtista().getId());
+            throw new ArtistaNotFoundException(disco.getArtista().getId());
         }
         disco.setArtista(artistaExistente.get());
         // Valida genero musical
         Optional<GeneroMusical> generoMusicalExistente = generoMusicalRepository.findById(disco.getGeneroMusical().getId());
         if (generoMusicalExistente.isEmpty()) {
-            throw new GeneroMusicalNotFoundException(generoMusicalExistente.get().getId());
+            throw new GeneroMusicalNotFoundException(disco.getGeneroMusical().getId());
         }
         disco.setGeneroMusical(generoMusicalExistente.get());
         // Validar duplicidad
         Optional<Disco> discoExistente = discoRepository.findByTituloAndArtista(disco.getTitulo(), disco.getArtista().getId());
         if (discoExistente.isPresent()){
-            throw new DiscoDuplicadoNotFoundException(disco.getTitulo(), disco.getArtista().getNombre());
+            throw new DiscoDuplicadoException(disco.getTitulo(), disco.getArtista().getNombre());
         }
 
         return discoRepository.save(disco);

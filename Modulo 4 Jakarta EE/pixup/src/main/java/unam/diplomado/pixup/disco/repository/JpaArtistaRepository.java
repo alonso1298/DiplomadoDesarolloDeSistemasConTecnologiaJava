@@ -14,7 +14,7 @@ public class JpaArtistaRepository implements IArtistaRepository{
     private EntityManager entityManager;
 
     @Override
-    public Optional<Artista> finById(Integer id) {
+    public Optional<Artista> findById(Integer id) {
         Artista artista = entityManager.find(Artista.class, id);
         return Optional.ofNullable(artista);
     }
