@@ -28,7 +28,7 @@ public class Disco {
     private float precio;
     private int existencia;
     private float descuento;
-    @Column(name = "fecha_de_lanzamiento")
+    @Column(name = "fecha_lanzamiento")
     @JsonbDateFormat("yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime fechaDeLanzamiento;
     private String imagen;
