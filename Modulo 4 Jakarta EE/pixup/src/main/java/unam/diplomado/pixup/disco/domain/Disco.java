@@ -1,5 +1,6 @@
 package unam.diplomado.pixup.disco.domain;
 
+import jakarta.json.bind.annotation.JsonbDateFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -9,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -27,7 +29,8 @@ public class Disco {
     private int existencia;
     private float descuento;
     @Column(name = "fecha_de_lanzamiento")
-    private LocalDate fechaDeLanzamiento;
+    @JsonbDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime fechaDeLanzamiento;
     private String imagen;
     @ManyToOne
     @JoinColumn(name = "disquera", nullable = false)
