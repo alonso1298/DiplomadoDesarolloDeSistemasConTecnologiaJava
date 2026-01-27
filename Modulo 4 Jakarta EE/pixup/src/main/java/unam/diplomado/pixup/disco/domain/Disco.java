@@ -1,11 +1,14 @@
 package unam.diplomado.pixup.disco.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -17,12 +20,14 @@ public class Disco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotBlank(message = "El titulo no puede estar vacio")
     private String titulo;
+    @Positive(message = "El precio no puede ser menor que 0")
     private float precio;
     private int existencia;
     private float descuento;
     @Column(name = "fecha_de_lanzamiento")
-    private Date fechaDeLanzamiento;
+    private LocalDate fechaDeLanzamiento;
     private String imagen;
     @ManyToOne
     @JoinColumn(name = "disquera", nullable = false)
