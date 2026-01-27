@@ -33,15 +33,15 @@ public class Disco {
     private LocalDateTime fechaDeLanzamiento;
     private String imagen;
     @ManyToOne
-    @JoinColumn(name = "disquera", nullable = false)
+    @JoinColumn(name = "id_disquera", nullable = false)
     @NotNull(message = " La disquera debe estar asociada a un disco")
     private Disquera disquera;
     @ManyToOne
-    @JoinColumn(name = "artista", nullable = false)
+    @JoinColumn(name = "id_artista", nullable = false)
     @NotNull(message = " Un Artista debe estar asociada a un disco")
     private Artista artista;
     @ManyToOne
-    @JoinColumn(name = "genero_musical", nullable = false)
+    @JoinColumn(name = "id_genero_musical", nullable = false)
     @NotNull(message = " Un genero musical debe estar asociada a un disco")
     private GeneroMusical generoMusical;
 }
