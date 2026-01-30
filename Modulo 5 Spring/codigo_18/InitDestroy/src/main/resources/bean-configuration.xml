@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- bean definitions here -->
+    <bean id="empleado" class="dgtic.core.modelo.Empleado"
+          scope="singleton">
+        <constructor-arg value="Rebeca"/>
+        <property name="edad" value="34"/>
+        <property name="actividades" ref="GestionProyectos"/>
+    </bean>
+    <bean id="empleadoDos" class="dgtic.core.modelo.Empleado">
+        <property name="nombre" value="Tomas"/>
+        <property name="edad" value="14"/>
+        <constructor-arg ref="GestionProyectos"/>
+    </bean>
+
+    <bean id="GestionProyectos" class="dgtic.core.modelo.GestionProyectos"
+    scope="prototype"/>
+    <bean id="Conocimientos" class="dgtic.core.modelo.IntercambioConocimientos"/>
+</beans>
