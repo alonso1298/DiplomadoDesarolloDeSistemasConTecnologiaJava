@@ -12,7 +12,10 @@ public class Inicio {
         ConfigurableApplicationContext contexto
                 =new AnnotationConfigApplicationContext(Configuracion.class);
         Persona persona=contexto.getBean("persona",Persona.class);
+        persona.setEdad(100);
         System.out.println(persona);
+        Persona personaDos=contexto.getBean("persona",Persona.class);
+        System.out.println(personaDos);
         contexto.close();
     }
 }
