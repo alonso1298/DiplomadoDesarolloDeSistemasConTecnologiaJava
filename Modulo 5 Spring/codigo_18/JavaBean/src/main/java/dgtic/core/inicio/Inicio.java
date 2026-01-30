@@ -1,23 +1,18 @@
 package dgtic.core.inicio;
 
-import dgtic.core.modelo.Empleado;
-import dgtic.core.servicio.Servicio;
-import org.springframework.context.ApplicationContext;
+import dgtic.core.config.Configuracion;
+import dgtic.core.modelo.Persona;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 public class Inicio {
     public static void main(String[] args) {
-        ApplicationContext contexto=
-                new ClassPathXmlApplicationContext(new String[] {
-                        "bean-configuration.xml",
-                        "bean-service.xml"});
-        Empleado empleado=contexto.getBean("empleado", Empleado.class);
-        System.out.println("-------------");
-        Servicio servicio=contexto.getBean("servicio", Servicio.class);
-        servicio.destruir();
-        System.out.println("........");
-
-        ((ClassPathXmlApplicationContext) contexto).close();
+        ConfigurableApplicationContext contexto
+                =new AnnotationConfigApplicationContext(Configuracion.class);
+        Persona persona=contexto.getBean("persona",Persona.class);
+        System.out.println(persona);
+        contexto.close();
     }
 }

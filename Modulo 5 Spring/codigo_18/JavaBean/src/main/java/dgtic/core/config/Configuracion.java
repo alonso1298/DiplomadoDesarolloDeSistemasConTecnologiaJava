@@ -6,10 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Configuracion {
-
-    @Bean(name = "Persona")
+    @Bean(name = "persona")
     public Persona getPersona(){
-        Persona persona = new Persona();
+        Persona persona=new Persona();
         persona.setNombre("Persona 1");
         persona.setEdad(23);
         return persona;
