@@ -2,9 +2,9 @@ package dgtic.core.inicio;
 
 import dgtic.core.config.Configuracion;
 import dgtic.core.modelo.Persona;
+import dgtic.core.modelo.Telefono;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 public class Inicio {
@@ -16,6 +16,10 @@ public class Inicio {
         System.out.println(persona);
         Persona personaDos=contexto.getBean("persona",Persona.class);
         System.out.println(personaDos);
+
+        Telefono telefono = contexto.getBean("telefono", Telefono.class);
+        System.out.println(telefono)
+        ;
         contexto.close();
     }
 }

@@ -3,9 +3,11 @@ package dgtic.core.config;
 import dgtic.core.modelo.Persona;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
+@ImportResource(locations = {"classpath:bean-configuration.xml"})
 public class Configuracion {
     @Bean(name = "persona")
     @Scope("prototype")
