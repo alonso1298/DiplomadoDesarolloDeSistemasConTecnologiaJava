@@ -2,6 +2,7 @@ package dgtic.core.modelo;
 
 public class GestionProyectos implements IActividades{
     private int cantidad = 0;
+
     @Override
     public void realizar() {
         System.out.println("Gestion Proyectos");
