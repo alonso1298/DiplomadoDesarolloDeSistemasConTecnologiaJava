@@ -16,6 +16,6 @@
     </bean>
 
     <bean id="GestionProyectos" class="dgtic.core.modelo.GestionProyectos"
-    />
+    scope="prototype"/>
     <bean id="Conocimientos" class="dgtic.core.modelo.IntercambioConocimientos"/>
 </beans>
