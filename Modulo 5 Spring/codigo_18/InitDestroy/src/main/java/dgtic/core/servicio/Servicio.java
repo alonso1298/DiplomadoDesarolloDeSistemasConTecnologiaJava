@@ -1,4 +1,4 @@
-package dgtic.core.Servicio;
+package dgtic.core.servicio;
 
 import dgtic.core.modelo.Empleado;
 
