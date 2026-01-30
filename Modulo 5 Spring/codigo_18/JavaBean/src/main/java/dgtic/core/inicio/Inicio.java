@@ -1,5 +1,6 @@
 package dgtic.core.inicio;
 
+import dgtic.core.config.Configuracion;
 import dgtic.core.modelo.Persona;
 import dgtic.core.modelo.Telefono;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -10,7 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Inicio {
     public static void main(String[] args) {
         ConfigurableApplicationContext contexto
-                =new AnnotationConfigApplicationContext("dgtic.core");
+                =new AnnotationConfigApplicationContext(Configuracion.class);
         Persona persona=contexto.getBean("persona",Persona.class);
         persona.setEdad(100);
         System.out.println(persona);
