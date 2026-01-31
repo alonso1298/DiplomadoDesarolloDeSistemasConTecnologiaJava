@@ -22,4 +22,7 @@ public class ClienteServicio {
     public int actualizar(Cliente cliente) throws SQLException{
         return clienteDao.actualizar(cliente);
     }
+    public int eliminar(Integer id) throws SQLException{
+        return clienteDao.aeliminar(id);
+    }
 }

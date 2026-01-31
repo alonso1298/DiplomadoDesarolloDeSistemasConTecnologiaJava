@@ -53,11 +53,14 @@ class ClienteServicioTest {
     @Test
     void actualizar() throws SQLException{
         Cliente cliente = Cliente.builder()
-                .nombre("Demo2")
+                .id_cliente(1)
+                .nombre("DGTIC")
                 .ciudad("CDMX")
                 .email("demo@demo.com")
                 .telefono("3343-345")
                 .build();
+        Integer actual = clienteServicio.actualizar(cliente);
+        assertEquals(1, actual, "Esperando " + 1 + " actual es " + actual);
     }
 
 }
