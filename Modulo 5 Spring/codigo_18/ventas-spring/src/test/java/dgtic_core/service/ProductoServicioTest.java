@@ -56,4 +56,9 @@ class ProductoServicioTest {
         System.out.println(productoServicio.listar().size());
         verify(productoDao, times(2)).lista();
     }
+    @Test
+    void almacenar()throws SQLException{
+        productoServicio.guarrdar(new Producto(3, "Producto4", 234.56, 10));
+        verify(productoDao, times(1)).guardar(any(Producto.class));
+    }
 }
