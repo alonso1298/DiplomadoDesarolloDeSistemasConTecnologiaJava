@@ -1,6 +1,5 @@
 package dgtic.core.config;
 
-import dgtic.core.modelo.Persona;
 import org.springframework.context.annotation.*;
 
 @Configuration

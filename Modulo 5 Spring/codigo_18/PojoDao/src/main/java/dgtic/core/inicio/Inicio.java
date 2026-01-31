@@ -1,8 +1,6 @@
 package dgtic.core.inicio;
 
 import dgtic.core.config.Configuracion;
-import dgtic.core.modelo.Persona;
-import dgtic.core.modelo.Telefono;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
