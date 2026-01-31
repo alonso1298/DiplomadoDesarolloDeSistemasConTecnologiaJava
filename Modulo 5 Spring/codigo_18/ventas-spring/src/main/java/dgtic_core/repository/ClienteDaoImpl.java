@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class ClienteDaoImpl implements IClienteDao{
@@ -88,9 +87,8 @@ public class ClienteDaoImpl implements IClienteDao{
                     .telefono(rs.getString(4))
                     .ciudad(rs.getString(5))
                     .build();
-            return Optional.of(c);
+            return null;
         }
-        return Optional.empty();
+        return c;
     }
-
 }

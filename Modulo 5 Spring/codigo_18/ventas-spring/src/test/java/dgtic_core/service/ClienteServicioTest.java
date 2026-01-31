@@ -75,9 +75,16 @@ class ClienteServicioTest {
     }
     @Test
     void pruebaLogica() throws SQLException {
-        //Trae los datos de todos los clientes, para llenar una tabla
+        // Trae los datos de todos los clientes, para llenar una tabla
         List<Cliente> lista = clienteServicio.listaCliente();
-        
+        // Obtener el id
+        Cliente modificar = lista.get(5);
+        // Modifica el Bean
+        modificar.setNombre("Se modifico el cliente");
+        // Update
+        clienteServicio.actualizar(modificar);
+        Cliente actual = clienteServicio.consultaId(modificar.getId_cliente());
+        assertEquals(modificar, actual);
     }
 
 }
