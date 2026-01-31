@@ -62,5 +62,10 @@ class ClienteServicioTest {
         Integer actual = clienteServicio.actualizar(cliente);
         assertEquals(1, actual, "Esperando " + 1 + " actual es " + actual);
     }
+    @Test
+    void eliminar() throws SQLException {
+        Integer actual=clienteServicio.eliminar(1);
+        assertEquals(1, actual, "Esperando " + 1 + " actual es " + actual);
+    }
 
 }
