@@ -19,6 +19,11 @@ public class Inicio {
         System.out.println(personaDos);
 
         Telefono telefono = contexto.getBean("telefono", Telefono.class);
+        System.out.println(telefono);
+
+        Persona persona1 = contexto.getBean("personaDos", Persona.class);
+        System.out.println(persona1);
+
         contexto.close();
     }
 }
