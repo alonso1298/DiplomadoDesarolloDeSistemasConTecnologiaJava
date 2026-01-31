@@ -8,5 +8,6 @@ import java.util.List;
 public interface IClienteDao {
 
     List<Cliente> lista() throws SQLException;
+    Integer guardar(Cliente cliente) throws SQLException;
 
 }

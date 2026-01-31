@@ -16,5 +16,7 @@ public class ClienteServicio {
     public List<Cliente> listaCliente() throws SQLException {
         return clienteDao.lista();
     }
-
+    public int almacenar(Cliente cliente) throws SQLException{
+        return clienteDao.guardar(cliente);
+    }
 }

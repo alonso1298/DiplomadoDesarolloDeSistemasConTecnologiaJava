@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,20 @@ public class ClienteDaoImpl implements IClienteDao{
         }
         return clientes;
 
+    }
+
+    @Override
+    public Integer guardar(Cliente cliente) throws SQLException {
+        String sql="INSERT INTO clientes(nombre, email, telefono, ciudad)" +
+                " VALUES(?, ?, ?, ?)";
+        PreparedStatement ps=cn.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, cliente.getNombre());
+        ps.setString(2, cliente.getEmail());
+        ps.setString(3, cliente.getTelefono());
+        ps.setString(4, cliente.getCiudad());
+        int d = ps.executeUpdate();
+
+        return d;
     }
 
 }
