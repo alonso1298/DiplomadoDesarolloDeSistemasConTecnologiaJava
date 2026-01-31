@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
 
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -24,6 +26,16 @@ class ClienteServicioTest {
         });
         assertNotNull(ex.getMessage());
         System.out.println(ex.getMessage());
+    }
+
+    @Test
+    void lista(){
+        try {
+            assertEquals(40, clienteServicio.listaCliente().size());
+            System.out.println(clienteServicio.listaCliente().size());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
