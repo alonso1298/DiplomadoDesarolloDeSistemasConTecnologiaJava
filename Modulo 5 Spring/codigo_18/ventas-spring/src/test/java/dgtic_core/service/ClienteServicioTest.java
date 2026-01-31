@@ -71,7 +71,7 @@ class ClienteServicioTest {
     @Test
     void consultaId()throws SQLException{
         Cliente cliente = clienteServicio.consultaId(2);
-        assertEquals("Monterry", cliente.getCiudad(), "No es la misma ciudad");
+        assertEquals("Monterrey", cliente.getCiudad(), "No es la misma ciudad");
     }
     @Test
     void pruebaLogica() throws SQLException {

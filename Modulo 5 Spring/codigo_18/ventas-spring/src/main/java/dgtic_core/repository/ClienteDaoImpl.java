@@ -87,8 +87,8 @@ public class ClienteDaoImpl implements IClienteDao{
                     .telefono(rs.getString(4))
                     .ciudad(rs.getString(5))
                     .build();
-            return null;
+            return c;
         }
-        return c;
+        return null;
     }
 }

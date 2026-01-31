@@ -25,7 +25,7 @@ public class ClienteServicio {
     public int eliminar(Integer id) throws SQLException{
         return clienteDao.aeliminar(id);
     }
-    public Cliente consultaId(Integer id){
+    public Cliente consultaId(Integer id) throws SQLException {
         return clienteDao.consultaId(id);
     }
 }
