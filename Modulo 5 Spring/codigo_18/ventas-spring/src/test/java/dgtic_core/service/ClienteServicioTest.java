@@ -1,5 +1,6 @@
 package dgtic_core.service;
 
+import dgtic_core.model.Cliente;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,6 +37,18 @@ class ClienteServicioTest {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Test
+    void insertar() throws SQLException {
+        Cliente cliente = Cliente.builder()
+                .nombre("Demo2")
+                .ciudad("CDMX")
+                .email("demo@demo.com")
+                .telefono("3343-345")
+                .build();
+        Integer actual = clienteServicio.almacenar(cliente);
+        assertEquals(1, actual, "Esperando " + 11 + " actual es " + actual);
     }
 
 }
