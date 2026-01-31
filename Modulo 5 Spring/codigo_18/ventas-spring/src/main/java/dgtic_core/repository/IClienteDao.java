@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IClienteDao {
 
-    List<Cliente> list() throws SQLException;
+    List<Cliente> lista() throws SQLException;
 
 }

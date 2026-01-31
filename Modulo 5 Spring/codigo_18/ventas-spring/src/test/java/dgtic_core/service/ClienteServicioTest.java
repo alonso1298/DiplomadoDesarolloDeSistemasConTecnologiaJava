@@ -1,0 +1,29 @@
+package dgtic_core.service;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.sql.DataSource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+class ClienteServicioTest {
+
+    @Autowired
+    ClienteServicio clienteServicio;
+
+    @Autowired
+    DataSource conexion;
+
+    @Test
+    void cnn(){
+        Exception ex=assertThrows(Exception.class, ()->{
+            conexion.getConnection();
+        });
+        assertNotNull(ex.getMessage());
+        System.out.println(ex.getMessage());
+    }
+
+}
