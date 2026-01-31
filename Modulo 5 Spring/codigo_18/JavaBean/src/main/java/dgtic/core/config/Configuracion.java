@@ -5,7 +5,7 @@ import org.springframework.context.annotation.*;
 
 @Configuration
 @ImportResource(locations = {"classpath:bean-configuration.xml"})
-@ComponentScan(basePackages = "dgtic.core")
+@ComponentScan(basePackages = "dgtic.core") // Se realiza un escano apartir de esa clase
 public class Configuracion {
     @Bean(name = "persona")
     @Scope("prototype")
