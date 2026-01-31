@@ -52,4 +52,17 @@ public class ClienteDaoImpl implements IClienteDao{
         return d;
     }
 
+    @Override
+    public Integer actualizar(Cliente cliente) throws SQLException {
+        String sql = "UPDATE clientes set nombre=?, email=?, telefono=?, ciudad=? " +
+                "WHERE id_cliente=?";
+        PreparedStatement ps= cn.getConnection().prepareStatement(sql);
+        ps.setString(1, cliente.getNombre());
+        ps.setString(2, cliente.getEmail());
+        ps.setString(3, cliente.getTelefono());
+        ps.setString(4, cliente.getCiudad());
+        ps.setInt(5, cliente.getId_cliente());
+        return ps.executeUpdate();
+    }
+
 }

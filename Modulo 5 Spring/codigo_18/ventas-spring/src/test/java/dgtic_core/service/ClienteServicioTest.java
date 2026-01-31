@@ -48,7 +48,16 @@ class ClienteServicioTest {
                 .telefono("3343-345")
                 .build();
         Integer actual = clienteServicio.almacenar(cliente);
-        assertEquals(1, actual, "Esperando " + 11 + " actual es " + actual);
+        assertEquals(11, actual, "Esperando " + 11 + " actual es " + actual);
+    }
+    @Test
+    void actualizar() throws SQLException{
+        Cliente cliente = Cliente.builder()
+                .nombre("Demo2")
+                .ciudad("CDMX")
+                .email("demo@demo.com")
+                .telefono("3343-345")
+                .build();
     }
 
 }

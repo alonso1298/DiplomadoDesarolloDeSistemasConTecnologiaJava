@@ -19,4 +19,7 @@ public class ClienteServicio {
     public int almacenar(Cliente cliente) throws SQLException{
         return clienteDao.guardar(cliente);
     }
+    public int actualizar(Cliente cliente) throws SQLException{
+        return clienteDao.actualizar(cliente);
+    }
 }
