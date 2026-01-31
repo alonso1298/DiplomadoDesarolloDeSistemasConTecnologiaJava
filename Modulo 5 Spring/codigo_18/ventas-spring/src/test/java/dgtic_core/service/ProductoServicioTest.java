@@ -4,6 +4,7 @@ import dgtic_core.model.Producto;
 import dgtic_core.repository.IProductoDao;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,8 +14,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class ProductoServicioTest {
@@ -49,5 +49,11 @@ class ProductoServicioTest {
         when(productoDao.lista())
                 .thenReturn(listaProducto);
         doNothing().when(productoDao).guardar(any(Producto.class));
+    }
+    @Test
+    void lista() throws SQLException{
+        assertEquals(2, productoDao.lista().size());
+        System.out.println(productoServicio.listar().size());
+        verify(productoDao, times(2)).lista();
     }
 }
