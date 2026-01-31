@@ -11,7 +11,7 @@ import java.util.Map;
 public class BaseDeDatos {
 
     public static Map<String,List<Estudiante>> carreras=new HashMap<>();
-    
+
     static {
         List<Estudiante> estudiantes=new ArrayList<>();
         Estudiante est=new Estudiante("123","Rosa",20);
