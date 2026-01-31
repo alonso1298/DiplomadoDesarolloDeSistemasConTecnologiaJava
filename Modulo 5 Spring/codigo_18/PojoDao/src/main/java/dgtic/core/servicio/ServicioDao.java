@@ -2,6 +2,7 @@ package dgtic.core.servicio;
 
 import dgtic.core.repository.IBaseDeDatosDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 public class ServicioDao {
 
     @Autowired
+    @Qualifier("baseDeDatosDaoExtra")
     private IBaseDeDatosDao baseDeDatosDao;
 
     public String archivoCSV(String carrera){
