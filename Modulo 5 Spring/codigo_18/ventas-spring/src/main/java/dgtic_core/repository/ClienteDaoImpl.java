@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ClienteDaoImpl implements IClienteDao{
@@ -71,6 +72,25 @@ public class ClienteDaoImpl implements IClienteDao{
         PreparedStatement ps = cn.getConnection().prepareStatement(sql);
         ps.setInt(1, id);
         return ps.executeUpdate();
+    }
+
+    @Override
+    public Cliente consultaId(Integer id) throws SQLException {
+        String sql = "SELECT * FROM clientes WHERE id_cliente=?";
+        PreparedStatement ps = cn.getConnection().prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Cliente c = Cliente.builder()
+                    .id_cliente(rs.getInt(1))
+                    .nombre(rs.getString(2))
+                    .email(rs.getString(3))
+                    .telefono(rs.getString(4))
+                    .ciudad(rs.getString(5))
+                    .build();
+            return Optional.of(c);
+        }
+        return Optional.empty();
     }
 
 }

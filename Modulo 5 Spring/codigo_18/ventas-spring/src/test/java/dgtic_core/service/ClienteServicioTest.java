@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.sql.DataSource;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,6 +67,17 @@ class ClienteServicioTest {
     void eliminar() throws SQLException {
         Integer actual=clienteServicio.eliminar(1);
         assertEquals(1, actual, "Esperando " + 1 + " actual es " + actual);
+    }
+    @Test
+    void consultaId()throws SQLException{
+        Cliente cliente = clienteServicio.consultaId(2);
+        assertEquals("Monterry", cliente.getCiudad(), "No es la misma ciudad");
+    }
+    @Test
+    void pruebaLogica() throws SQLException {
+        //Trae los datos de todos los clientes, para llenar una tabla
+        List<Cliente> lista = clienteServicio.listaCliente();
+        
     }
 
 }
