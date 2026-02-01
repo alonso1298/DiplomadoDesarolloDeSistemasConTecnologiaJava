@@ -1,14 +1,23 @@
 package unam.diplomado.pixup.disco.api;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class DiscoRequestDTO {
 
-    @NotBlank
-    @Positive
+    @NotBlank(message = "El titulo no puede estar vacío")
+    @Size(min = 1, max = 255)
     private String titulo;
+
+    @NotNull
+    @Positive
+    private Double precio;
+
+    @NotNull
+    @Positive
+    private Integer existencias;
 
     @NotNull
     @Positive
@@ -22,12 +31,11 @@ public class DiscoRequestDTO {
     @Positive
     private Integer generoId;
 
-    @NotNull
-    @Positive
-    private Double precio;
-
-    public DiscoRequestDTO(int id, @NotBlank(message = "El titulo no puede estar vacio") String titulo, @Positive(message = "El precio no puede ser menor que 0") float precio, String nombre, String nombre1, String descripcion) {
+    // 🔴 Constructor vacío OBLIGATORIO para JSON-B
+    public DiscoRequestDTO() {
     }
+
+    // ===== getters y setters =====
 
     public String getTitulo() {
         return titulo;
@@ -37,39 +45,43 @@ public class DiscoRequestDTO {
         this.titulo = titulo;
     }
 
-    @NotNull
-    public Integer getArtistaId() {
-        return artistaId;
-    }
-
-    public void setArtistaId(@NotNull Integer artistaId) {
-        this.artistaId = artistaId;
-    }
-
-    @NotNull
-    public Integer getDisqueraId() {
-        return disqueraId;
-    }
-
-    public void setDisqueraId(@NotNull Integer disqueraId) {
-        this.disqueraId = disqueraId;
-    }
-
-    @NotNull
-    public Integer getGeneroId() {
-        return generoId;
-    }
-
-    public void setGeneroId(@NotNull Integer generoId) {
-        this.generoId = generoId;
-    }
-
-    @NotNull
     public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(@NotNull Double precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
+    }
+
+    public Integer getExistencias() {
+        return existencias;
+    }
+
+    public void setExistencias(Integer existencias) {
+        this.existencias = existencias;
+    }
+
+    public Integer getArtistaId() {
+        return artistaId;
+    }
+
+    public void setArtistaId(Integer artistaId) {
+        this.artistaId = artistaId;
+    }
+
+    public Integer getDisqueraId() {
+        return disqueraId;
+    }
+
+    public void setDisqueraId(Integer disqueraId) {
+        this.disqueraId = disqueraId;
+    }
+
+    public Integer getGeneroId() {
+        return generoId;
+    }
+
+    public void setGeneroId(Integer generoId) {
+        this.generoId = generoId;
     }
 }

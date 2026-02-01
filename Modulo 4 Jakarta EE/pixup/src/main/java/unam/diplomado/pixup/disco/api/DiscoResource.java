@@ -20,17 +20,12 @@ public class DiscoResource implements IDiscoApi {
     @Override
     public Response altaDisco(@NotNull @Valid DiscoRequestDTO disco) {
 
-        var discoEntity = discoMapper.toDisco(disco);
-        var discoGuardado = discoService.registrarDisco(discoEntity);
-        var response = discoMapper.toDto(discoGuardado);
+        Disco discoEntity = discoMapper.toEntity(disco);
+        Disco discoGuardado = discoService.registrarDisco(discoEntity);
+        DiscoResponseDTO response = discoMapper.toResponseDTO(discoGuardado);
 
         return Response.status(Response.Status.CREATED)
                 .entity(response)
                 .build();
-    }
-
-    @Override
-    public Response altaDisco(Disco disco) {
-        return null;
     }
 }

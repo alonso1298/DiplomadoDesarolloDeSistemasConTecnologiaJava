@@ -9,31 +9,35 @@ import unam.diplomado.pixup.disco.domain.GeneroMusical;
 @ApplicationScoped
 public class DiscoMapper {
 
-    // Mapero de salida
-    public DiscoRequestDTO toDto(Disco disco){
-        return new DiscoRequestDTO(
+    // ====== REQUEST → ENTITY ======
+    public Disco toEntity(DiscoRequestDTO dto) {
+        Disco disco = new Disco();
+        disco.setTitulo(dto.getTitulo());
+        disco.setPrecio(dto.getPrecio().floatValue()); // ✔ conversión
+        disco.setExistencia(dto.getExistencia());      // ✔ nombre correcto
+
+        Artista artista = new Artista();
+        artista.setId(dto.getArtistaId());
+        disco.setArtista(artista);
+
+        Disquera disquera = new Disquera();
+        disquera.setId(dto.getDisqueraId());
+        disco.setDisquera(disquera);
+
+        GeneroMusical genero = new GeneroMusical();
+        genero.setId(dto.getGeneroId());
+        disco.setGeneroMusical(genero);
+
+        return disco;
+    }
+
+    // ====== ENTITY → RESPONSE ======
+    public DiscoResponseDTO toResponseDTO(Disco disco) {
+        return new DiscoResponseDTO(
                 disco.getId(),
                 disco.getTitulo(),
                 disco.getPrecio(),
-                disco.getArtista().getNombre(),
-                disco.getDisquera().getNombre(),
-                disco.getGeneroMusical().getDescripcion()
-        );
-    }
-    // Mapeo de entrada
-    public Disco toDisco(DiscoRequestDTO dto) {
-
-        Artista artista = new Artista(dto.getArtistaId());
-        Disquera disquera = new Disquera(dto.getDisqueraId());
-        GeneroMusical genero = new GeneroMusical(dto.getGeneroId());
-
-        return new Disco(
-                null,
-                dto.getTitulo(),
-                dto.getPrecio(),
-                artista,
-                disquera,
-                genero
+                disco.getExistencia()
         );
     }
 }
