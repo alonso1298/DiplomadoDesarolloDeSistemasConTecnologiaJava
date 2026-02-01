@@ -15,6 +15,8 @@ import unam.diplomado.pixup.disco.domain.Disco;
 @Path("discos")
 public interface IDiscoApi {
 
+    Response altaDisco(@NotNull @Valid DiscoRequestDTO disco);
+
     @POST
     @Path("alta")
     Response altaDisco(@NotNull @Valid Disco disco);
