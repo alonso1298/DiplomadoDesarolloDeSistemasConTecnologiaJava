@@ -17,4 +17,6 @@ public class Disquera {
     private int id;
     private String nombre;
 
+    public Disquera(Integer disqueraId) {
+    }
 }

@@ -26,6 +26,9 @@ public class DiscoRequestDTO {
     @Positive
     private Double precio;
 
+    public DiscoRequestDTO(int id, @NotBlank(message = "El titulo no puede estar vacio") String titulo, @Positive(message = "El precio no puede ser menor que 0") float precio, String nombre, String nombre1, String descripcion) {
+    }
+
     public String getTitulo() {
         return titulo;
     }

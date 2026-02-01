@@ -44,4 +44,7 @@ public class Disco {
     @JoinColumn(name = "id_genero_musical", nullable = false)
     @NotNull(message = " Un genero musical debe estar asociada a un disco")
     private GeneroMusical generoMusical;
+
+    public Disco(Object o, String titulo, Double precio, Artista artista, Disquera disquera, GeneroMusical genero) {
+    }
 }

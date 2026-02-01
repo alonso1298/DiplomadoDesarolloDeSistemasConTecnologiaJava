@@ -14,4 +14,7 @@ public class GeneroMusical {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String descripcion;
+
+    public GeneroMusical(Integer generoId) {
+    }
 }

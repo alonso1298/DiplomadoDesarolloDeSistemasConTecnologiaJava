@@ -16,4 +16,7 @@ public class Artista {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nombre;
+
+    public Artista(Integer artistaId) {
+    }
 }
