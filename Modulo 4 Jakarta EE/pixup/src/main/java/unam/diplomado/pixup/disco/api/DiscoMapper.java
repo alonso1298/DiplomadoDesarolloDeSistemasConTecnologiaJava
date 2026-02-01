@@ -9,12 +9,11 @@ import unam.diplomado.pixup.disco.domain.GeneroMusical;
 @ApplicationScoped
 public class DiscoMapper {
 
-    // ====== REQUEST → ENTITY ======
     public Disco toEntity(DiscoRequestDTO dto) {
         Disco disco = new Disco();
         disco.setTitulo(dto.getTitulo());
-        disco.setPrecio(dto.getPrecio().floatValue()); // ✔ conversión
-        disco.setExistencia(dto.getExistencia());      // ✔ nombre correcto
+        disco.setPrecio(dto.getPrecio().floatValue());      // conversión
+        disco.setExistencia(dto.getExistencias());          // ✔ usa el getter correcto
 
         Artista artista = new Artista();
         artista.setId(dto.getArtistaId());
