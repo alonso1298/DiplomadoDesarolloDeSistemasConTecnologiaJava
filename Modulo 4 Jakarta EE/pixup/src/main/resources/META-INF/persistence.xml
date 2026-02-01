@@ -6,7 +6,20 @@
              version="3.0">
 
     <persistence-unit name="pixup" transaction-type="JTA">
+
+        <!-- Datasource de WildFly -->
         <jta-data-source>java:/jdbc/pixupDS</jta-data-source>
+
+        <properties>
+            <!-- CLAVE PARA TU ERROR -->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQLDialect"/>
+
+            <!-- Opcionales pero útiles -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
     </persistence-unit>
 
 </persistence>
