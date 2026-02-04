@@ -22,29 +22,32 @@ public class Disco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotBlank(message = "El titulo no puede estar vacio")
+
+    @NotBlank
     private String titulo;
-    @Positive(message = "El precio no puede ser menor que 0")
+
+    @Positive
     private float precio;
+
     private int existencia;
+
     private float descuento;
-    @Column(name = "fecha_lanzamiento")
-    @JsonbDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+
+    @Column(name = "fecha_lanzamiento", nullable = false)
     private LocalDateTime fechaDeLanzamiento;
+
+    @Column(nullable = false)
     private String imagen;
+
     @ManyToOne
     @JoinColumn(name = "id_disquera", nullable = false)
-    @NotNull(message = " La disquera debe estar asociada a un disco")
     private Disquera disquera;
+
     @ManyToOne
     @JoinColumn(name = "id_artista", nullable = false)
-    @NotNull(message = " Un Artista debe estar asociada a un disco")
     private Artista artista;
+
     @ManyToOne
     @JoinColumn(name = "id_genero_musical", nullable = false)
-    @NotNull(message = " Un genero musical debe estar asociada a un disco")
     private GeneroMusical generoMusical;
-
-    public Disco(Object o, String titulo, Double precio, Artista artista, Disquera disquera, GeneroMusical genero) {
-    }
 }

@@ -36,11 +36,8 @@ public class DiscoRequestDTO {
     @Positive
     private Integer generoId;
 
-    // 🔴 Constructor vacío OBLIGATORIO para JSON-B
     public DiscoRequestDTO() {
     }
-
-    // ===== getters y setters =====
 
     public String getTitulo() {
         return titulo;

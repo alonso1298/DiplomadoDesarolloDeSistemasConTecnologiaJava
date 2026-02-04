@@ -16,5 +16,6 @@ public class GeneroMusical {
     private String descripcion;
 
     public GeneroMusical(Integer generoId) {
+        this.id = generoId;
     }
 }
