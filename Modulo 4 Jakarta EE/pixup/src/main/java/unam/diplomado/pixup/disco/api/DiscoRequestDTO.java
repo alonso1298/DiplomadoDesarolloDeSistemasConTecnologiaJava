@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
+
 public class DiscoRequestDTO {
 
     @NotBlank(message = "El titulo no puede estar vacío")
@@ -26,6 +28,9 @@ public class DiscoRequestDTO {
     @NotNull
     @Positive
     private Integer disqueraId;
+
+    @NotNull
+    private LocalDate fechaLanzamiento;
 
     @NotNull
     @Positive
@@ -83,5 +88,13 @@ public class DiscoRequestDTO {
 
     public void setGeneroId(Integer generoId) {
         this.generoId = generoId;
+    }
+
+    public LocalDate getFechaLanzamiento() {
+        return fechaLanzamiento;
+    }
+
+    public void setFechaLanzamiento(LocalDate fechaLanzamiento) {
+        this.fechaLanzamiento = fechaLanzamiento;
     }
 }
