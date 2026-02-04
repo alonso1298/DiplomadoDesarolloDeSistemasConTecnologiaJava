@@ -12,8 +12,9 @@ public class DiscoMapper {
     public Disco toEntity(DiscoRequestDTO dto) {
         Disco disco = new Disco();
         disco.setTitulo(dto.getTitulo());
-        disco.setPrecio(dto.getPrecio().floatValue());      // conversión
-        disco.setExistencia(dto.getExistencias());          // ✔ usa el getter correcto
+        disco.setPrecio(dto.getPrecio().floatValue());
+        disco.setFechaDeLanzamiento(dto.getFechaLanzamiento().atStartOfDay());
+
 
         Artista artista = new Artista();
         artista.setId(dto.getArtistaId());
@@ -30,7 +31,6 @@ public class DiscoMapper {
         return disco;
     }
 
-    // ====== ENTITY → RESPONSE ======
     public DiscoResponseDTO toResponseDTO(Disco disco) {
         return new DiscoResponseDTO(
                 disco.getId(),
