@@ -7,9 +7,9 @@ public class DiscoResponseDTO {
     private String artista;
     private String disquera;
     private String genero;
-    private Double precio;
+    private Float precio;
 
-    public DiscoResponseDTO(Integer id, String titulo, String artista, String disquera, String genero, Double precio) {
+    public DiscoResponseDTO(Integer id, String titulo, String artista, String disquera, String genero, Float precio) {
         this.id = id;
         this.titulo = titulo;
         this.artista = artista;
@@ -38,7 +38,7 @@ public class DiscoResponseDTO {
         return genero;
     }
 
-    public Double getPrecio() {
+    public Float getPrecio() {
         return precio;
     }
 }

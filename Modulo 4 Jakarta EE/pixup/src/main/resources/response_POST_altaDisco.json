@@ -1,21 +1,9 @@
 {
-  "artista": {
-    "id": 1,
-    "nombre": "Metallica"
-  },
-  "descuento": 10.0,
-  "disquera": {
-    "id": 1,
-    "nombre": "MGM ESTUDIO"
-  },
-  "existencia": 10,
-  "fechaDeLanzamiento": "2020-11-11T11:12:12",
-  "generoMusical": {
-    "descripcion": "Rock",
-    "id": 1
-  },
-  "id": 1,
-  "imagen": "u2_exitos.png",
-  "precio": 100.3,
-  "titulo": "U2 Exitos"
+  "titulo": "Back in Black",
+  "precio": 349.99,
+  "existencias": 15,
+  "fechaLanzamiento": "1980-07-25",
+  "artistaId": 2,
+  "disqueraId": 2,
+  "generoId": 2
 }
