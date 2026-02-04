@@ -1,9 +1,8 @@
 {
-  "titulo": "Back in Black",
+  "artista": "Guns and Roses",
+  "disquera": "WARNER BROS",
+  "genero": "Pop",
+  "id": 4,
   "precio": 349.99,
-  "existencias": 15,
-  "fechaLanzamiento": "1980-07-25",
-  "artistaId": 2,
-  "disqueraId": 2,
-  "generoId": 2
+  "titulo": "Back in Black"
 }

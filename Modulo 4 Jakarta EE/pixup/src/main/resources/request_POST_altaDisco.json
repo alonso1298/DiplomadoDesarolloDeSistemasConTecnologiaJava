@@ -1,0 +1,9 @@
+{
+  "titulo": "Back in Black",
+  "precio": 349.99,
+  "existencias": 15,
+  "fechaLanzamiento": "1980-07-25",
+  "artistaId": 2,
+  "disqueraId": 2,
+  "generoId": 2
+}

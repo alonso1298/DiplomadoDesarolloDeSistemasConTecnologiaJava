@@ -6,6 +6,8 @@ import unam.diplomado.pixup.disco.domain.Disco;
 import unam.diplomado.pixup.disco.domain.Disquera;
 import unam.diplomado.pixup.disco.domain.GeneroMusical;
 
+import java.util.UUID;
+
 @ApplicationScoped
 public class DiscoMapper {
 
@@ -15,7 +17,7 @@ public class DiscoMapper {
         disco.setPrecio(dto.getPrecio().floatValue());
         disco.setExistencia(dto.getExistencias());
         disco.setFechaDeLanzamiento(dto.getFechaLanzamiento().atStartOfDay());
-        disco.setImagen("default.png");
+        disco.setImagen(UUID.randomUUID() + ".png");
         disco.setDescuento(0);
 
         Artista artista = new Artista();
