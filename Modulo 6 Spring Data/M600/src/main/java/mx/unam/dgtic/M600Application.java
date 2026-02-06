@@ -1,4 +1,4 @@
-package mx.una.dgtic;
+package mx.unam.dgtic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,22 +22,25 @@ public class M600Application {
 	@Bean
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		//org.mariadb.jdbc.Driver
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		//jdbc:mariadb://localhost:3306/modulo6
 		dataSource.setUrl("jdbc:mysql://localhost:3306/modulo06");
 		dataSource.setUsername("root");
 		dataSource.setPassword("56457977Ac");
-		return dataSource;
+		return  dataSource;
 	}
 
 	@Bean
-	LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource){
+	LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource){
 		LocalContainerEntityManagerFactoryBean emfb =
 				new LocalContainerEntityManagerFactoryBean();
 		emfb.setDataSource(dataSource);
 		emfb.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-		emfb.setPackagesToScan("mx.una.dgtic");
+		emfb.setPackagesToScan("mx.unam.dgtic");
 
 		Properties jpaProperties = new Properties();
+		//org.hibernate.dialect.MariaDB103Dialect
 		jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 
 		emfb.setJpaProperties(jpaProperties);
@@ -45,13 +48,12 @@ public class M600Application {
 		return emfb;
 	}
 
-	// Transaccionar cosas
 	@Bean
 	public PlatformTransactionManager transactionManager(){
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(
-				entityManagerFactoryBean(dataSource()).getObject());
-	return transactionManager;
+				entityManagerFactory(dataSource()).getObject());
+		return transactionManager;
 	}
 
 }
