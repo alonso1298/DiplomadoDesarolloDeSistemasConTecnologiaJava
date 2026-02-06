@@ -11,7 +11,7 @@ class M600ApplicationTests {
 	final String ALUMNO = "SAGRERO GRANADOS ALONSO";
 	@Test
 	void contextLoads() {
-		System.out.printf(ALUMNO);
+		System.out.println(ALUMNO);
 		System.out.println("Cargar esquema y datos");
 	}
 
