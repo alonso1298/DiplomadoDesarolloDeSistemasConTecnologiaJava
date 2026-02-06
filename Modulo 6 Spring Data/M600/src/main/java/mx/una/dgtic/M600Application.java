@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -41,6 +43,15 @@ public class M600Application {
 		emfb.setJpaProperties(jpaProperties);
 
 		return emfb;
+	}
+
+	// Transaccionar cosas
+	@Bean
+	public PlatformTransactionManager transactionManager(){
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(
+				entityManagerFactoryBean(dataSource()).getObject());
+	return transactionManager;
 	}
 
 }
