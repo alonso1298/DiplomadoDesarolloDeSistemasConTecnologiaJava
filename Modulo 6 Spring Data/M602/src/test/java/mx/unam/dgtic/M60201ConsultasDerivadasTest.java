@@ -31,10 +31,15 @@ public class M60201ConsultasDerivadasTest {
 
         Iterable<Alumno> alumnos = repositorioAlumno.findByNombre(NOMBRE);
         alumnos.forEach(System.out::println);
+
+        System.out.println("getByNombre");
+        repositorioAlumno.getByNombre(NOMBRE).forEach(a->{
+            System.out.println(a.getNombre() + " " + a.getPaterno());
+        });
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Carlos", "Juan", "Marco", "Gema", "Marco 2"})
+    @ValueSource(strings = {"CARLOS", "Juan", "Marco", "Gema", "Marco 2"})
     void buscarPorNombreParametroTest(String nombre){
         System.out.println(ALUMNO);
         System.out.println("Buscar por nombre " + nombre);
