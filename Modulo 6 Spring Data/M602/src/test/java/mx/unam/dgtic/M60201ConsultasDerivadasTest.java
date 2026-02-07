@@ -3,7 +3,10 @@ package mx.unam.dgtic;
 import mx.unam.dgtic.entity.Alumno;
 import mx.unam.dgtic.repository.IAlumnoRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -13,44 +16,33 @@ import java.util.Optional;
 public class M60201ConsultasDerivadasTest {
 
     final String ALUMNO = "SAGRERO GRANADOS ALONSO";
+    private static final String NOMBRE = "Nadia";
+    private static final String PATERNO = "Calles";
+    private static final double ESTATURA = 1.65;
+    private static final String FECHA = "2026-02-06";
 
     @Autowired
     IAlumnoRepository repositorioAlumno;
 
     @Test
-    void buscarTodosTest(){
+    void buscarPorNombreTest(){
         System.out.println(ALUMNO);
-        System.out.println("Listar todos los alumnos");
+        System.out.println("Buscar por nombre " + NOMBRE);
 
-        Iterable<Alumno> alumnos = repositorioAlumno.findAll();
+        Iterable<Alumno> alumnos = repositorioAlumno.findByNombre(NOMBRE);
         alumnos.forEach(System.out::println);
     }
 
-    @Test
-    void buscarUnoTest(){
-        String matricula = "4A";
+    @ParameterizedTest
+    @ValueSource(strings = {"Carlos", "Juan", "Marco", "Gema", "Marco 2"})
+    void buscarPorNombreParametroTest(String nombre){
         System.out.println(ALUMNO);
-        System.out.println("Buscar alumno con matrcula " + matricula);
+        System.out.println("Buscar por nombre " + nombre);
 
-        Optional<Alumno> optional = repositorioAlumno.findById(matricula);
-        if (optional.isPresent()){
-            Alumno alumno = optional.get();
-            System.out.println("Nombre: " + alumno.getNombre());
-            System.out.println("Paterno: " + alumno.getPaterno());
-            System.out.println("Fnac: " + alumno.getFnac());
-            System.out.println("Estatura: " + alumno.getEstatura());
-        }else {
-            System.out.println(matricula + " no utilizada");
-        }
-    }
+        System.out.println("Numeor de alumnos con el nombre " + nombre
+                + " " + repositorioAlumno.countByNombre(nombre));
 
-    @Test
-    void buscarVariosTest(){
-        System.out.println(ALUMNO);
-        System.out.println("Buscar alumnos en una lista de matriculas");
-
-        repositorioAlumno.findAllById(List.of("2A", "3B", "1F")).forEach(a -> {
-            System.out.println(a.getMatricula() + " " + a.getNombre() + " " + a.getPaterno() + " " + a.getFnac() + " " + a.getEstatura());
-        });
+        Iterable<Alumno> alumnos = repositorioAlumno.findByNombre(nombre);
+        alumnos.forEach(System.out::println);
     }
 }
