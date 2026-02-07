@@ -82,15 +82,17 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
     List<Alumno> findByEstaturaIn(Collection<Double> estaturas);
     List<Alumno> findByEstaturaNotIn(Collection<Double> estaturas);
 
-    List<Alumno> findByNombre(Collection<String> nombres);
+    List<Alumno> findByNombreIn(Collection<String> nombres);
     List<Alumno> findByNombreNotIn(Collection<String> nombres);
 
     // BETWEEN
     List<Alumno> findByEstaturaBetweenOrderByEstatura(Double estaturaMin, Double estaturaMax);
-    List<Alumno> findByEstaturaNotBetweenOrderByEstatura(Double estaturaMin, Double estaturaMax);
+//    List<Alumno> findByEstaturaNotBetweenOrderByEstatura(Double estaturaMin, Double estaturaMax);
+
+    List<Alumno> findByEstaturaNotBetweenAndNombreNotOrderByEstatura(Double estaturaMin, String nombre, Double estaturaMax);
 
     List<Alumno> findByNombreBetweenOrderByNombre(String nombreIni, String nombreFin);
-    List<Alumno> findByNombreNotBetweenOrderByNombre(String nombreIni, String nombreFin);
+//    List<Alumno> findByNombreBetweenNotOrderByNombre(String nombreIni, String nombreFin);
 
     //Mayor que, menor que
     List<Alumno> findByFnacBefore(Date fecha);
@@ -101,4 +103,16 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
 
     List<Alumno> findByEstaturaGreaterThan(Double estatura);
     List<Alumno> findByEstaturaGreaterThanEqual(Double estatura);
+
+    //Patrones
+    List<Alumno> findByNombreStartingWith(String inicia);
+    List<Alumno> findByNombreContaining(String contiene);
+    List<Alumno> findByNombreEndingWith(String termina);
+    
+    //Like
+    List<Alumno> findByNombreLike(String patron);
+    List<Alumno> findByNombreNotLike(String patron);
+
+    long countByNombreLike(String patron);
+    long countByNonmbreLike(String patron);
 }
