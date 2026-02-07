@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
@@ -22,6 +23,9 @@ public class M60103CrudDatosTest {
         System.out.println(ALUMNO);
         System.out.println("Buscar alumno con matrcula " + MATRICULA);
 
+        System.out.println("Nuemero de alumnos antes de la elminiacion "
+        + repositorioAlumno.count());
+
         Optional<Alumno> optional = repositorioAlumno.findById(MATRICULA);
         if (optional.isPresent()){
             System.out.println("Alumno a eliminar");
@@ -33,5 +37,13 @@ public class M60103CrudDatosTest {
 
         System.out.println("Eliminar alumno por matricula");
         repositorioAlumno.deleteById("5A");
+
+        System.out.println("Eliminar una lista de matriculas");
+        repositorioAlumno.deleteAllById(List.of("V1", "V3", "V5"));
+
+        System.out.println("Nuemro de alumnos despuesde la eliminacion "
+        + repositorioAlumno.count());
+
+        repositorioAlumno.findAll().forEach(System.out::println);
     }
 }
