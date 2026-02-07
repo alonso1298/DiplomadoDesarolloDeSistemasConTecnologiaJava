@@ -50,7 +50,7 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
     List<Alumno> findByNombreOrPaterno(String nombre, String paterno);
     List<Alumno> findByNombreOrPaternoNull(String nombre);
     // nombre OR (paterno AND estatura)
-    List<Alumno> findByNombreOrPaternoAndEstatura(String nombre);
+    List<Alumno> findByNombreOrPaternoAndEstatura(String nombre, String paterno, Double estatura);
 
     long countByNombreAndPaterno(String nombre, String paterno);
     boolean existsByNombreAndPaterno(String nombre, String paterno);

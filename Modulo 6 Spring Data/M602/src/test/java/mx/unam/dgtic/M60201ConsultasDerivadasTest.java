@@ -115,4 +115,30 @@ public class M60201ConsultasDerivadasTest {
         + repositorioAlumno.countByPaternoIsNotNull());
         repositorioAlumno.findByPaternoIsNotNull().forEach(System.out::println);
     }
+
+    @Test
+    void buscarPorNombrePaterno(){
+        System.out.println(ALUMNO);
+        System.out.println("Busca alumnos nombre, paterno");
+        System.out.println("Numero de alumnos con nombre " + NOMBRE + " y paterno " + PATERNO
+            + repositorioAlumno.countByNombreAndPaterno(NOMBRE, PATERNO));
+
+        if (repositorioAlumno.existsByNombreAndPaterno(NOMBRE, PATERNO)){
+            System.out.println("Existen alumnos con nombre " + NOMBRE + " y paterno " + PATERNO);
+        }else {
+            System.out.println("NO Existen alumnos con nombre " + NOMBRE + " y paterno " + PATERNO);
+        }
+
+        System.out.println("Existen alumnos con nombre " + NOMBRE + " y paterno " + PATERNO
+                + repositorioAlumno.existsByNombreAndPaterno(NOMBRE, PATERNO));
+
+        System.out.println("Alumnos con nombre " + NOMBRE + " y paterno " + PATERNO);
+        repositorioAlumno.findByNombreOrPaterno(NOMBRE, PATERNO).forEach(System.out::println);
+
+        System.out.println("Alumnos con nombre " + NOMBRE + " o paterno Null");
+        repositorioAlumno.findByNombreOrPaternoNull(NOMBRE).forEach(System.out::println);
+
+        System.out.println("Alumnos con nombre " + NOMBRE + " o paterno null " + PATERNO);
+        repositorioAlumno.findByNombreOrPaternoAndEstatura(NOMBRE, PATERNO, ESTATURA).forEach(System.out::println);
+    }
 }
