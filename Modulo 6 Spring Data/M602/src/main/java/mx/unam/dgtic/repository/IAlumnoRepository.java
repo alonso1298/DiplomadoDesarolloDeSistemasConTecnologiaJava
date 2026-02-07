@@ -54,4 +54,26 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
 
     long countByNombreAndPaterno(String nombre, String paterno);
     boolean existsByNombreAndPaterno(String nombre, String paterno);
+
+    //Limitar registros
+    List<Alumno> findFirstByEstatura(Double estatura);
+    List<Alumno> findTopByEstatura(Double estatura);
+
+    //El mas bajo
+    List<Alumno> findFirstByOrderByEstatura();
+    //El mas alto
+    List<Alumno> findFirstByOrderByEstaturaDesc();
+
+    // el mas alto con paterno no nulo
+    List<Alumno> findFirstByPaternoIsNotNullOrderByEstaturaDesc();
+
+    //El mas alto que no coincida con NOMBRE
+    List<Alumno> findFirstByNombreNotOrderByEstaturaDesc(String nombre);
+
+    // Ver los tres primeros alumnos con paterno no nulo
+    List<Alumno> findFirst3ByPaternoIsNotNull();
+
+    // Ver los tres primeros alumnos con paterno no nulo ordenados por nombre
+    List<Alumno> findFirst3ByPaternoIsNotNullOrderByNombre();
+
 }
