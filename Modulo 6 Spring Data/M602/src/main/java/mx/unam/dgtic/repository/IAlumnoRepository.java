@@ -92,4 +92,13 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
     List<Alumno> findByNombreBetweenOrderByNombre(String nombreIni, String nombreFin);
     List<Alumno> findByNombreNotBetweenOrderByNombre(String nombreIni, String nombreFin);
 
+    //Mayor que, menor que
+    List<Alumno> findByFnacBefore(Date fecha);
+    List<Alumno> findByFnacAfter(Date fecha);
+
+    List<Alumno> findByEstaturaLessThan(Double estatura);
+    List<Alumno> findByEstaturaLessThanEqual(Double estatura);
+
+    List<Alumno> findByEstaturaGreaterThan(Double estatura);
+    List<Alumno> findByEstaturaGreaterThanEqual(Double estatura);
 }
