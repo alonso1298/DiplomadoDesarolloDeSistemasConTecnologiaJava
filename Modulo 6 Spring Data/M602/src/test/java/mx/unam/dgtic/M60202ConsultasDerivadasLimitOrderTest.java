@@ -18,7 +18,7 @@ public class M60202ConsultasDerivadasLimitOrderTest {
     private static final Double ESTATURA = 1.65;
     private static final Double ESTATURAMAX = 1.70;
     private static final Date FECHA = Date.valueOf("2026-01-06");
-    private static final String CADENA = "a";
+    private static final String PATRON = "a";
 
     @Autowired
     IAlumnoRepository repositorioAlumno;
@@ -112,4 +112,5 @@ public class M60202ConsultasDerivadasLimitOrderTest {
 
         System.out.println("\n");
     }
+
 }

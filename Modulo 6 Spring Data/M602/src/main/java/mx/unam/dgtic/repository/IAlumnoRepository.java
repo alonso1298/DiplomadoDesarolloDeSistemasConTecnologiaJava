@@ -89,7 +89,7 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
     List<Alumno> findByEstaturaBetweenOrderByEstatura(Double estaturaMin, Double estaturaMax);
 //    List<Alumno> findByEstaturaNotBetweenOrderByEstatura(Double estaturaMin, Double estaturaMax);
 
-    List<Alumno> findByEstaturaNotBetweenAndNombreNotOrderByEstatura(Double estaturaMin, String nombre, Double estaturaMax);
+//    List<Alumno> findByEstaturaNotBetweenAndNombreNotOrderByEstatura(Double estaturaMin, String nombre, Double estaturaMax);
 
     List<Alumno> findByNombreBetweenOrderByNombre(String nombreIni, String nombreFin);
 //    List<Alumno> findByNombreBetweenNotOrderByNombre(String nombreIni, String nombreFin);
@@ -108,11 +108,12 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
     List<Alumno> findByNombreStartingWith(String inicia);
     List<Alumno> findByNombreContaining(String contiene);
     List<Alumno> findByNombreEndingWith(String termina);
-    
+
     //Like
     List<Alumno> findByNombreLike(String patron);
     List<Alumno> findByNombreNotLike(String patron);
 
     long countByNombreLike(String patron);
-    long countByNonmbreLike(String patron);
+    long countByNombreNotLike(String patron);
+
 }
