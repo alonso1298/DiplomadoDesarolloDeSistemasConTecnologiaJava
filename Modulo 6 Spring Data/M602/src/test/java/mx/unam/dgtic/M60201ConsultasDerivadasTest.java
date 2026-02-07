@@ -36,6 +36,11 @@ public class M60201ConsultasDerivadasTest {
         repositorioAlumno.getByNombre(NOMBRE).forEach(a->{
             System.out.println(a.getNombre() + " " + a.getPaterno());
         });
+
+        System.out.println("findByNombreEqual");
+        repositorioAlumno.findByNombreEquals(NOMBRE).forEach(a->{
+            System.out.println(a.getNombre() + " " + a.getPaterno());
+        });
     }
 
     @ParameterizedTest
@@ -48,6 +53,19 @@ public class M60201ConsultasDerivadasTest {
                 + " " + repositorioAlumno.countByNombre(nombre));
 
         Iterable<Alumno> alumnos = repositorioAlumno.findByNombre(nombre);
+        alumnos.forEach(System.out::println);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"CARLOS", "Juan", "Marco", "Gema", "Marco 2"})
+    void buscarPorNombreNotParametroTest(String nombre){
+        System.out.println(ALUMNO);
+        System.out.println("Buscar por not nombre " + nombre);
+
+        System.out.println("Numeor de alumnos con el nombre " + nombre
+                + " " + repositorioAlumno.countByNombreNot(nombre));
+
+        Iterable<Alumno> alumnos = repositorioAlumno.findByNombreNot(nombre);
         alumnos.forEach(System.out::println);
     }
 }
