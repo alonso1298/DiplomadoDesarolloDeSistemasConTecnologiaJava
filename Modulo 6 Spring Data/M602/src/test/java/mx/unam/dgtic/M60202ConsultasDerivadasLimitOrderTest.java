@@ -26,7 +26,6 @@ public class M60202ConsultasDerivadasLimitOrderTest {
     IAlumnoRepository repositorioAlumno;
 
     @Test
-    @Transactional
     void buscarPorNombreTest() {
         System.out.println(ALUMNO);
         System.out.println("Limitar registros por estatura " + ESTATURA);

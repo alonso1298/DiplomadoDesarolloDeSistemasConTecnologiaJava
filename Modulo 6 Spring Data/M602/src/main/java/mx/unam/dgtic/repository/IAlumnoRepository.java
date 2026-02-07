@@ -3,6 +3,7 @@ package mx.unam.dgtic.repository;
 import mx.unam.dgtic.entity.Alumno;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
@@ -75,5 +76,20 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
 
     // Ver los tres primeros alumnos con paterno no nulo ordenados por nombre
     List<Alumno> findFirst3ByPaternoIsNotNullOrderByNombre();
+
+    // Operadores
+    // IN
+    List<Alumno> findByEstaturaIn(Collection<Double> estaturas);
+    List<Alumno> findByEstaturaNotIn(Collection<Double> estaturas);
+
+    List<Alumno> findByNombre(Collection<String> nombres);
+    List<Alumno> findByNombreNotIn(Collection<String> nombres);
+
+    // BETWEEN
+    List<Alumno> findByEstaturaBetweenOrderByEstatura(Double estaturaMin, Double estaturaMax);
+    List<Alumno> findByEstaturaNotBetweenOrderByEstatura(Double estaturaMin, Double estaturaMax);
+
+    List<Alumno> findByNombreBetweenOrderByNombre(String nombreIni, String nombreFin);
+    List<Alumno> findByNombreNotBetweenOrderByNombre(String nombreIni, String nombreFin);
 
 }
