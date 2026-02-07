@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -85,5 +87,32 @@ public class M60201ConsultasDerivadasTest {
             });
             alumnoStream.close();
         }
+    }
+
+    @Test
+    void buscarPorCamposTest() throws ParseException {
+        System.out.println(ALUMNO);
+        System.out.println("Buscar por distintos campos");
+        System.out.println("Buscar por paterno " + PATERNO);
+        repositorioAlumno.findByPaterno(PATERNO).forEach(System.out::println);
+
+        System.out.println("Buscar por estatura " + ESTATURA);
+        repositorioAlumno.findByEstatura(ESTATURA).forEach(System.out::println);
+
+        System.out.println("Buscar por Fnac " + FECHA);
+        repositorioAlumno.findByFnac(new SimpleDateFormat("yyyy-MM-dd")
+                .parse(FECHA)).forEach(System.out::println);
+    }
+
+    @Test
+    void buscarNulosTest(){
+        System.out.println(ALUMNO);
+        System.out.println("No. de alumnos que tienen Paterno null "
+            + repositorioAlumno.countByPaternoIsNull());
+        repositorioAlumno.findByPaternoIsNull().forEach(System.out::println);
+
+        System.out.println("Numero de alumnos que NO tienen Paterno null "
+        + repositorioAlumno.countByPaternoIsNotNull());
+        repositorioAlumno.findByPaternoIsNotNull().forEach(System.out::println);
     }
 }
