@@ -45,4 +45,13 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
     long countByPaternoIsNull();
     long countByPaternoIsNotNull();
 
+    // Operadores logicos
+    List<Alumno> findByNombreAndPaterno(String nombre, String paterno);
+    List<Alumno> findByNombreOrPaterno(String nombre, String paterno);
+    List<Alumno> findByNombreOrPaternoNull(String nombre);
+    // nombre OR (paterno AND estatura)
+    List<Alumno> findByNombreOrPaternoAndEstatura(String nombre);
+
+    long countByNombreAndPaterno(String nombre, String paterno);
+    boolean existsByNombreAndPaterno(String nombre, String paterno);
 }
