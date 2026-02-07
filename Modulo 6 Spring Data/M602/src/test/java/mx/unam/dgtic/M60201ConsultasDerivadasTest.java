@@ -1,5 +1,6 @@
 package mx.unam.dgtic;
 
+import jakarta.transaction.Transactional;
 import mx.unam.dgtic.entity.Alumno;
 import mx.unam.dgtic.repository.IAlumnoRepository;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @SpringBootTest
 public class M60201ConsultasDerivadasTest {
@@ -67,5 +69,21 @@ public class M60201ConsultasDerivadasTest {
 
         Iterable<Alumno> alumnos = repositorioAlumno.findByNombreNot(nombre);
         alumnos.forEach(System.out::println);
+    }
+
+    @Test
+    @Transactional
+    void streamByNombreTest(){
+        System.out.println(ALUMNO);
+        System.out.println("StreamByNombre");
+        try (Stream<Alumno> alumnoStream =
+                     repositorioAlumno.streamByNombreNot(NOMBRE)) {
+            System.out.println("Alumnos con nombre diferente a " + NOMBRE);
+            alumnoStream.forEach(a -> {
+                System.out.println("Procesando alumno " + a.getNombre() + " " + a.getPaterno()
+                        + " " + a.getMatricula());
+            });
+            alumnoStream.close();
+        }
     }
 }

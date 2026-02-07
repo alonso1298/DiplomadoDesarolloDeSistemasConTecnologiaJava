@@ -3,7 +3,9 @@ package mx.unam.dgtic.repository;
 import mx.unam.dgtic.entity.Alumno;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 
 public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
 
@@ -28,5 +30,19 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
 
     long countByNombreNot(String nombre);
 
+    Stream<Alumno> streamByNombre(String nombre);
+    Stream<Alumno> streamByNombreNot(String nombre);
+
+    //Campos
+    List<Alumno> findByPaterno(String paterno);
+    List<Alumno> findByEstatura(Double estatura);
+    List<Alumno> findByFnac(Date fnac);
+
+    //Nulos
+    List<Alumno> findByPaternoIsNull();
+    List<Alumno> findByPaternoIsNotNull();
+
+    long countByPaternoIsNull();
+    long countByPaternoIsNotNull();
 
 }
