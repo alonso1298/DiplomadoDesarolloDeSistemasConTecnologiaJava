@@ -37,12 +37,17 @@ public class ProductoDaoImpl implements IProductoDao{
     }
 
     @Override
-    public void guardar(Producto producto) throws SQLException {
-        String sql = "INSERT INTO productos(nonbre, precio, stock)" +
+    public Integer guardar(Producto producto) throws SQLException {
+        String sql = "INSERT INTO productos(nombre, precio, stock)" +
                 "VALUES(?, ?, ?)";
         PreparedStatement ps = cn.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setString(1, producto.getNombre());
         ps.setDouble(2, producto.getPrecio());
         ps.setInt(3, producto.getStock());
+        int p = ps.executeUpdate();
+
+        return p;
     }
+
+
 }
