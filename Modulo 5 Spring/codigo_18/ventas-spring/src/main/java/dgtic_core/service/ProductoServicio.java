@@ -18,7 +18,7 @@ public class ProductoServicio {
     public List<Producto> listar() throws SQLException{
         return productoDao.lista();
     }
-    public void guarrdar(Producto producto) throws SQLException{
+    public void guardar(Producto producto) throws SQLException{
         productoDao.guardar(producto);
     }
 

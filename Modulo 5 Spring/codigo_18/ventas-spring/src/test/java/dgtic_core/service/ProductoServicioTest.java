@@ -58,7 +58,7 @@ class ProductoServicioTest {
     }
     @Test
     void almacenar()throws SQLException{
-        productoServicio.guarrdar(new Producto(3, "Producto4", 234.56, 10));
+        productoServicio.guardar(new Producto(3, "Producto4", 234.56, 10));
         verify(productoDao, times(1)).guardar(any(Producto.class));
     }
 }
