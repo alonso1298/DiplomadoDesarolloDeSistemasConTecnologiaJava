@@ -9,5 +9,8 @@ import java.util.List;
 @Repository
 public interface IProductoDao {
     List<Producto> lista() throws SQLException;
+    Producto buscarPorId(int id) throws SQLException;
     void guardar(Producto producto) throws SQLException;
+    void actualizar(Producto producto) throws SQLException;
+    void eliminar(int id) throws SQLException;
 }

@@ -19,9 +19,6 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 class ProductoServicioTest {
 
-    @Mock
-    IProductoDao productoDao;
-
     @InjectMocks
     ProductoServicio productoServicio;
 
