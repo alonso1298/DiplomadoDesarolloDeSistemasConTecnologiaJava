@@ -53,6 +53,8 @@ public class M60203ConsultasDerivadasPatronesTest {
     @Test
     void buscarLikeTest(){
 
+        System.out.println(ALUMNO);
+
         System.out.println("Alumnos que el nombre inicia con " + PATRON + " - " + PATRON + "%");
         repositorioAlumno.findByNombreLike(PATRON + "%").forEach(a->{
             System.out.println(a.getNombre());
