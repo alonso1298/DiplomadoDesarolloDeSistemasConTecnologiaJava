@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +24,25 @@ public class ProductoDaoImpl implements IProductoDao{
         String sql = "SELECT * FROM productos";
         PreparedStatement ps = cn.getConnection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
-        return List.of();
+        while (rs.next()){
+            Producto p = Producto.builder()
+                    .id_producto(rs.getInt(1))
+                    .nombre(rs.getString(2))
+                    .precio(rs.getDouble(3))
+                    .stock(rs.getInt(4))
+                    .build();
+            productos.add(p);
+        }
+        return productos;
     }
 
     @Override
     public void guardar(Producto producto) throws SQLException {
-
+        String sql = "INSERT INTO productos(nonbre, precio, stock)" +
+                "VALUES(?, ?, ?)";
+        PreparedStatement ps = cn.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, producto.getNombre());
+        ps.setDouble(2, producto.getPrecio());
+        ps.setInt(3, producto.getStock());
     }
 }
