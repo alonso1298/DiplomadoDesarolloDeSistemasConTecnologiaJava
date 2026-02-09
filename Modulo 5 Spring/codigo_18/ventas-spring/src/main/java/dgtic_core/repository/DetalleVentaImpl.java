@@ -27,6 +27,7 @@ public class DetalleVentaImpl implements IDetalleVentaDao{
         while (rs.next()){
             DetalleVenta detalleVenta = DetalleVenta.builder()
                     .cantidad(rs.getInt(1))
+                    .idDetalle(rs.getInt(2))
                     .idProducto(rs.getInt(3))
                     .idVenta(rs.getInt(4))
                     .precioUnitario(rs.getDouble(5))

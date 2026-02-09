@@ -38,6 +38,10 @@ public class ProductoDaoImpl implements IProductoDao{
 
     @Override
     public Producto buscarPorId(int id) throws SQLException {
+        String sql = "SELECT * FOM productos WHERE id_producto=?";
+        PreparedStatement ps = cn.getConnection().prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
         return null;
     }
 
