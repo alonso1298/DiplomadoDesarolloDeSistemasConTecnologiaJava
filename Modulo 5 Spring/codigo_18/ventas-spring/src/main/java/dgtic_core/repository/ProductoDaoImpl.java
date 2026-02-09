@@ -37,6 +37,11 @@ public class ProductoDaoImpl implements IProductoDao{
     }
 
     @Override
+    public Producto buscarPorId(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
     public void guardar(Producto producto) throws SQLException {
         String sql = "INSERT INTO productos(nombre, precio, stock)" +
                 "VALUES(?, ?, ?)";
@@ -45,6 +50,16 @@ public class ProductoDaoImpl implements IProductoDao{
         ps.setDouble(2, producto.getPrecio());
         ps.setInt(3, producto.getStock());
         ps.executeUpdate();
+    }
+
+    @Override
+    public void actualizar(Producto producto) throws SQLException {
+
+    }
+
+    @Override
+    public void eliminar(int id) throws SQLException {
+
     }
 
 
