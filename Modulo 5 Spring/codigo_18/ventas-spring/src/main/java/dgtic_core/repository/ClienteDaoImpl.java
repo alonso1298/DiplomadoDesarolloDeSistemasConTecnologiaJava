@@ -66,7 +66,7 @@ public class ClienteDaoImpl implements IClienteDao{
     }
 
     @Override
-    public Integer aeliminar(Integer id) throws SQLException {
+    public Integer eliminar(Integer id) throws SQLException {
         String sql = "DELETE FROM clientes WHERE id_cliente=?";
         PreparedStatement ps = cn.getConnection().prepareStatement(sql);
         ps.setInt(1, id);

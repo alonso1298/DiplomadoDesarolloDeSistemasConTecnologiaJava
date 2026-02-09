@@ -10,7 +10,7 @@ public interface IClienteDao {
     List<Cliente> lista() throws SQLException;
     Integer guardar(Cliente cliente) throws SQLException;
     Integer actualizar(Cliente cliente) throws SQLException;
-    Integer aeliminar(Integer id) throws SQLException;
+    Integer eliminar(Integer id) throws SQLException;
     Cliente consultaId(Integer id) throws SQLException;
 
 }
