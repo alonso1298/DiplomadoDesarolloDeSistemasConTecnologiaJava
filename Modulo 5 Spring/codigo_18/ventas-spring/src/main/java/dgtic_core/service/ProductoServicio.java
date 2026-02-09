@@ -27,5 +27,8 @@ public class ProductoServicio {
     public void actualizar(Producto producto) throws SQLException {
         productoDao.actualizar(producto);
     }
+    public void eliminar(int id) throws SQLException{
+        productoDao.eliminar(id);
+    }
 
 }
