@@ -50,20 +50,10 @@ public class DetalleVentaDaoImpl implements IDetalleVentaDao{
     }
 
     @Override
-    public void eliminar(int id) throws SQLException {
+    public Integer eliminar(int id) throws SQLException {
         String sql = "DELETE FROM detalle_venta WHERE id_detalle=?";
         PreparedStatement ps = cn.getConnection().prepareStatement(sql);
         ps.setInt(1,id);
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()){
-            DetalleVenta detalleVenta = DetalleVenta.builder()
-                    .idDetalle(rs.getInt(1))
-                    .cantidad(rs.getInt(2))
-                    .idProducto(rs.getInt(3))
-                    .idVenta(rs.getInt(4))
-                    .precioUnitario(rs.getDouble(5))
-                    .build();
-
-        }
+        return ps.executeUpdate();
     }
 }

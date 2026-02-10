@@ -19,7 +19,7 @@ public class DetalleVentaTest {
     void guardarDetalleVentaTest() throws SQLException {
         DetalleVenta detalleVenta = DetalleVenta.builder()
                 .idVenta(1)
-                .idProducto(1)
+                .idProducto(2)
                 .cantidad(2)
                 .precioUnitario(300)
                 .build();
