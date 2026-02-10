@@ -38,12 +38,12 @@ public class DetalleVentaDaoImpl implements IDetalleVentaDao{
 
     @Override
     public void guardar(DetalleVenta detalleVenta) throws SQLException {
-        String sql = "INSERT INTO detalle_venta(cantidad, id_detalle, id_producto, id_venta, precio_unitario)" +
-                "VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO detalle_venta(id_venta, id_producto, cantidad, precio_unitario)" +
+                "VALUES(?, ?, ?, ?)";
         PreparedStatement ps = cn.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        ps.setInt(1, detalleVenta.getCantidad());
+        ps.setInt(1, detalleVenta.getIdVenta());
         ps.setInt(2, detalleVenta.getIdProducto());
-        ps.setInt(3, detalleVenta.getIdVenta());
+        ps.setInt(3, detalleVenta.getCantidad());
         ps.setDouble(4, detalleVenta.getPrecioUnitario());
         ps.executeUpdate();
 
