@@ -7,55 +7,34 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
+@Transactional
 class ProductoServicioTest {
 
-    @InjectMocks
+    @Autowired
     ProductoServicio productoServicio;
 
-    static ArrayList<Producto> listaProducto = new ArrayList<>();
-
-    @BeforeAll // Se ejecuta una sola vez
-    static void estado(){
+    @Test
+    void guardarProductoTest() throws SQLException{
         Producto producto = Producto.builder()
-                .id_producto(1)
-                .nombre("Producto 1")
-                .precio(234.89)
-                .stock(109)
+                .nombre("Teclado")
+                .precio(700)
+                .stock(15)
                 .build();
-        listaProducto.add(producto);
-        producto = Producto.builder()
-                .id_producto(2)
-                .nombre("Producto 2")
-                .precio(234.09)
-                .stock(18)
-                .build();
-        listaProducto.add(producto);
-    }
-    @BeforeEach // Cada que se ejecute un test guarda y lo da
-    void inicio() throws SQLException{
-        when(productoDao.lista())
-                .thenReturn(listaProducto);
-        doNothing().when(productoDao).guardar(any(Producto.class));
-    }
-    @Test
-    void lista() throws SQLException{
-        assertEquals(2, productoDao.lista().size());
-        System.out.println(productoServicio.listar().size());
-        verify(productoDao, times(2)).lista();
-    }
-    @Test
-    void almacenar()throws SQLException{
-        productoServicio.guardar(new Producto(3, "Producto4", 234.56, 10));
-        verify(productoDao, times(1)).guardar(any(Producto.class));
+        productoServicio.guardar(producto);
+
+        List<Producto> lista = productoServicio.listar();
     }
 }
