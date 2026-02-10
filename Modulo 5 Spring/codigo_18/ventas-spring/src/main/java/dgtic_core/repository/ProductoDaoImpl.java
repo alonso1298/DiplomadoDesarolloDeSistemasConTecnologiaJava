@@ -58,12 +58,21 @@ public class ProductoDaoImpl implements IProductoDao{
 
     @Override
     public void actualizar(Producto producto) throws SQLException {
-
+        String sql = "UPDATE productos set nombre=?, precio=?, stock=?" +
+                "WHERE id_producto=?";
+        PreparedStatement ps = cn.getConnection().prepareStatement(sql);
+        ps.setString(1, producto.getNombre());
+        ps.setDouble(2, producto.getPrecio());
+        ps.setInt(3, producto.getStock());
+        ps.setInt(4, producto.getId_producto());
     }
 
     @Override
-    public void eliminar(int id) throws SQLException {
-
+    public Integer eliminar(int id) throws SQLException {
+        String sql = "DELETE FROM clientes WHERE id_producto=?";
+        PreparedStatement ps = cn.getConnection().prepareStatement(sql);
+        ps.setInt(1, id);
+        return ps.executeUpdate();
     }
 
 

@@ -12,5 +12,5 @@ public interface IProductoDao {
     Producto buscarPorId(int id) throws SQLException;
     void guardar(Producto producto) throws SQLException;
     void actualizar(Producto producto) throws SQLException;
-    void eliminar(int id) throws SQLException;
+    Integer eliminar(int id) throws SQLException;
 }

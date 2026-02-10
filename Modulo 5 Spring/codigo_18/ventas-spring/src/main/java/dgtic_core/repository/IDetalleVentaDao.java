@@ -10,5 +10,4 @@ public interface IDetalleVentaDao {
     List<DetalleVenta> lista() throws SQLException;
     void guardar(DetalleVenta detalleVenta) throws SQLException;
     void eliminar(int id) throws SQLException;
-
 }
