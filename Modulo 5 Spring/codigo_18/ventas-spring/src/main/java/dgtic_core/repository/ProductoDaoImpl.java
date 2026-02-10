@@ -69,7 +69,7 @@ public class ProductoDaoImpl implements IProductoDao{
 
     @Override
     public Integer eliminar(int id) throws SQLException {
-        String sql = "DELETE FROM clientes WHERE id_producto=?";
+        String sql = "DELETE FROM productos WHERE id_producto=?";
         PreparedStatement ps = cn.getConnection().prepareStatement(sql);
         ps.setInt(1, id);
         return ps.executeUpdate();
