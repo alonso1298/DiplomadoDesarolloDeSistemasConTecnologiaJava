@@ -30,11 +30,19 @@ class ProductoServicioTest {
     void guardarProductoTest() throws SQLException{
         Producto producto = Producto.builder()
                 .nombre("Teclado")
-                .precio(700)
+                .precio(700.0)
                 .stock(15)
                 .build();
         productoServicio.guardar(producto);
 
         List<Producto> lista = productoServicio.listar();
+        assertFalse(lista.isEmpty());
+    }
+
+    @Test
+    void eliminarProductoTest() throws SQLException {
+        productoServicio.eliminar(1);
+        List<Producto> lista = productoServicio.listar();
+        assertTrue(lista.stream().noneMatch(p -> p.getId_producto() == 1));
     }
 }
