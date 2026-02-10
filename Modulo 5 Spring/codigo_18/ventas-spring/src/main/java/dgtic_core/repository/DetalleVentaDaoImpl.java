@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class DetalleVentaImpl implements IDetalleVentaDao{
+public class DetalleVentaDaoImpl implements IDetalleVentaDao{
 
     @Autowired
     DataSource cn;
