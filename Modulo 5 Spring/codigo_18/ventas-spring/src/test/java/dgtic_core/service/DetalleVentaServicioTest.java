@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 @SpringBootTest
 @Transactional
-public class DetalleVentaTest {
+public class DetalleVentaServicioTest {
 
     @Autowired
     DetalleVentaServicio detalleVentaServicio;

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ProductoDaoImpl implements IProductoDao{
+public class ProductoDaoImpl implements ProductoDao {
 
     @Autowired
     DataSource cn;

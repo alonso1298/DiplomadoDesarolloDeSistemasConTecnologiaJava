@@ -1,7 +1,7 @@
 package dgtic_core.service;
 
 import dgtic_core.model.Producto;
-import dgtic_core.repository.IProductoDao;
+import dgtic_core.repository.ProductoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +12,9 @@ import java.util.List;
 public class ProductoServicio {
 
     @Autowired
-    private final IProductoDao productoDao;
+    private final ProductoDao productoDao;
 
-    public ProductoServicio(IProductoDao productoDao){
+    public ProductoServicio(ProductoDao productoDao){
         this.productoDao = productoDao;
     }
 
