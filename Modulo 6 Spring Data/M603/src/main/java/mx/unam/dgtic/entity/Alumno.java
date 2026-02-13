@@ -25,7 +25,7 @@ public class Alumno {
     @JoinTable(
             name = "Alumnos_Grupos",
             joinColumns = @JoinColumn(name = "matricula", referencedColumnName = "matricula"),
-            inverseJoinColumns = @JoinColumn(name = "id_grupo", referencedColumnName = "id_grupos")
+            inverseJoinColumns = @JoinColumn(name = "id_grupo", referencedColumnName = "id_grupo")
     )
     private List<Grupo> grupos = new ArrayList<>();
     @OneToOne(mappedBy = "alumno", cascade = CascadeType.ALL)
