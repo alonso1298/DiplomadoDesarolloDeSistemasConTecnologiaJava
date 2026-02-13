@@ -92,13 +92,14 @@ public class Alumno {
 
     @Override
     public String toString() {
+        String estadoStr = (getEstado() != null) ? getEstado().getEstado() : "null";
         return "Alumno{" +
                 "matricula='" + matricula + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", paterno='" + paterno + '\'' +
                 ", fnac=" + fnac +
                 ", estatura=" + estatura +
-                ", estado=" + estado +
+                ", estado=" + estadoStr +
                 ", curp='" + curp + '\'' +
                 '}';
     }
