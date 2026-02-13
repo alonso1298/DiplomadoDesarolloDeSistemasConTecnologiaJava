@@ -2,7 +2,9 @@ package mx.unam.dgtic.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Alumnos")
@@ -17,6 +19,17 @@ public class Alumno {
     @JoinColumn(name = "id_estado")
     private Estado estado;
     private String curp;
+    @OneToMany(mappedBy = "alumno")
+    private List<Calificacion> calificaciones = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "Alumnos_Grupos",
+            joinColumns = @JoinColumn(name = "matricula", referencedColumnName = "matricula"),
+            inverseJoinColumns = @JoinColumn(name = "id_grupo", referencedColumnName = "id_grupos")
+    )
+    private List<Grupo> grupos = new ArrayList<>();
+    @OneToOne(mappedBy = "alumno", cascade = CascadeType.ALL)
+    private Perfil perfil;
 
     public Estado getEstado() {
         return estado;
@@ -88,6 +101,44 @@ public class Alumno {
 
     public void setCurp(String curp) {
         this.curp = curp;
+    }
+
+    public List<Calificacion> getCalificaciones() {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(List<Calificacion> calificaciones) {
+        this.calificaciones = calificaciones;
+    }
+
+    public List<Grupo> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(List<Grupo> grupos) {
+        this.grupos = grupos;
+    }
+
+    public void addGrupos(Grupo grupo){
+        if (!grupos.contains(grupo)){
+            grupos.add(grupo);
+            grupo.addAlumno(this);
+        }
+    }
+
+    public void removeGrupo(Grupo grupo){
+        if (grupos.contains(grupo)){
+            grupos.remove(grupo);
+            grupo.removeAlumno(this);
+        }
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     @Override

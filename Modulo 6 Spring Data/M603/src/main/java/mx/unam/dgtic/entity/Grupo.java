@@ -2,6 +2,9 @@ package mx.unam.dgtic.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Entity
 @Table(name = "Grupos")
 public class Grupo {
@@ -10,8 +13,12 @@ public class Grupo {
     @Column(name = "id_grupo")
     protected int id;
     protected String grupo;
+    @ManyToMany(mappedBy = "grupos")
+    private Collection<Alumno> alumnos;
 
-    public Grupo(){}
+    public Grupo(){
+        alumnos = new ArrayList<Alumno>();
+    }
 
     public Grupo(String grupo) {
         this.grupo = grupo;
@@ -33,11 +40,36 @@ public class Grupo {
         this.grupo = grupo;
     }
 
+    public Collection<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(Collection<Alumno> alumnos) {
+        this.alumnos = alumnos;
+    }
+
+    public void addAlumno(Alumno alumno){
+        if (!getAlumnos().contains(alumno)){
+            getAlumnos().add(alumno);
+        }
+        if (!alumno.getGrupos().contains(this)){
+            alumno.getGrupos().add(this);
+        }
+    }
+
+    public void removeAlumno(Alumno alumno){
+        if (alumnos.contains(alumno)){
+            alumnos.remove(alumno);
+            alumno.getGrupos().remove(this);
+        }
+    }
+
     @Override
     public String toString() {
         return "Grupo{" +
                 "id=" + id +
                 ", grupo='" + grupo + '\'' +
+                "con " + getAlumnos().size() + " alumnos" +
                 '}';
     }
 }
