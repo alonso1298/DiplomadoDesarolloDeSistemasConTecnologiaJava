@@ -1,9 +1,9 @@
 package mx.unam.dgtic.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Estados")
@@ -13,6 +13,8 @@ public class Estado {
     private int idEstado;
     private String estado;
     private String abreviatura;
+    @OneToMany(mappedBy = "estado") // En un estado pueden haber muchos alumnos
+    private Set<Alumno> alumnos = new HashSet<>();
 
     public Estado() {
     }
@@ -45,6 +47,14 @@ public class Estado {
 
     public void setAbreviatura(String abreviatura) {
         this.abreviatura = abreviatura;
+    }
+
+    public Set<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(Set<Alumno> alumnos) {
+        this.alumnos = alumnos;
     }
 
     @Override

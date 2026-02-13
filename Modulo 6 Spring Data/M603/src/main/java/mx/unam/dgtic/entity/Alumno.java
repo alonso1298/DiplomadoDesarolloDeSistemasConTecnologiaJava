@@ -13,8 +13,8 @@ public class Alumno {
     private String paterno;
     private Date fnac;
     private double estatura;
-    @ManyToOne
-    @JoinColumn(name = "estado_id_estado")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_estado")
     private Estado estado;
     private String curp;
 
