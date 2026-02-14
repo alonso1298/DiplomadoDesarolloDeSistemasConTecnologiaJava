@@ -64,7 +64,7 @@ class M60402ConsultasNombradasConJoinTests {
 			"Guanajuato, Tercero"
 	})
 	@DisplayName("Buscar grupo y estado")
-	void buscarEnGrupoYEstado(String estado, String grupo){
+	void buscarPorGrupoYEstado(String estado, String grupo){
 		System.out.println(ALUMNO);
 		System.out.println("Buscar un grupo " + grupo + "estado " + estado);
 		respositorioAlumno.buscarGrupoAndEstado(grupo, estado).forEach(a->{

@@ -34,7 +34,8 @@ class M60401ConsultasNombradasTests {
 	@DisplayName("NamedNativeQuery: Buscar alumnos altos mayor al promedio")
 	void buscarAltosSqlTest(){
 		System.out.println(ALUMNO);
-		System.out.println("Buscar alumnos altos mayor al promedio");
+		System.out.println("Buscar alumnos altos mayor al promedio que es "
+			+ respositorioAlumno.estaturaPromedio());
 		respositorioAlumno.buscarAltosMayorAlPromedio().forEach(a->{
 			System.out.println(a.getNombre() + " " + a.getPaterno()
 					+ " " + a.getEstatura());
