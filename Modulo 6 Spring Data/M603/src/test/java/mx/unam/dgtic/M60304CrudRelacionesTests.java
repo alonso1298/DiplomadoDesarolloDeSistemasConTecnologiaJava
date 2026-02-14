@@ -129,5 +129,27 @@ public class M60304CrudRelacionesTests {
     @Test
     @Transactional
     @Commit
-    void eliminar
+    void eliminarAlumnoGrupoTest(){
+        System.out.println(ALUMNO);
+        // Se elimina la relacion no la entidad
+        Alumno alumno = repositorioAlumno.findById(MATRICULA)
+                .orElseThrow(()-> new RuntimeException(
+                        "No existe el alumno con la matricula " + MATRICULA));
+        Grupo grupo = repositorioGrupo.findById(ID_GRUPO)
+                .orElseThrow(()-> new RuntimeException(
+                        "No existe elgrupo " + ID_GRUPO));
+
+        System.out.println("Alumno " + alumno);
+        System.out.println("Grupo antes de la leiminacion");
+        alumno.getGrupos().forEach(System.out::println);
+
+        alumno.removeGrupo(grupo);
+        repositorioAlumno.save(alumno);
+
+        System.out.println("Grupos despues de eliminar");
+        alumno = repositorioAlumno.findById(MATRICULA)
+                .orElseThrow(()-> new RuntimeException(
+                        "No existe el alumno con la matricula " + MATRICULA));
+        alumno.getGrupos().forEach(System.out::println);
+    }
 }
