@@ -8,17 +8,40 @@ import java.util.List;
 
 @Entity
 @Table(name = "Alumnos")
-@NamedQuery(name = "Alumno.buscarAltos",
-        query = "SELECT a FROM Alumno a WHERE a.estatura >= 1.70" //(JPQL)
-        // SELECT * FROM Alumnos WHERE a.estatura >= 1.70 (SQL)
-)
-@NamedQuery(name = "Alumno.contarPorEstadoCurp",
-        query = "SELECT COUNT(a) FROM Alumno a" +
-                " WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
-)
-@NamedQuery(name = "Alumno.buscarPorEstadoCurp",
-        query = "SELECT a FROM Alumno a" +
-                " WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
+@NamedQueries({
+        @NamedQuery(name = "Alumno.buscarAltos",
+                query = "SELECT a FROM Alumno a WHERE a.estatura >= 1.70" //(JPQL)
+                // SELECT * FROM Alumnos WHERE a.estatura >= 1.70 (SQL)
+        ),
+        @NamedQuery(name = "Alumno.contarPorEstadoCurp",
+                query = "SELECT COUNT(a) FROM Alumno a" +
+                        " WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
+        ),
+        @NamedQuery(name = "Alumno.buscarPorEstadoCurp",
+                query = "SELECT a FROM Alumno a" +
+                        " WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
+        ),
+        @NamedQuery(name = "Alumno.conSinCalificacion",
+                query = """
+                        SELECT a FROM Alumno
+                        LEFT JOIN a.calificaciones c 
+                        WHERE c IS NULL
+                        """
+        ),
+        @NamedQuery(name = "Alumno.conReprobacion",
+                query = """
+                        SELECT DISTINCT a
+                        FROM Alumno a
+                        JOIN a.calificaciones c
+                        WHERE c.calificacion < 6
+                        """
+        )
+})
+@NamedNativeQuery(name = "Alumno.buscarAltosMayorAlPromedio",
+        query = "SELECT * FROM Alumnos " +
+                "WHERE estatura >= (SELECT AVG(estatura)promedio FROM Alumnos) " +
+                "ORDER BY estatura DESC",
+        resultClass = Alumno.class
 )
 public class Alumno {
     @Id
