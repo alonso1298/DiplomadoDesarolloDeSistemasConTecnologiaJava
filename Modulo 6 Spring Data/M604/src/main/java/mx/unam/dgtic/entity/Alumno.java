@@ -21,14 +21,22 @@ import java.util.List;
                 query = "SELECT a FROM Alumno a" +
                         " WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
         ),
-        @NamedQuery(name = "Alumno.conSinCalificacion",
+        @NamedQuery(name = "Alumno.buscarSinCalificacion",
                 query = """
-                        SELECT a FROM Alumno
+                        SELECT a FROM Alumno a
                         LEFT JOIN a.calificaciones c 
                         WHERE c IS NULL
                         """
         ),
-        @NamedQuery(name = "Alumno.conReprobacion",
+        @NamedQuery(name = "Alumno.buscarConReprobacion",
+                query = """
+                        SELECT DISTINCT a
+                        FROM Alumno a
+                        JOIN a.calificaciones c
+                        WHERE c.calificacion < 6
+                        """
+        ),
+        @NamedQuery(name = "Alumno.buscarEnMultiplesGrupos",
                 query = """
                         SELECT DISTINCT a
                         FROM Alumno a

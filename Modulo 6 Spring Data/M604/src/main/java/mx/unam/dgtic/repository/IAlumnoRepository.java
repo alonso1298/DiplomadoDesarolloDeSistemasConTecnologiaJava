@@ -19,4 +19,7 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
 
     //NamedNativeQuery
     List<Alumno> buscarAltosMayorAlPromedio();
+
+    List<Alumno> buscarSinCalificacion();
+    List<Alumno> buscarConReprobacion();
 }

@@ -20,13 +20,24 @@ class M60401ConsultasNombradasTests {
 	IAlumnoRepository respositorioAlumno;
 
 	@Test
-	@DisplayName("Buscar alumnos altos >= 1.70")
+	@DisplayName("NamedQuery: Buscar alumnos altos >= 1.70")
 	void buscarAltosTest(){
 		System.out.println(ALUMNO);
 		System.out.println("Buscar alumnos altos que son >= 1.70");
 		respositorioAlumno.buscarAltos().forEach(a->{
 			System.out.println(a.getNombre() + " " + a.getPaterno()
 				+ " " + a.getEstatura());
+		});
+	}
+
+	@Test
+	@DisplayName("NamedNativeQuery: Buscar alumnos altos mayor al promedio")
+	void buscarAltosSqlTest(){
+		System.out.println(ALUMNO);
+		System.out.println("Buscar alumnos altos mayor al promedio");
+		respositorioAlumno.buscarAltosMayorAlPromedio().forEach(a->{
+			System.out.println(a.getNombre() + " " + a.getPaterno()
+					+ " " + a.getEstatura());
 		});
 	}
 
