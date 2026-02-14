@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,6 +74,19 @@ class M60402ConsultasNombradasConJoinTests {
 			a.getGrupos().forEach(g->{
 				System.out.println(g.getId() + " " + g.getGrupo());
 			});
+		});
+	}
+	@ParameterizedTest
+	@ValueSource(strings = {"Poo", "Programacion", "Arte", "Lec"})
+	@DisplayName("Buscar Interese o habilidade")
+	void buscarInteresesHabilidades(String patron){
+		System.out.println(ALUMNO);
+		System.out.println("Buscar intere o habilidad " + patron);
+		respositorioAlumno.buscarInteresesHabilidadesAlumnos(patron).forEach(a->{
+			System.out.println(a.getNombre() + " " + a.getPaterno()
+					+ " " + a.getEstado());
+			System.out.println("Intereses " + a.getPerfil().getIntereses());
+			System.out.println("Habilidades " + a.getPerfil().getHabilidades());
 		});
 	}
 }

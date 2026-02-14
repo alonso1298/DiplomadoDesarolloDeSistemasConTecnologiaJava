@@ -1,7 +1,6 @@
 package mx.unam.dgtic.repository;
 
 import mx.unam.dgtic.entity.Alumno;
-import mx.unam.dgtic.entity.Estado;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -29,13 +28,14 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
                                       @Param("estado") String estado);
 
     // Queries Nombradas en el repositorio
-    @Query(value = "SELECT AVG(a.estatura) FROM Alumno a")
+    @Query(value = "SELECT TRUNC(AVG(a.estatura), 2) FROM Alumno a")
     Double estaturaPromedio();
 
     @Query(value = """
         SELECT a FROM Alumno a
         JOIN a.perfil p
-        WHERE p.habilidades LIKE CONCAT('%', :patron, '%')
+        WHERE p.intereses LIKE CONCAT('%', :patron, '%')
+        OR p.habilidades LIKE CONCAT('%', :patron, '%')
         """)
-    List<Alumno> buscarHabilidadesAlumnos(@Param("patron") String patron);
+    List<Alumno> buscarInteresesHabilidadesAlumnos(@Param("patron") String patron);
 }
