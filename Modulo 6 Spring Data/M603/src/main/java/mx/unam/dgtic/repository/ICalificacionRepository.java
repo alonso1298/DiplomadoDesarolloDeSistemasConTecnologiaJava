@@ -1,5 +1,6 @@
 package mx.unam.dgtic.repository;
 
+import mx.unam.dgtic.entity.Alumno;
 import mx.unam.dgtic.entity.Calificacion;
 import org.springframework.data.repository.CrudRepository;
 
@@ -16,6 +17,6 @@ public interface ICalificacionRepository extends CrudRepository<Calificacion, In
     List<Calificacion> findByAlumnoNombre(String nombre);
     List<Calificacion> findByAlumnoCurpLike(String patron);
 
-    List<Calificacion> findByAlumno(String alumno);
+    List<Calificacion> findByAlumno(Alumno alumno);
 
 }

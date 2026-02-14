@@ -1,10 +1,13 @@
 package mx.unam.dgtic;
 
 import mx.unam.dgtic.entity.Alumno;
+import mx.unam.dgtic.entity.Calificacion;
 import mx.unam.dgtic.entity.Estado;
 import mx.unam.dgtic.entity.Perfil;
 import mx.unam.dgtic.repository.IAlumnoRepository;
+import mx.unam.dgtic.repository.ICalificacionRepository;
 import mx.unam.dgtic.repository.IEstadoRepository;
+import mx.unam.dgtic.repository.IGrupoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +29,16 @@ public class M60304CrudRelacionesTests {
     private static final String GRUPO = "Primero";
     private static final Integer CALIFICACION = 8;
     private static final String MATRICULA = "1F";
-    private static final String MATERIA = "BD";
+    private static final String MATERIA = "JAVA";
 
     @Autowired
     IAlumnoRepository repositorioAlumno;
     @Autowired
     IEstadoRepository repositorioEstado;
+    @Autowired
+    ICalificacionRepository repositorioCalificacion;
+    @Autowired
+    IGrupoRepository repositorioGrupo;
 
     @Test
     @DisplayName("Buscar calificaciones por relacion")
@@ -71,6 +78,27 @@ public class M60304CrudRelacionesTests {
             System.out.println(optional.get().getPerfil());
         }
 
+    }
+
+    @Test
+    @Transactional
+    @Rollback(value = false)
+    public void guardarCalificacionAlumnoTest(){
+        System.out.println(ALUMNO);
+        // 1:N Alumno -> Calificacion
+        Alumno alumno = repositorioAlumno.findById(MATRICULA).orElseThrow();
+
+        Calificacion calificacion = new Calificacion();
+        calificacion.setId(100);
+        calificacion.setMateria(MATERIA);
+        calificacion.setCalificacion(CALIFICACION);
+        calificacion.setAlumno(alumno);
+
+        repositorioCalificacion.save(calificacion);
+        System.out.println("Calificaciones guardadas del alumno " + alumno.getNombre());
+        repositorioCalificacion.findByAlumno(alumno).forEach(c->{
+            System.out.println(c.getId() + " " + c.getMateria() + " " + c.getCalificacion());
+        });
     }
 
 }
