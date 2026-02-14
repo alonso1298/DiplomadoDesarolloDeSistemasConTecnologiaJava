@@ -43,4 +43,36 @@ class M60402ConsultasNombradasConJoinTests {
 			});
 		});
 	}
+	@Test
+	@DisplayName("Buscar en mas de un grupo")
+	void buscarAlumnoEnMultiplesGruposTest(){
+		System.out.println(ALUMNO);
+		System.out.println("Buscar en mas de un grupo");
+		respositorioAlumno.buscarEnMultiplesGrupos().forEach(a->{
+			System.out.println(a.getNombre() + " " + a.getPaterno()
+					+ " " + a.getCurp());
+			a.getGrupos().forEach(g->{
+				System.out.println(g.getId() + " " + g.getGrupo());
+			});
+		});
+	}
+	@ParameterizedTest
+	@CsvSource({
+			"Guerrero, Primero",
+			"Guerrero, Tercero",
+			"Guanajuato, Primero",
+			"Guanajuato, Tercero"
+	})
+	@DisplayName("Buscar grupo y estado")
+	void buscarEnGrupoYEstado(String estado, String grupo){
+		System.out.println(ALUMNO);
+		System.out.println("Buscar un grupo " + grupo + "estado " + estado);
+		respositorioAlumno.buscarGrupoAndEstado(grupo, estado).forEach(a->{
+			System.out.println(a.getNombre() + " " + a.getPaterno()
+					+ " " + a.getEstado());
+			a.getGrupos().forEach(g->{
+				System.out.println(g.getId() + " " + g.getGrupo());
+			});
+		});
+	}
 }
