@@ -12,6 +12,14 @@ import java.util.List;
         query = "SELECT a FROM Alumno a WHERE a.estatura >= 1.70" //(JPQL)
         // SELECT * FROM Alumnos WHERE a.estatura >= 1.70 (SQL)
 )
+@NamedQuery(name = "Alumno.contarPorEstadoCurp",
+        query = "SELECT COUNT(a) FROM Alumno a" +
+                "WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
+)
+@NamedQuery(name = "Alumno.buscarPorEstadoCurp",
+        query = "SELECT a FROM Alumno a" +
+                "WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
+)
 public class Alumno {
     @Id
     private String matricula;
