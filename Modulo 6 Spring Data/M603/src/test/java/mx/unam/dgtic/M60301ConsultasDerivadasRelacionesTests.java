@@ -36,6 +36,10 @@ public class M60301ConsultasDerivadasRelacionesTests {
         repositorioAlumno.findByEstadoEstado(ESTADO).forEach(System.out::println);
 
         System.out.println("Alumnos con interes en " + INTERES);
-        repositorioAlumno.findByPerfilInteresesLike(INTERES);
+        repositorioAlumno.findByPerfilInteresesLike("%"+INTERES+"%").forEach(
+                a->{
+                    System.out.println(a.getNombre() + " " + a.getPaterno() +
+                            a.getPerfil().getIntereses());
+                });
     }
 }
