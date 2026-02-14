@@ -7,5 +7,9 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
+    // Consulta Derivada
+    List<Alumno> findByNombre(String nombre);
 
+    // NamedQuery
+    List<Alumno> buscarAltos();
 }

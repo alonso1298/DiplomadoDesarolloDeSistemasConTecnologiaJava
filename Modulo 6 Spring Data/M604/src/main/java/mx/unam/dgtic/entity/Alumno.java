@@ -8,6 +8,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "Alumnos")
+@NamedQuery(name = "Alumno.buscarAltos",
+        query = "SELECT a FROM Alumno a WHERE a.estatura >= 1.70" //(JPQL)
+        // SELECT * FROM Alumnos WHERE a.estatura >= 1.70 (SQL)
+)
 public class Alumno {
     @Id
     private String matricula;
