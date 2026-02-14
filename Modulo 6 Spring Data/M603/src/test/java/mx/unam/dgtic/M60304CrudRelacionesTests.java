@@ -1,9 +1,6 @@
 package mx.unam.dgtic;
 
-import mx.unam.dgtic.entity.Alumno;
-import mx.unam.dgtic.entity.Calificacion;
-import mx.unam.dgtic.entity.Estado;
-import mx.unam.dgtic.entity.Perfil;
+import mx.unam.dgtic.entity.*;
 import mx.unam.dgtic.repository.IAlumnoRepository;
 import mx.unam.dgtic.repository.ICalificacionRepository;
 import mx.unam.dgtic.repository.IEstadoRepository;
@@ -27,6 +24,7 @@ public class M60304CrudRelacionesTests {
     final String ALUMNO = "ALONSO SAGRERO GRANADOS";
     private static final String ESTADO = "Guerrero";
     private static final String GRUPO = "Primero";
+    private static final Integer ID_GRUPO = 4;
     private static final Integer CALIFICACION = 8;
     private static final String MATRICULA = "1F";
     private static final String MATERIA = "JAVA";
@@ -101,4 +99,35 @@ public class M60304CrudRelacionesTests {
         });
     }
 
+    @Test
+    @Transactional
+    @Commit
+    public void guardarAlumnoGrupoTest(){
+        System.out.println(ALUMNO);
+        Alumno alumno = repositorioAlumno.findById(MATRICULA)
+                .orElseThrow(()-> new RuntimeException(
+                        "No existe el alumno con la matricula " + MATRICULA));
+        Grupo grupo = repositorioGrupo.findById(ID_GRUPO)
+                .orElseThrow(()-> new RuntimeException(
+                        "No existe elgrupo " + ID_GRUPO));
+
+        //Relacion N:N se guarda por ambos lados
+        // Sin Helper
+        //alumno.getGrupos().add(grupo);
+        //grupo.getAlumnos().add(alumno);
+        alumno.addGrupos(grupo);
+        grupo.addAlumno(alumno);
+        //repositorioAlumno.save(alumno);
+
+        System.out.println("Alumno agregado al grupo");
+        alumno = repositorioAlumno.findById(MATRICULA)
+                .orElseThrow(()-> new RuntimeException(
+                        "No existe el alumno con la matricula " + MATRICULA));
+        alumno.getGrupos().forEach(System.out::println);
+    }
+
+    @Test
+    @Transactional
+    @Commit
+    void eliminar
 }
