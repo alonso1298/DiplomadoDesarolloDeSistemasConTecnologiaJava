@@ -15,5 +15,5 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
     List<Alumno> buscarAltos();
 
     long contarPorEstadoCurp(@Param("codigoEstado") String codigoEstado);
-    List<Alumno> buscarPorEstado(@Param("codigoEstado") String codigoEstado);
+    List<Alumno> buscarPorEstadoCurp(@Param("codigoEstado") String codigoEstado);
 }

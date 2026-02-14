@@ -14,11 +14,11 @@ import java.util.List;
 )
 @NamedQuery(name = "Alumno.contarPorEstadoCurp",
         query = "SELECT COUNT(a) FROM Alumno a" +
-                "WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
+                " WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
 )
 @NamedQuery(name = "Alumno.buscarPorEstadoCurp",
         query = "SELECT a FROM Alumno a" +
-                "WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
+                " WHERE SUBSTRING(a.curp, 12, 2) = :codigoEstado"
 )
 public class Alumno {
     @Id

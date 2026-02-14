@@ -3,6 +3,8 @@ package mx.unam.dgtic;
 import mx.unam.dgtic.repository.IAlumnoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
@@ -28,4 +30,24 @@ class M60401ConsultasNombradasTests {
 		});
 	}
 
+	@ParameterizedTest
+	@CsvSource({
+			"DF, Ciudad de México",
+			"NL, Nuevo León",
+			"GT, Guanajuato",
+			"GR, Guerrero"
+	})
+	void buscarPorEstadoCurpTest(String codigoEstado, String nombreEstado){
+		System.out.println(ALUMNO);
+		System.out.println(nombreEstado + " " + codigoEstado);
+
+		System.out.println("Total de alumnos en el estado " + nombreEstado + " " +
+				respositorioAlumno.contarPorEstadoCurp(codigoEstado));
+		respositorioAlumno.buscarPorEstadoCurp(codigoEstado).forEach(a->{
+			String estadoStr = (a.getEstado() != null) ? a.getEstado().getEstado() : "null";
+			System.out.println(
+					a.getNombre() + " " + a.getPaterno() + " "
+					+ a.getCurp() + " " + estadoStr);
+		});
+	}
 }
