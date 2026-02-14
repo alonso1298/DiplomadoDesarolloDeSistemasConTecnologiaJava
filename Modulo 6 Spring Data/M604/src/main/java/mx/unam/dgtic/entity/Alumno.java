@@ -38,10 +38,20 @@ import java.util.List;
         ),
         @NamedQuery(name = "Alumno.buscarEnMultiplesGrupos",
                 query = """
-                        SELECT DISTINCT a
+                        SELECT a
                         FROM Alumno a
-                        JOIN a.calificaciones c
-                        WHERE c.calificacion < 6
+                        JOIN a.grupos g
+                        GROUP BY a
+                        HAVING COUNT(g) > 1
+                        """
+        ),
+        @NamedQuery(name = "Alumno.buscarGrupoAndEstado",
+                query = """
+                        SELECT a
+                        FROM Alumno a
+                        JOIN a.grupos g
+                        JOIN a.estado e
+                        WHERE g.grupo = :grupo AND e.estado = :estado
                         """
         )
 })

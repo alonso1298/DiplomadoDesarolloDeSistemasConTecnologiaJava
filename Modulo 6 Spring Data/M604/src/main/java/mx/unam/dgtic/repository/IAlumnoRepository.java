@@ -22,4 +22,8 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
 
     List<Alumno> buscarSinCalificacion();
     List<Alumno> buscarConReprobacion();
+
+    List<Alumno> buscarEnMultiplesGrupos();
+    List<Alumno> buscarGrupoAndEstado(@Param("grupo") String grupo,
+                                      @Param("estado") String estado);
 }
