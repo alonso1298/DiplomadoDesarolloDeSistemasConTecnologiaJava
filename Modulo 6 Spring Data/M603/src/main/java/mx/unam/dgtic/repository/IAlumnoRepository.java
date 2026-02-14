@@ -16,5 +16,12 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
     List<Alumno> findByEstadoEstado(String estado);
     List<Alumno> findByEstadoAbreviatura(String abreviaturaEstado);
 
+    // 1:1
     List<Alumno> findByPerfilInteresesLike(String interes);
+
+    //1:N
+    List<Alumno> findByCalificacionesMateria(String materia);
+
+    //N:N
+    List<Alumno> findByGruposGruno(String grupo);
 }

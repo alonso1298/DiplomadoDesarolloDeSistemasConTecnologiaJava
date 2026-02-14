@@ -10,4 +10,7 @@ public interface IEstadoRepository extends CrudRepository<Estado, Integer> {
     Estado findByEstado(String estado);
 
     List<Estado> findByEstadoContaining(String contiene);
+
+    //1:N
+    Estado findByAlumnoMatricula(String matricula);
 }
