@@ -8,6 +8,7 @@ import mx.unam.dgtic.repository.IEstadoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -70,5 +71,21 @@ public class M60302ConsultasCalificacionRelacionesTests {
         }else {
             System.out.println("Alumng no localizado");
         }
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "DF, Ciudad de México",
+            "NL, Nuevo León",
+            "GT, Guanajuato",
+            "GR, Guerrero"
+    })
+    void buscarCalificacionesPorCurp(String codigoEstado, String nombreEstado){
+        System.out.println(ALUMNO);
+        System.out.println("Calificaciones de alumnos del estado " + " " + codigoEstado + " " + nombreEstado);
+        repositorioCalificacion.findByAlumnoCurpLike("%" + codigoEstado + "%").forEach(c ->{
+            System.out.println(c.getAlumno().getNombre() + " " + c.getAlumno().getPaterno()
+                    + " | " + c.getMateria() + " " + c.getCalificacion());
+        });
     }
 }

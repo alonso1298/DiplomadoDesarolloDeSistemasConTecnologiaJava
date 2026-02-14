@@ -14,7 +14,7 @@ public interface ICalificacionRepository extends CrudRepository<Calificacion, In
     //N:1 Calificaion -> Alumno
     List<Calificacion> findByAlumnoMatricula(String matricula);
     List<Calificacion> findByAlumnoNombre(String nombre);
-    List<Calificacion> findByAlumnoPaternoLike(String patron);
+    List<Calificacion> findByAlumnoCurpLike(String patron);
 
     List<Calificacion> findByAlumno(String alumno);
 
