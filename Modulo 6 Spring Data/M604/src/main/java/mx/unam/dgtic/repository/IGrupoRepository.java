@@ -7,8 +7,4 @@ import java.util.List;
 
 public interface IGrupoRepository extends CrudRepository<Grupo, Integer> {
 
-    Grupo findByGrupo(String grupo);
-
-    // Relacion N:N
-    List<Grupo> findByAlumnosMatricula(String matricula);
 }
