@@ -1,12 +1,18 @@
 package mx.unam.dgtic;
 
 import jakarta.transaction.Transactional;
+import mx.unam.dgtic.entity.Alumno;
 import mx.unam.dgtic.entity.Estado;
 import mx.unam.dgtic.repository.IAlumnoRepository;
+import mx.unam.dgtic.repository.ICalificacionRepository;
 import mx.unam.dgtic.repository.IEstadoRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Optional;
 
 @SpringBootTest
 public class M60301ConsultasDerivadasRelacionesTests {
