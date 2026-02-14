@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @SpringBootTest
 @Transactional
-@Rollback
+@Rollback(value = false)
 public class M60304CrudRelacionesTests {
     final String ALUMNO = "ALONSO SAGRERO GRANADOS";
     private static final String ESTADO = "Guerrero";
