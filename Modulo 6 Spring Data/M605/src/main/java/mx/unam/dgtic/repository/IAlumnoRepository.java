@@ -2,6 +2,7 @@ package mx.unam.dgtic.repository;
 
 import mx.unam.dgtic.entity.Alumno;
 import mx.unam.dgtic.projection.IConteoPorCampo;
+import org.hibernate.type.descriptor.java.VersionJavaType;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -40,22 +41,49 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
         """)
     List<Alumno> buscarInteresesHabilidadesAlumnos(@Param("patron") String patron);
 
-    @Query(value = "SELECT DISTINCT a.nombre FROM Alumno a")
+    @Query(value = "SELECT DISTINCT a.nombre FROM Alumno a ORDER BY a.nombre")
     List<String> findDistinctNombre();
 
-    @Query(value = "SELECT DISTINCT a.paterno FROM Alumno a")
+    @Query(value = "SELECT DISTINCT a.paterno FROM Alumno a ORDER BY a.paterno")
     List<String> findDistinctPaterno();
 
     //Consultas de grupo
     @Query(value = "SELECT a.nombre AS campo, COUNT(*) AS  conteo " +
-            "FROM aLUMNO A GROUP BY a.nombre ORDER BY 1")
+            "FROM Alumno a GROUP BY a.nombre ORDER BY 1")
     List<IConteoPorCampo> contarPorNombre();
 
-    @Query(value = "SELECT EXTRACT(YEAR FROM a.fnac) AS campo, COUNT(*) AS  conteo " +
-            "FROM aLUMNO A GROUP BY a.nombre ORDER BY 1")
+    @Query(value = """
+    SELECT EXTRACT(YEAR FROM a.fnac) AS campo,
+           COUNT(a) AS conteo
+    FROM Alumno a
+    GROUP BY EXTRACT(YEAR FROM a.fnac)
+    ORDER BY campo
+                """)
     List<IConteoPorCampo> contarPorAnio();
 
-    @Query(value = "SELECT SUBSTRING(a.curp, 11, 1) AS campo, COUNT(*) AS  conteo " +
-            "FROM aLUMNO A GROUP BY a.nombre ORDER BY 1")
+    @Query(value = """
+    SELECT SUBSTRING(a.curp, 11, 1) AS campo,
+           COUNT(a) AS conteo
+    FROM Alumno a
+    GROUP BY SUBSTRING(a.curp, 11, 1)
+    ORDER BY campo
+    """)
     List<IConteoPorCampo> contarPorSexo();
+
+    // Consulta Nombrada Nativa SQL
+    @Query(value = """
+        SELECT * FROM Alumnos a WHERE REGEXP :regex
+        """,
+            nativeQuery = true
+    )
+    List<Alumno> buscarByCurpRegex(@Param("regex") String regex);
+
+    @Query(value = """
+        SELECT * FROM Alumnos a WHERE 
+                CONCAT(nombre,  ' ', paterno) LIKE '%?%1'
+        OR CONCAT(paterno, ' ', nombre) LIKE '%?1%'
+        OR CONCAT(SUBSTRING_INDEX(nombre, ' ', 1), ' ', paterno) LIKE '%?%1'
+        ODER BY nombre, paterno
+        """)
+    List<Alumno> buscarPorCombinacionNombreYPaterno(String cadena);
 }
