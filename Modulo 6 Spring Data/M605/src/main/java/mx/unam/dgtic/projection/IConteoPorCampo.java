@@ -4,5 +4,5 @@ public interface IConteoPorCampo {
 
     String getCampo();
     Long getCOnteo();
-    
+
 }

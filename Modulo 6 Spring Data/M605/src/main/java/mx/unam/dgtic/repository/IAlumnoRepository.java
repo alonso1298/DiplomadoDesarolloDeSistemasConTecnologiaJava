@@ -1,6 +1,7 @@
 package mx.unam.dgtic.repository;
 
 import mx.unam.dgtic.entity.Alumno;
+import mx.unam.dgtic.projection.IConteoPorCampo;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -44,4 +45,9 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
 
     @Query(value = "SELECT DISTINCT a.paterno FROM Alumno a")
     List<String> findDistinctPaterno();
+
+    //Consultas de grupo
+    @Query(value = "SELECT a.nombre AS campo, COUNT(*) AS  conteo " +
+            "FROM aLUMNO A GROUP BY a.nombre ORDER BY 1")
+    List<IConteoPorCampo> contarPorNombre();
 }
