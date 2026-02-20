@@ -38,4 +38,10 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
         OR p.habilidades LIKE CONCAT('%', :patron, '%')
         """)
     List<Alumno> buscarInteresesHabilidadesAlumnos(@Param("patron") String patron);
+
+    @Query(value = "SELECT DISTINCT a.nombre FROM Alumno a")
+    List<String> findDistinctNombre();
+
+    @Query(value = "SELECT DISTINCT a.paterno FROM Alumno a")
+    List<String> findDistinctPaterno();
 }
