@@ -65,4 +65,23 @@ class M60501ConsultasNombradasGroupTests {
 			System.out.println(a.getCurp() + " " + a.getNombre() + " " + a.getPaterno());
 		});
 	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {
+			"Perla Calles",
+			"Calles Perla",
+			"Perla",
+			"Calles",
+			"Per",
+			"Cal",
+			"Lu"
+	})
+	@DisplayName("Combinacion Nombre - Paterno")
+	void buscarNombrePaternoTest(String cadena){
+		System.out.println(ALUMNO);
+		System.out.println("Buscar por " + cadena);
+		respositorioAlumno.buscarPorCombinacionNombreYPaterno(cadena).forEach(a->{
+			System.out.println(a.getCurp() + " " + a.getNombre() + " " + a.getPaterno());
+		});
+	}
 }

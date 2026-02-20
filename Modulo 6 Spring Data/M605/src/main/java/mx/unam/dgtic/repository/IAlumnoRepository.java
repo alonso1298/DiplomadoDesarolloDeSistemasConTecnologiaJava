@@ -72,18 +72,21 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
 
     // Consulta Nombrada Nativa SQL
     @Query(value = """
-        SELECT * FROM Alumnos a WHERE REGEXP :regex
-        """,
-            nativeQuery = true
+    SELECT * 
+    FROM alumnos a 
+    WHERE a.curp REGEXP :regex
+    """,
+        nativeQuery = true
     )
     List<Alumno> buscarByCurpRegex(@Param("regex") String regex);
 
     @Query(value = """
-        SELECT * FROM Alumnos a WHERE 
-                CONCAT(nombre,  ' ', paterno) LIKE '%?%1'
-        OR CONCAT(paterno, ' ', nombre) LIKE '%?1%'
-        OR CONCAT(SUBSTRING_INDEX(nombre, ' ', 1), ' ', paterno) LIKE '%?%1'
-        ODER BY nombre, paterno
-        """)
+        SELECT * FROM Alumnos a WHERE\s
+        CONCAT(nombre,  ' ', paterno) LIKE %?1%
+        OR CONCAT(paterno, ' ', nombre) LIKE %?1%
+        OR CONCAT(SUBSTRING_INDEX(nombre, ' ', 1), ' ', paterno) LIKE %?1%
+        ORDER BY nombre, paterno
+       \s""",
+    nativeQuery = true)
     List<Alumno> buscarPorCombinacionNombreYPaterno(String cadena);
 }
