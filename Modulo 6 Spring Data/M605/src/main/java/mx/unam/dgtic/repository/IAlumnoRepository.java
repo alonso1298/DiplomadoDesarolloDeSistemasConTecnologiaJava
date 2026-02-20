@@ -50,4 +50,12 @@ public interface IAlumnoRepository extends CrudRepository<Alumno, String> {
     @Query(value = "SELECT a.nombre AS campo, COUNT(*) AS  conteo " +
             "FROM aLUMNO A GROUP BY a.nombre ORDER BY 1")
     List<IConteoPorCampo> contarPorNombre();
+
+    @Query(value = "SELECT EXTRACT(YEAR FROM a.fnac) AS campo, COUNT(*) AS  conteo " +
+            "FROM aLUMNO A GROUP BY a.nombre ORDER BY 1")
+    List<IConteoPorCampo> contarPorAnio();
+
+    @Query(value = "SELECT SUBSTRING(a.curp, 11, 1) AS campo, COUNT(*) AS  conteo " +
+            "FROM aLUMNO A GROUP BY a.nombre ORDER BY 1")
+    List<IConteoPorCampo> contarPorSexo();
 }
