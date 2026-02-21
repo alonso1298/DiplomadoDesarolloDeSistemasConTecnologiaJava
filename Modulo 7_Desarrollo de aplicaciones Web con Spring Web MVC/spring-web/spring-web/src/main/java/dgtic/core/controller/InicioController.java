@@ -22,7 +22,9 @@ public class InicioController {
     }
     @RequestMapping(value = "propiedad",method = RequestMethod.GET)
     private String propiedad(Model modelo){
+        modelo.addAttribute("mensaje", "Diplomado de Java Con Spring");
         modelo.addAttribute("propiedad",valor);
+        System.out.println(valor);
         return "inicio";
     }
 }
