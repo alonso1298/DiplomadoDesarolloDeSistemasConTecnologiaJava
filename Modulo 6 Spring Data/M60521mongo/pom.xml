@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.2</version>
+		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>mx.unam.dgtic</groupId>
-	<artifactId>M600</artifactId>
+	<artifactId>M800</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>M600</name>
-	<description>Proyecto Base para el M6 del Diplomado de Java</description>
+	<name>M800</name>
+	<description>Proyecto base para M8 Diplo Java</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -48,12 +48,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>RELEASE</version>
-			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
