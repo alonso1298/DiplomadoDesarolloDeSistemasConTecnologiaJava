@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.swing.plaf.PanelUI;
+
 @Controller
 public class InicioController {
     @Value("${mensaje.application}")
@@ -26,5 +28,9 @@ public class InicioController {
         modelo.addAttribute("propiedad",valor);
         System.out.println(valor);
         return "inicio";
+    }
+    @RequestMapping(value = "principal",method = RequestMethod.GET)
+    public String salto(){
+        return "principal/principal";
     }
 }
