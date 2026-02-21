@@ -58,7 +58,7 @@ class M60501FindMongoTests {
 		System.out.println("Total de alumnos en MongoDB " + repositorioAlumno.count());
 		System.out.println("Insertar Alumno");
 		Alumno alumno = new
-				Alumno(MATRICULA, "OMAR", "MENDOZA", new Date(), 1.74);
+				Alumno(MATRICULA, "ALONSO", "SAGRERO", new Date(), 1.74);
 		alumno.setId(ID);
 		alumno.setEdad(new Edad(47, 8, 3));
 		List<Evaluacion> evaluaciones = new ArrayList<Evaluacion>();
