@@ -1,20 +1,25 @@
 package mx.unam.dgtic;
 
 import mx.unam.dgtic.datos.Alumno;
+import mx.unam.dgtic.datos.Edad;
+import mx.unam.dgtic.datos.Evaluacion;
 import mx.unam.dgtic.repository.AlumnoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 
 @SpringBootTest
 class M60501FindMongoTests {
-	final String ALUMNO = "OMAR MENDOZA GONZALEZ";
-	final String ID = "19770626"; //66ef0dd83567dbd62d9714d8
-	final String MATRICULA = "MT1";
+	final String ALUMNO = "ALONSO SAGRERO GRANADOS";
+	final String ID = "112121998"; //66ef0dd83567dbd62d9714d8
+	final String MATRICULA = "ASG";
 
 	@Autowired
 	AlumnoRepository repositorioAlumno;
@@ -47,5 +52,29 @@ class M60501FindMongoTests {
 					);
 		}
 	}
+	@Test
+	void insertarUnoTest(){
+		System.out.println(ALUMNO);
+		System.out.println("Total de alumnos en MongoDB " + repositorioAlumno.count());
+		System.out.println("Insertar Alumno");
+		Alumno alumno = new
+				Alumno(MATRICULA, "OMAR", "MENDOZA", new Date(), 1.74);
+		alumno.setId(ID);
+		alumno.setEdad(new Edad(47, 8, 3));
+		List<Evaluacion> evaluaciones = new ArrayList<Evaluacion>();
+		evaluaciones.add(new Evaluacion("JAVA", 9.1, new Date()));
+		evaluaciones.add(new Evaluacion("SPRING", 8.9, new Date()));
+		evaluaciones.add(new Evaluacion("POO", 9.9, new Date()));
 
+		alumno.setEvaluaciones(evaluaciones);
+		repositorioAlumno.save(alumno);
+
+		Alumno guardado = repositorioAlumno.findById(ID).orElseThrow();
+		System.out.println("Alumno Guardado " + guardado);
+
+		System.out.println("Total de alumnos en MongoDB dspues de guardar "
+				+ repositorioAlumno.count());
+		repositorioAlumno.findAll().forEach(System.out::println);
+
+	}
 }
