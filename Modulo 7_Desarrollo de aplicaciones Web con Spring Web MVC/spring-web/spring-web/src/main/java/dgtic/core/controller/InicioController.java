@@ -30,7 +30,8 @@ public class InicioController {
         return "inicio";
     }
     @RequestMapping(value = "principal",method = RequestMethod.GET)
-    public String salto(){
+    public String salto(Model modelo){
+        modelo.addAttribute("contenido", "Principal");
         return "principal/principal";
     }
 }
