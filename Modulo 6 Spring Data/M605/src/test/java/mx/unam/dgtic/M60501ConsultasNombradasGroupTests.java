@@ -40,11 +40,13 @@ class M60501ConsultasNombradasGroupTests {
 			System.out.println(cp.getCampo() + " " + cp.getConteo());
 		});
 
+		System.out.println(ALUMNO);
 		System.out.println("Contar por Anio");
 		respositorioAlumno.contarPorAnio().forEach(cp->{
 			System.out.println(cp.getCampo() + " " + cp.getConteo());
 		});
 
+		System.out.println(ALUMNO);
 		System.out.println("Contar por Sexo");
 		respositorioAlumno.contarPorSexo().forEach(cp->{
 			System.out.println(cp.getCampo() + " " + cp.getConteo());
