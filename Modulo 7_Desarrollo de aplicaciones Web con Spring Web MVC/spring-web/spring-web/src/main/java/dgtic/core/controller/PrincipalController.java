@@ -2,10 +2,7 @@ package dgtic.core.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value = "spring")
@@ -39,5 +36,15 @@ public class PrincipalController {
         String cadena="Tu edad es: "+edad + " y tu nombre es: " + nombre;
         model.addAttribute("contenido",cadena);
         return "spring/pathvariable";
+    }
+    @GetMapping("requestparam")
+    public String getRequestParam(@RequestParam(value = "dato", required = false) String informacion
+            , Model model) {
+        String cadena = "Sin información";
+        if (informacion != null) {
+            cadena = " La información es:" + informacion;
+        }
+        model.addAttribute("contenido", cadena);
+        return "spring/requestParam";
     }
 }
