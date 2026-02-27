@@ -30,6 +30,14 @@ public class PrincipalController {
         }else{
             return "spring/pathVariable";
         }
-
+    }
+    
+    @GetMapping("parametros-dos/{edad}/{nombre}")
+    public String getParametrosDos(@PathVariable("edad")int edad,
+                                   @PathVariable("nombre")String nombre,
+                                   Model model){
+        String cadena="Tu edad es: "+edad + " y tu nombre es: ";
+        model.addAttribute("contenido",cadena);
+        return "spring/pathvariable";
     }
 }
