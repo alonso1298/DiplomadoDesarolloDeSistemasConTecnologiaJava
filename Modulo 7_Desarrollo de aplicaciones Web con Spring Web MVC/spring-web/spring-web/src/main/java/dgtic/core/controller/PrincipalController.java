@@ -45,6 +45,20 @@ public class PrincipalController {
             cadena = " La información es:" + informacion;
         }
         model.addAttribute("contenido", cadena);
+        model.addAttribute("info", cadena);
         return "spring/requestParam";
     }
+    @GetMapping("requestparam-v")
+    public String getRequesParamV(@RequestParam(value = "dato", required = false)String informacion,
+                                  @RequestParam(value = "diplomado", required = false)String diplo,
+                                  Model model){
+        String cadena = "Sin información";
+        if (informacion != null) {
+            cadena = " La información es:" + informacion+ " diplomado "+diplo;
+        }
+        model.addAttribute("contenido", cadena);
+        model.addAttribute("error",cadena);
+        return "spring/requestParam";
+    }
+    
 }
