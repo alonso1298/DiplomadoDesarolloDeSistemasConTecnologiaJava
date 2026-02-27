@@ -1,5 +1,6 @@
 package dgtic.core.controller;
 
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -60,5 +61,10 @@ public class PrincipalController {
         model.addAttribute("error",cadena);
         return "spring/requestParam";
     }
-    
+    // Desplegar Formulario
+    @GetMapping("ver-formulario")
+    public String verFormulario(Model model){
+        model.addAttribute("contenido","Ingrese los datos siguientes");
+        return "spring/requestparam-post";
+    }
 }
