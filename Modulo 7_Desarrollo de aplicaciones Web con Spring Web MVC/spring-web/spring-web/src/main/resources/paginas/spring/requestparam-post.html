@@ -11,11 +11,26 @@
                  <div>
                      <div class="col-5">
                          <label for="nombre" class="form-label">Nombre:</label>
-                         <input type="text" class="form-control" id="nombre">
+                         <input type="text" class="form-control" id="nombre"
+                                name="nombre"
+                                placeholder="Jose Ramon">
+                     </div>
+                     <div class="row justify-content-center">
+                         <div class="col-5">
+                             <label for="correo" class="form-label">Correo:</label>
+                             <input type="text" class="form-control" id="correo"
+                                    name="correo"
+                                    placeholder="demo@demo.com">
+                         </div>
+                     </div>
+                     <div class="col-8">
+                         <br/>
+                         <button type="submit" class="btn btn-primary">Guardar</button>
                      </div>
                  </div>
              </div>
          </form>
+         <h1 th:text="${info}"></h1>
      </main>
      <footer th:replace="~{plantillas/plantilla::footer}"></footer>
  </body>
