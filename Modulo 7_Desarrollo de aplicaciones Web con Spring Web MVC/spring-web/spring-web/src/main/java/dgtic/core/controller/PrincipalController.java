@@ -67,4 +67,17 @@ public class PrincipalController {
         model.addAttribute("contenido","Ingrese los datos siguientes");
         return "spring/requestparam-post";
     }
+    @PostMapping("recibir-informacion")
+    public String recibirDatos(
+            @RequestParam(value = "nombre")String nombre,
+            @RequestParam(value = "correo")String correo,
+            Model model){
+        String cadena="Sin información";
+        if(!nombre.isEmpty() && !correo.isEmpty()){
+            model.addAttribute("contenido","Los datos que ingresas son:");
+            cadena="Yu nombre es: "+nombre+" y correo: "+correo;
+        }
+        model.addAttribute("info",cadena);
+        return "spring/requestparam-post";
+    }
 }
