@@ -4,7 +4,9 @@ import dgtic.core.converter.EnteroConverter;
 import dgtic.core.converter.MayusculasConverter;
 import dgtic.core.converter.VacioConverter;
 import dgtic.core.model.dto.UsuarioDTO;
+import dgtic.core.validation.NombresValidation;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,10 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping(value = "spring")
 public class PrincipalController {
+
+    @Autowired
+    private NombresValidation nombresValidation;
+
     @RequestMapping(value = "requestmapping", method = RequestMethod.GET)
     public String mappingCLase(Model model){
         model.addAttribute("contenido", "@RequestMapping Clase");
@@ -158,6 +164,7 @@ public class PrincipalController {
                 "nombre",new MayusculasConverter());
         binder.registerCustomEditor(String.class,
                 "correo", new VacioConverter());
+        binder.addValidators(nombresValidation);
     }
     @GetMapping("ver-usuario-v4")
     public String verUsuarioV4(Model model){
