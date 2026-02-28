@@ -6,6 +6,7 @@ import dgtic.core.service.IUsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -58,9 +59,17 @@ public class UtilController {
             model.addAttribute("contenido","Los datos que ingresas son:");
             cadena="Tu nombre es: "+usuario.getNombre()+" y correo: "+usuario.getCorreo();
         }
-        usuarioService.guardar(usuario);
-        System.out.println(usuario);
-        model.addAttribute("alerts", "Se almaceno con éxito");
+        //usuarioService.guardar(usuario);
+        //System.out.println(usuario);
+        try {
+            usuarioService.guardar(usuario);
+        }catch (Exception e){
+            String msg=mensaje.getMessage("Error.base.duplicado",
+                    null, LocaleContextHolder.getLocale());
+            bindingResult.rejectValue("correo", "correo", msg);
+            return "utilerias/binding-v6";
+        }
+
 
         model.addAttribute("usuario",new UsuarioBd());
         model.addAttribute("contenido","Los datos que ingresas son:");

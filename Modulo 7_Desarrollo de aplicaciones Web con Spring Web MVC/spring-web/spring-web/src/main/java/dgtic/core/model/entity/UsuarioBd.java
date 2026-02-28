@@ -25,6 +25,7 @@ public class UsuarioBd {
 
     @Email(message = "Correo no valido")
     @Pattern(regexp = ".*dgtic",message = "El correo no es institucional")
+    @Column(unique = true)
     private String correo;
 
     @NotNull
