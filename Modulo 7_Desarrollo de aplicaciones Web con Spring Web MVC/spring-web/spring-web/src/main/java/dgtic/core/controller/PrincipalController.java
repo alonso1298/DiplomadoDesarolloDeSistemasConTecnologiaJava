@@ -87,13 +87,20 @@ public class PrincipalController {
         return "spring/binding";
     }
     @PostMapping("recibir-usuario")
-    public String recibirUsuario(UsuarioDTO usuario,Model model){
-        String cadena="Sin información";
-        if(!usuario.getNombre().isEmpty() && !usuario.getCorreo().isEmpty()){
-            model.addAttribute("contenido","Los datos que ingresas son:");
-            cadena="Tu nombre es: "+usuario.getNombre()+" y correo: "+usuario.getCorreo();
+    public String recibirUsuario(UsuarioDTO usuario,Model model) {
+        String cadena = "Sin información";
+        if (!usuario.getNombre().isEmpty() && !usuario.getCorreo().isEmpty()) {
+            model.addAttribute("contenido", "Los datos que ingresas son:");
+            cadena = "Tu nombre es: " + usuario.getNombre() + " y correo: " + usuario.getCorreo() + " telefono" + usuario.getNumeroTelefonico()
+            + " codigo postal: " + usuario.getCp();
         }
-        model.addAttribute("info",cadena);
+        model.addAttribute("info", cadena);
         return "spring/binding";
+    }
+    @GetMapping("ver-usuario-v2")
+    public String verUsuarioV2(Model model){
+        model.addAttribute("usuario",new UsuarioDTO());
+        model.addAttribute("contenido","Ingresa los datos siguientes");
+        return "spring/binding-v2";
     }
 }
