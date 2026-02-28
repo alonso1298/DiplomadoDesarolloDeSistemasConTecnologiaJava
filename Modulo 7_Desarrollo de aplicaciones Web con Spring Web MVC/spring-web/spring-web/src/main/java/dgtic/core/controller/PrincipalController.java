@@ -1,9 +1,12 @@
 package dgtic.core.controller;
 
 import dgtic.core.model.dto.UsuarioDTO;
+import jakarta.validation.Valid;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -120,5 +123,27 @@ public class PrincipalController {
         model.addAttribute("usuario",new UsuarioDTO());
         model.addAttribute("contenido","Ingresa los datos siguientes");
         return "spring/binding-v3";
+    }
+    @PostMapping("recibir-usuario-v3")
+    public String recibirUsuario3(@Valid @ModelAttribute("usuario") UsuarioDTO usuario,
+                                  BindingResult bindingResult,
+                                  Model model){
+        if(bindingResult.hasErrors()){
+            for(ObjectError error:bindingResult.getAllErrors()){
+                System.out.println("Error: "+error.getDefaultMessage());
+            }
+            return "spring/binding-v3";
+        }
+        model.addAttribute("usuario",usuario);
+        String cadena="";
+        if(!usuario.getNombre().isEmpty() && !usuario.getCorreo().isEmpty()){
+            model.addAttribute("contenido","Los datos que ingresas son:");
+            cadena = "Tu nombre es: " + usuario.getNombre() + " correo: " + usuario.getCorreo() + " codigo postal: " + usuario.getCp()
+                    + " y telefono: " + usuario.getTelefono();
+        }
+        model.addAttribute("contenido","Los datos que ingresas son:");
+        model.addAttribute("info",cadena);
+        return "spring/binding-v3";
+
     }
 }

@@ -16,7 +16,8 @@
         <div class="row justify-content-center">
             <div class="col-5">
                 <label for="nombre" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre"
+                <input th:class="${#fields.hasErrors('nombre')}?'form-control is-invalid':'form-control'"
+                       type="text" class="form-control" id="nombre"
                        name="nombre"
                        th:field="*{nombre}"
                        placeholder="Jose Ramon">
@@ -33,7 +34,8 @@
             <div class="row justify-content-center">
                 <div class="col-5">
                     <label for="cp" class="form-label">Codigo Postal:</label>
-                    <input type="number" class="form-control" id="cp"
+                    <input th:class="${#fields.hasErrors('cp')}?'form-control is-invalid':'form-control'"
+                            type="text" class="form-control" id="cp"
                            name="cp"
                            th:field="*{cp}"
                            placeholder="14100">
@@ -42,7 +44,8 @@
             <div class="row justify-content-center">
                 <div class="col-5">
                     <label for="telefono" class="form-label">Telefono:</label>
-                    <input type="number" class="form-control" id="telefono"
+                    <input th:class="${#fields.hasErrors('telefono')}?'form-control is-invalid':'form-control'"
+                           type="text" class="form-control" id="telefono"
                            name="telefono"
                            th:field="*{telefono}"
                            placeholder="55468966">
