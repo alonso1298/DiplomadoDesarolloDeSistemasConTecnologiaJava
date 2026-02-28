@@ -75,9 +75,14 @@ public class PrincipalController {
         String cadena="Sin información";
         if(!nombre.isEmpty() && !correo.isEmpty()){
             model.addAttribute("contenido","Los datos que ingresas son:");
-            cadena="Yu nombre es: "+nombre+" y correo: "+correo;
+            cadena="Tu nombre es: "+nombre+" y correo: "+correo;
         }
         model.addAttribute("info",cadena);
         return "spring/requestparam-post";
+    }
+    @GetMapping("ver-usuario")
+    public String verUsuario(Model model){
+        model.addAttribute("contenido", "Ingresa los datos siguientes");
+        return "spring/binding";
     }
 }
