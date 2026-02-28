@@ -33,26 +33,6 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-5">
-                    <label for="cp" class="form-label">Codigo Postal:</label>
-                    <input th:class="${#fields.hasErrors('cp')}?'form-control is-invalid':'form-control'"
-                            type="text" class="form-control" id="cp"
-                           name="cp"
-                           th:field="*{cp}"
-                           placeholder="14100">
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-5">
-                    <label for="telefono" class="form-label">Telefono:</label>
-                    <input th:class="${#fields.hasErrors('telefono')}?'form-control is-invalid':'form-control'"
-                           type="text" class="form-control" id="telefono"
-                           name="telefono"
-                           th:field="*{telefono}"
-                           placeholder="55468966">
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-5">
                     <label for="edad" class="form-label">Edad:</label>
                     <input type="text" class="form-control" id="edad"
                            name="edad"

@@ -38,7 +38,7 @@ public class UtilController {
     }
     @GetMapping("ver-usuario-v6")
     public String verUsuarioV6(Model model){
-        model.addAttribute("usuario",new UsuarioDTO());
+        model.addAttribute("usuario",new UsuarioBd());
         model.addAttribute("contenido","Ingresa los datos siguientes");
         return "utilerias/binding-v6";
     }
@@ -50,7 +50,7 @@ public class UtilController {
             for(ObjectError error:bindingResult.getAllErrors()){
                 System.out.println("Error: "+error.getDefaultMessage());
             }
-            return "spring/binding-v6";
+            return "utilerias/binding-v6";
         }
         model.addAttribute("usuario",usuario);
         String cadena="";
@@ -59,11 +59,12 @@ public class UtilController {
             cadena="Tu nombre es: "+usuario.getNombre()+" y correo: "+usuario.getCorreo();
         }
         usuarioService.guardar(usuario);
+        System.out.println(usuario);
 
         model.addAttribute("usuario",new UsuarioBd());
         model.addAttribute("contenido","Los datos que ingresas son:");
         model.addAttribute("info",cadena);
-        return "spring/binding-v6";
+        return "utilerias/binding-v6";
 
     }
 }
