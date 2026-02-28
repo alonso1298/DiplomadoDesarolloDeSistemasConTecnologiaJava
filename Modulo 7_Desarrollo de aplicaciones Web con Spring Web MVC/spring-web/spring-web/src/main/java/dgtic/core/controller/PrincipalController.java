@@ -1,6 +1,7 @@
 package dgtic.core.controller;
 
 import dgtic.core.converter.EnteroConverter;
+import dgtic.core.converter.MayusculasConverter;
 import dgtic.core.model.dto.UsuarioDTO;
 import jakarta.validation.Valid;
 import org.springframework.boot.Banner;
@@ -152,6 +153,8 @@ public class PrincipalController {
     public void convertir(WebDataBinder binder){
         binder.registerCustomEditor(Integer.class,
                 "edad", new EnteroConverter());
+        binder.registerCustomEditor(String.class,
+                "nombre",new MayusculasConverter());
     }
     @GetMapping("ver-usuario-v4")
     public String verUsuarioV4(Model model){
@@ -167,7 +170,7 @@ public class PrincipalController {
             for(ObjectError error:bindingResult.getAllErrors()){
                 System.out.println("Error: "+error.getDefaultMessage());
             }
-            return "spring/binding-v3";
+            return "spring/binding-v4";
         }
         model.addAttribute("usuario",usuario);
         String cadena="";

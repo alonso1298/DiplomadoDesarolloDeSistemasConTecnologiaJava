@@ -6,7 +6,7 @@
 <header th:replace="~{plantillas/plantilla :: header}"></header>
 <main class="container text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
     <h1 th:text="${contenido}"></h1>
-    <form method="post" th:action="@{recibir-usuario-v3}" th:object="${usuario}">
+    <form method="post" th:action="@{recibir-usuario-v4}" th:object="${usuario}">
         <div th:if="${#fields.hasErrors('*')}" class='alert alert-danger' role="alert">
             Verifique los siguientes inconvenientes
             <ul>
