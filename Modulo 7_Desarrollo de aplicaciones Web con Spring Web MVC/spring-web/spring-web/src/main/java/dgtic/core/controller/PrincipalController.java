@@ -96,6 +96,7 @@ public class PrincipalController {
         model.addAttribute("info", cadena);
         return "spring/binding";
     }
+
     @GetMapping("ver-usuario-v2")
     public String verUsuarioV2(Model model){
         model.addAttribute("usuario",new UsuarioDTO());
@@ -112,5 +113,12 @@ public class PrincipalController {
         }
         model.addAttribute("info", cadena);
         return "spring/binding-v2";
+    }
+
+    @GetMapping("ver-usuario-v3")
+    public String verUsuarioV3(Model model){
+        model.addAttribute("usuario",new UsuarioDTO());
+        model.addAttribute("contenido","Ingresa los datos siguientes");
+        return "spring/binding-v3";
     }
 }
