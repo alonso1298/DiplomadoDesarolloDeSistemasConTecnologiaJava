@@ -60,6 +60,7 @@ public class UtilController {
         }
         usuarioService.guardar(usuario);
         System.out.println(usuario);
+        model.addAttribute("alerts", "Se almaceno con éxito");
 
         model.addAttribute("usuario",new UsuarioBd());
         model.addAttribute("contenido","Los datos que ingresas son:");
