@@ -107,7 +107,8 @@ public class PrincipalController {
         String cadena = "Sin información";
         if (!usuario.getNombre().isEmpty() && !usuario.getCorreo().isEmpty()) {
             model.addAttribute("contenido", "Los datos que ingresas son:");
-            cadena = "Tu nombre es: " + usuario.getNombre() + " y correo: " + usuario.getCorreo() + " codigo postal: " + usuario.getCp();
+            cadena = "Tu nombre es: " + usuario.getNombre() + " y correo: " + usuario.getCorreo() + " codigo postal: " + usuario.getCp()
+            + " telefono: " + usuario.getTelefono();
         }
         model.addAttribute("info", cadena);
         return "spring/binding-v2";
