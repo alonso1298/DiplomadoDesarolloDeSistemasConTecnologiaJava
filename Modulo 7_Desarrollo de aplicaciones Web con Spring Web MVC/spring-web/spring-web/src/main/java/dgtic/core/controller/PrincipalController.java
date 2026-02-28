@@ -2,6 +2,7 @@ package dgtic.core.controller;
 
 import dgtic.core.converter.EnteroConverter;
 import dgtic.core.converter.MayusculasConverter;
+import dgtic.core.converter.VacioConverter;
 import dgtic.core.model.dto.UsuarioDTO;
 import jakarta.validation.Valid;
 import org.springframework.boot.Banner;
@@ -155,6 +156,8 @@ public class PrincipalController {
                 "edad", new EnteroConverter());
         binder.registerCustomEditor(String.class,
                 "nombre",new MayusculasConverter());
+        binder.registerCustomEditor(String.class,
+                "correo", new VacioConverter());
     }
     @GetMapping("ver-usuario-v4")
     public String verUsuarioV4(Model model){
