@@ -3,9 +3,11 @@ package dgtic.core.service;
 import dgtic.core.model.entity.UsuarioBd;
 import dgtic.core.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UsuarioServiceImpl implements IUsuarioService {
 
     @Autowired
