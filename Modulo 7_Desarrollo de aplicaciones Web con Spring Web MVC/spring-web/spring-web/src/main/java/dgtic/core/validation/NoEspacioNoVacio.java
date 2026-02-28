@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = NoEspacioNoVacioValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD,ElementType.METHOD})
-public @interface INoEspacioNoVacio {
+public @interface NoEspacioNoVacio {
     String message() default "No debe ser vacío";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

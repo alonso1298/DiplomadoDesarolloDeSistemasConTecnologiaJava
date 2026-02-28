@@ -1,6 +1,6 @@
 package dgtic.core.model.dto;
 
-import dgtic.core.validation.INoEspacioNoVacio;
+import dgtic.core.validation.NoEspacioNoVacio;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.Range;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UsuarioDTO {
-    @INoEspacioNoVacio
+    @NoEspacioNoVacio
     private String nombre;
     @Email(message = "Correo no valido")
     @Pattern(regexp = ".*dgtic")
