@@ -1,5 +1,6 @@
 package dgtic.core.controller;
 
+import dgtic.core.model.dto.UsuarioDTO;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,7 +83,17 @@ public class PrincipalController {
     }
     @GetMapping("ver-usuario")
     public String verUsuario(Model model){
-        model.addAttribute("contenido", "Ingresa los datos siguientes");
+        model.addAttribute("contenido","Ingresa los datos siguientes");
+        return "spring/binding";
+    }
+    @PostMapping("recibir-usuario")
+    public String recibirUsuario(UsuarioDTO usuario,Model model){
+        String cadena="Sin información";
+        if(!usuario.getNombre().isEmpty() && !usuario.getCorreo().isEmpty()){
+            model.addAttribute("contenido","Los datos que ingresas son:");
+            cadena="Tu nombre es: "+usuario.getNombre()+" y correo: "+usuario.getCorreo();
+        }
+        model.addAttribute("info",cadena);
         return "spring/binding";
     }
 }

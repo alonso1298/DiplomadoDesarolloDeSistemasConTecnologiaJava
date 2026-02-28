@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UsuarioDTO {
     private String nombre;
-    private String corre;
+    private String correo;
 
 }
