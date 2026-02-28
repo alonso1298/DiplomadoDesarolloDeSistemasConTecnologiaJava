@@ -15,7 +15,7 @@ public class UsuarioDTO {
     @NotBlank
     private String nombre;
     @Email(message = "Correo no valido")
-    @Pattern(regexp = ".*dgtic")
+    @Pattern(regexp = ".*@dgtic")
     private String correo;
     @NotBlank(message = "El código postal es obligatorio")
     @Pattern(regexp = "\\d{5}", message = "El CP debe tener 5 dígitos")
