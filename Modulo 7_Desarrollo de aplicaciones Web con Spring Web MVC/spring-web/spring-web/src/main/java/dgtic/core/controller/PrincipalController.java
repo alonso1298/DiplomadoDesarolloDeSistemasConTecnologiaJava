@@ -1,5 +1,6 @@
 package dgtic.core.controller;
 
+import dgtic.core.converter.EnteroConverter;
 import dgtic.core.model.dto.UsuarioDTO;
 import jakarta.validation.Valid;
 import org.springframework.boot.Banner;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -144,6 +146,11 @@ public class PrincipalController {
         model.addAttribute("contenido","Los datos que ingresas son:");
         model.addAttribute("info",cadena);
         return "spring/binding-v3";
+    }
 
+    @InitBinder("usuario")
+    public void convertir(WebDataBinder binder){
+        binder.registerCustomEditor(Integer.class,
+                "edad", new EnteroConverter());
     }
 }

@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 @Data
 @NoArgsConstructor
@@ -23,5 +24,8 @@ public class UsuarioDTO {
     @NotBlank(message = "El teléfono es obligatorio")
     @Pattern(regexp = "55[0-9]{8}", message = "El teléfono debe iniciar con 55 y tener 10 dígitos")
     private String telefono;
+    @NotNull
+    @Range(min=18,max=60,message="No tienes la edad")
+    private Integer edad;
 
 }
