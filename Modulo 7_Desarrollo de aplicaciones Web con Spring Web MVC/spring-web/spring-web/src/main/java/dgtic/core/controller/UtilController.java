@@ -77,4 +77,10 @@ public class UtilController {
         return "utilerias/binding-v6";
 
     }
+
+    @GetMapping("redirecionar-sin-flash")
+    public String redirecionarSinFlash(Model model){
+        model.addAttribute("contenido","Se hizo un redirecionamiento");
+        return "redirect:/cambio";
+    }
 }
