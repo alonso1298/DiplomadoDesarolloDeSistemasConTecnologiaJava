@@ -20,9 +20,10 @@
             </div>
         </form>
         <div th:if="${nombre}">
-            <img th:src="@{'/imagenes/'+${nombre}}" width="20%" height="20%"><br/>
+            <img th:src="@{'/modulo8/'+${nombre}}" width="20%" height="20%"><br/>
         </div>
     </main>
     <footer th:replace="~{plantillas/plantilla::footer}"></footer>
+    <div th:replace="~{plantillas/plantilla::paginaScripts}"></div>
 </body>
 </html>

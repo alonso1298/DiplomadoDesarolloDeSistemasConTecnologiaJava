@@ -108,14 +108,14 @@ public class UtilController {
     public String recibirFlujo(@RequestParam("imagenarchivo")MultipartFile multipartFile,
                                Model model){
         String imagenNombre=null;
-        if (!multipartFile.isEmpty()){
-            imagenNombre= Archivos.almacenar(multipartFile, archivoRuta);
-            if (imagenNombre!=null){
-                System.out.println("nombre de archivo: " + imagenNombre);
+        if(!multipartFile.isEmpty()){
+            imagenNombre= Archivos.almacenar(multipartFile,archivoRuta);
+            if(imagenNombre!=null){
+                System.out.println("nombre de archivo: "+imagenNombre);
             }
         }
-        model.addAttribute("alerts", "Archivo almacenado");
-        model.addAttribute("nombre", imagenNombre);
+        model.addAttribute("alerts","Archivo almacenado");
+        model.addAttribute("nombre",imagenNombre);
         return "utilerias/subir-archivo";
     }
 }

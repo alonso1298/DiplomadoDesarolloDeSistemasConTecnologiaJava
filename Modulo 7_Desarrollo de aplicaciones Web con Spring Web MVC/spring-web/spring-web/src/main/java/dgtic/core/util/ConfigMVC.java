@@ -9,7 +9,7 @@ public class ConfigMVC implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
-        registry.addResourceHandler("/imagenes/**")
-                .addResourceLocations("file:/C://imagenes//");
+        registry.addResourceHandler("/modulo8/**")
+                .addResourceLocations("file:/C://Users//asagrero//Pictures//modulo8//");
     }
 }
