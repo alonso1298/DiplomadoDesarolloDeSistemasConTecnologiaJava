@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Locale;
 
@@ -26,61 +27,70 @@ public class UtilController {
     private IUsuarioService usuarioService;
 
     @GetMapping("error_particular_uno")
-    public String getError(Model model){
+    public String getError(Model model) {
         throw new NumberFormatException();
     }
+
     @ExceptionHandler(NumberFormatException.class)
     public String errorRuntime(NumberFormatException e,
-                               Model model){
-        String msg=mensaje.getMessage("Error.conversion.string.integer",
+                               Model model) {
+        String msg = mensaje.getMessage("Error.conversion.string.integer",
                 null, Locale.getDefault());
-        model.addAttribute("explicacion",msg);
+        model.addAttribute("explicacion", msg);
         return "error-general";
     }
+
     @GetMapping("ver-usuario-v6")
-    public String verUsuarioV6(Model model){
-        model.addAttribute("usuario",new UsuarioBd());
-        model.addAttribute("contenido","Ingresa los datos siguientes");
+    public String verUsuarioV6(Model model) {
+        model.addAttribute("usuario", new UsuarioBd());
+        model.addAttribute("contenido", "Ingresa los datos siguientes");
         return "utilerias/binding-v6";
     }
+
     @PostMapping("recibir-usuario-v6")
     public String recibirUsuario4(@Valid @ModelAttribute("usuario") UsuarioBd usuario,
                                   BindingResult bindingResult,
-                                  Model model){
-        if(bindingResult.hasErrors()){
-            for(ObjectError error:bindingResult.getAllErrors()){
-                System.out.println("Error: "+error.getDefaultMessage());
+                                  Model model) {
+        if (bindingResult.hasErrors()) {
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                System.out.println("Error: " + error.getDefaultMessage());
             }
             return "utilerias/binding-v6";
         }
-        model.addAttribute("usuario",usuario);
-        String cadena="";
-        if(!usuario.getNombre().isEmpty() && !usuario.getCorreo().isEmpty()){
-            model.addAttribute("contenido","Los datos que ingresas son:");
-            cadena="Tu nombre es: "+usuario.getNombre()+" y correo: "+usuario.getCorreo();
+        model.addAttribute("usuario", usuario);
+        String cadena = "";
+        if (!usuario.getNombre().isEmpty() && !usuario.getCorreo().isEmpty()) {
+            model.addAttribute("contenido", "Los datos que ingresas son:");
+            cadena = "Tu nombre es: " + usuario.getNombre() + " y correo: " + usuario.getCorreo();
         }
         //usuarioService.guardar(usuario);
         //System.out.println(usuario);
         try {
             usuarioService.guardar(usuario);
-        }catch (Exception e){
-            String msg=mensaje.getMessage("Error.base.duplicado",
+        } catch (Exception e) {
+            String msg = mensaje.getMessage("Error.base.duplicado",
                     null, LocaleContextHolder.getLocale());
             bindingResult.rejectValue("correo", "correo", msg);
             return "utilerias/binding-v6";
         }
 
 
-        model.addAttribute("usuario",new UsuarioBd());
-        model.addAttribute("contenido","Los datos que ingresas son:");
-        model.addAttribute("info",cadena);
+        model.addAttribute("usuario", new UsuarioBd());
+        model.addAttribute("contenido", "Los datos que ingresas son:");
+        model.addAttribute("info", cadena);
         return "utilerias/binding-v6";
 
     }
 
     @GetMapping("redirecionar-sin-flash")
     public String redirecionarSinFlash(Model model){
-        model.addAttribute("contenido","Se hizo un redirecionamiento");
-        return "redirect:/cambio";
+        model.addAttribute("contenido","Se hizo un redireccionamiento");
+        return "redirect:/principal";
+    }
+    @GetMapping("redirecionar-con-flash")
+    public String redireccionConFlash(RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("contenido","Se hizo un redireccionamiento");
+        return "redirect:/principal";
+
     }
 }

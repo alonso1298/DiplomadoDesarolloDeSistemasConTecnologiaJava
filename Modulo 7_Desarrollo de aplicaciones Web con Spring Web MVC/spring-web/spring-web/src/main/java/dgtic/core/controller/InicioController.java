@@ -29,7 +29,7 @@ public class InicioController {
     }
     @RequestMapping(value = "principal",method = RequestMethod.GET)
     public String salto(Model modelo){
-        modelo.addAttribute("contenido", "Principal");
+        //modelo.addAttribute("contenido", "Principal");
         return "principal/principal";
     }
 }
