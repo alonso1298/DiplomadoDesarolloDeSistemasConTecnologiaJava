@@ -93,4 +93,9 @@ public class UtilController {
         return "redirect:/principal";
 
     }
+    @GetMapping("ver-subir-archivo")
+    public String verArchivos(Model model){
+        model.addAttribute("contenido", "Subir archivo");
+        return "utilerias/subir-archivo";
+    }
 }
