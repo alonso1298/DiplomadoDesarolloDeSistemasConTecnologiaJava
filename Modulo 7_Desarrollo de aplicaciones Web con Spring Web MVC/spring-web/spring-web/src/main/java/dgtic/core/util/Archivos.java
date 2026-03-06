@@ -25,4 +25,9 @@ public class Archivos {
             return null;
         }
     }
+    public static void renombrar(String direccion, String viejo, String nuevo){
+        File archivoViejo = new File(direccion+"/"+viejo);
+        File archivoNuevo=new File(direccion+"/"+nuevo);
+        archivoViejo.renameTo(archivoNuevo);
+    }
 }
