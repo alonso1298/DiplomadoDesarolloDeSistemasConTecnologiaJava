@@ -1,6 +1,7 @@
 package dgtic.core.controller;
 
 import dgtic.core.model.dto.FormularioDTO;
+import dgtic.core.model.dto.ProductoDTO;
 import dgtic.core.model.dto.UsuarioDTO;
 import dgtic.core.model.entity.UsuarioBd;
 import dgtic.core.service.CategoriaProductoService;
@@ -35,10 +36,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -259,5 +257,19 @@ public class UtilController {
             model.addAttribute("info", formularioDTO.toString());
         }
         return "utilerias/listas";
+    }
+    @GetMapping("/productos/{categoriaId}")
+    @ResponseBody
+    public List<ProductoDTO> obtenerProductos(@PathVariable Long categoriaId){
+        return categoriaProductoService.getProdctosPorCategoria(categoriaId);
+    }
+    @PostMapping("/guardar_json")
+    @ResponseBody
+    public Map<String, Object> recuperar(@RequestBody FormularioDTO formularioDTO,
+                                         Model model){
+        Map<String, Object> response = new HashMap<>();
+        response.put("mensaje", "Guardado correctamente");
+        response.put("estado", "OK");
+        return response;
     }
 }
