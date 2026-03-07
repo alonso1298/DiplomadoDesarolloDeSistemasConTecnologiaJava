@@ -1,9 +1,9 @@
 insert into usuario(nombre,correo,edad) values("Usuario 1","demo1@demo.dgtic",23);
-insert into usuario(nombre,correo,edad) values("Usuario 2","demo1@demo.dgtic",24);
-insert into usuario(nombre,correo,edad) values("Usuario 3","demo1@demo.dgtic",25);
-insert into usuario(nombre,correo,edad) values("Usuario 4","demo1@demo.dgtic",26);
-insert into usuario(nombre,correo,edad) values("Usuario 5","demo1@demo.dgtic",27);
-insert into usuario(nombre,correo,edad) values("Usuario 6","demo1@demo.dgtic",28);
+insert into usuario(nombre,correo,edad) values("Usuario 2","demo2@demo.dgtic",24);
+insert into usuario(nombre,correo,edad) values("Usuario 3","demo3@demo.dgtic",25);
+insert into usuario(nombre,correo,edad) values("Usuario 4","demo4@demo.dgtic",26);
+insert into usuario(nombre,correo,edad) values("Usuario 5","demo5@demo.dgtic",27);
+insert into usuario(nombre,correo,edad) values("Usuario 6","demo6@demo.dgtic",28);
 insert into categoria(nombre) values('conveniencia');
 insert into producto(nombre,categoria_id) values('pan',1);
 insert into producto(nombre,categoria_id) values('agua',1);

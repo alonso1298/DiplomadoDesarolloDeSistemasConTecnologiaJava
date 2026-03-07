@@ -13,10 +13,10 @@ import lombok.*;
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_producto;
+    private Long producto_id;
     private String nombre;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_categoria")
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 }
