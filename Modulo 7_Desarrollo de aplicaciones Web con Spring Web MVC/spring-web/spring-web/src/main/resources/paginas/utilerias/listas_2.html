@@ -14,12 +14,8 @@
                 th:text="${cat.nombre}">
         </option>
       </select>
-      <select th:field="*{productoId}">
+      <select id="producto">
         <option value="">Seleccione un producto</option>
-        <option th:each="prod :${productos}"
-                th:value="${prod.id_producto}"
-                th:text="${prod.nombre}">
-        </option>
       </select>
       <button type="submit">Guardar</button>
 
