@@ -16,6 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -207,5 +212,18 @@ public class UtilController {
                             .collect(Collectors.toList()));        }
         model.addAttribute("contenido","Bajar archivos");
         return "utilerias/bajar-archivo";
+    }
+    @GetMapping("/bajar-archivos/{filename}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String filename) throws MalformedURLException {
+        Path archivoRutas=Paths.get(archivoRuta);
+        Path filePath = archivoRutas.resolve(filename).normalize();
+        Resource resource = new UrlResource(filePath.toUri());
+        if (resource.exists() && resource.isReadable()) {
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                    .body(resource);
+        } else {
+            throw new RuntimeException("No se pudo leer el archivo: " + filename);
+        }
     }
 }
