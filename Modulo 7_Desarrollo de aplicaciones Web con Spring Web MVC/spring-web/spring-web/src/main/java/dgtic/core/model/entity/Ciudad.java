@@ -10,12 +10,16 @@ import lombok.Setter;
 @Table(name = "ciudad")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Ciudad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_ciudad;
     private String nombre;
-    private Long idPais;
+    @JoinColumn(name = "id_pais")
+    @ManyToOne
+    private Pais pais;
+
+
 }
