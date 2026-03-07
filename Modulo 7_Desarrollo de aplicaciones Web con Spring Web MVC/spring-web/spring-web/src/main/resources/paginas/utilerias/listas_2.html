@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org"
+        lang="es">
+<head th:replace="~{plantillas/plantilla :: head}"></head>
+<body>
+<header th:replace="~{plantillas/plantilla :: header}"></header>
+<main class="container text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+  <h1 th:text="${contenido}"></h1>
+  <form th:action="@{/utilerias/buscar_drop}"
+        th:object="${formulario}"
+        method="post">
+    <select th:field="*{categoriaId}" onchange="this.form.submit()">
+      <option value="">Seleccione categoria</option>
+      <option th:each="cat :${categorias}"
+              th:value="${cat.id_categoria}"
+              th:text="${cat.nombre}">
+      </option>
+    </select>
+    <select th:field="*{productoId}">
+      <option value="">Seleccione un producto</option>
+      <option th:each="prod :${productos}"
+              th:value="${prod.id_producto}"
+              th:text="${prod.nombre}">
+      </option>
+    </select>
+    <button type="submit">Guardar</button>
+  </form>
+</main>
+<footer th:replace="~{plantillas/plantilla::footer}"></footer>
+</body>
+</html>

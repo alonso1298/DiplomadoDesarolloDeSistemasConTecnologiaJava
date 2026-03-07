@@ -11,5 +11,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class FormularioDTO {
     private Long categoriaId;
-    private Long priductoId;
+    private Long productoId;
+
+    @Override
+    public String toString() {
+        return "FormularioDTO{" +
+                "categoriaId=" + categoriaId +
+                ", priductoId=" + productoId +
+                '}';
+    }
 }

@@ -7,10 +7,10 @@ import lombok.*;
 @Table(name = "categoria")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class Categoria {
+public class Categoria{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoria_id;

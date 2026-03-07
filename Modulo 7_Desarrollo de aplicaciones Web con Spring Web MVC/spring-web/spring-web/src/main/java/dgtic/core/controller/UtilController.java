@@ -3,6 +3,7 @@ package dgtic.core.controller;
 import dgtic.core.model.dto.FormularioDTO;
 import dgtic.core.model.dto.UsuarioDTO;
 import dgtic.core.model.entity.UsuarioBd;
+import dgtic.core.service.CategoriaProductoService;
 import dgtic.core.service.IUsuarioService;
 import dgtic.core.util.Archivos;
 import jakarta.activation.DataHandler;
@@ -53,6 +54,9 @@ public class UtilController {
 
     @Value("${ejemplo.imagen.ruta}")
     private String archivoRuta;
+
+    @Autowired
+    private CategoriaProductoService categoriaProductoService;
 
     @GetMapping("error_particular_uno")
     public String getError(Model model) {
@@ -231,7 +235,29 @@ public class UtilController {
     public String mostrarDatos(@RequestParam("version")int version, Model model){
         model.addAttribute("contenido", "Dropdown Anidado");
         model.addAttribute("formulario", new FormularioDTO());
-        //model.addAttribute("categorias", "");
-        return "";
+        model.addAttribute("categorias", categoriaProductoService.getCategorias());
+        model.addAttribute("productos", List.of());
+        return version==1 ? "utilerias/listas" : "utilerias/listas_2";
+    }
+    @PostMapping("buscar_drop")
+    public String procesarFormulario(
+            @ModelAttribute("formulario") FormularioDTO formularioDTO, Model model){
+        model.addAttribute("categorias", categoriaProductoService.getCategorias());
+        if(formularioDTO.getCategoriaId()!=null){
+            model.addAttribute("productos",
+                    categoriaProductoService.getProdctosPorCategoria(
+                            formularioDTO.getCategoriaId()
+                    ));
+        }else {
+            model.addAttribute("productos", List.of());
+        }
+        if (formularioDTO.getCategoriaId()==null){
+            model.addAttribute("warning", "Selecciona una categoria");
+        } else if (formularioDTO.getProductoId()==null) {
+            model.addAttribute("warning", "Selecciona una producto");
+        }else {
+            model.addAttribute("info", formularioDTO.toString());
+        }
+        return "utilerias/listas";
     }
 }
