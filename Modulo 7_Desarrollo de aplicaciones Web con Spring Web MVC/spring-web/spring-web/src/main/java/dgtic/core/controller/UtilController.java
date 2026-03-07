@@ -1,5 +1,6 @@
 package dgtic.core.controller;
 
+import dgtic.core.model.dto.FormularioDTO;
 import dgtic.core.model.dto.UsuarioDTO;
 import dgtic.core.model.entity.UsuarioBd;
 import dgtic.core.service.IUsuarioService;
@@ -225,5 +226,11 @@ public class UtilController {
         } else {
             throw new RuntimeException("No se pudo leer el archivo: " + filename);
         }
+    }
+    @GetMapping("ver-drop")
+    public String mostrarDatos(@RequestParam("version")int version, Model model){
+        model.addAttribute("contenido", "Dropdown Anidado");
+        model.addAttribute("formulario", new FormularioDTO());
+        model.addAttribute("categorias", "")
     }
 }
