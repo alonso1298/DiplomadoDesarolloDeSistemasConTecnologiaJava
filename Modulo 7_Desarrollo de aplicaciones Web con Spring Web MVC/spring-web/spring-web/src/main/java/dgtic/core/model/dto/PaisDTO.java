@@ -13,7 +13,4 @@ import lombok.*;
 public class PaisDTO {
     private Long id_pais;
     private String nombre;
-    @OneToMany(mappedBy = "pais",
-    cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY)
 }
