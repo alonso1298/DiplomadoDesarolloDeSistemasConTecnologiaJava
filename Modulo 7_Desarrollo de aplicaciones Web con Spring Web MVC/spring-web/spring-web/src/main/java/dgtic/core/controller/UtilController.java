@@ -231,6 +231,7 @@ public class UtilController {
     public String mostrarDatos(@RequestParam("version")int version, Model model){
         model.addAttribute("contenido", "Dropdown Anidado");
         model.addAttribute("formulario", new FormularioDTO());
-        model.addAttribute("categorias", "")
+        //model.addAttribute("categorias", "");
+        return "";
     }
 }
