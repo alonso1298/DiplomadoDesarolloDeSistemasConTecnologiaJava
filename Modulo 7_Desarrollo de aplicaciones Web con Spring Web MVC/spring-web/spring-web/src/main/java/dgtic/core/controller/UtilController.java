@@ -4,6 +4,13 @@ import dgtic.core.model.dto.UsuarioDTO;
 import dgtic.core.model.entity.UsuarioBd;
 import dgtic.core.service.IUsuarioService;
 import dgtic.core.util.Archivos;
+import jakarta.activation.DataHandler;
+import jakarta.activation.FileDataSource;
+import jakarta.mail.*;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,9 +24,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Controller
 @RequestMapping(value = "utilerias")
@@ -181,5 +195,17 @@ public class UtilController {
         }
         model.addFlashAttribute("contenido", "El correo se mando con éxito");
         return "redirect:/principal";
+    }
+    @GetMapping("mostrar-archivos")
+    public String mostrarArchivos(Model model) throws IOException {
+        Path archivoRutas= Paths.get(archivoRuta);
+        try (Stream<Path> ruta = Files.walk(archivoRutas, 1)) {
+            model.addAttribute("files",
+                    ruta.filter(path -> !path.equals(archivoRutas) && !path.toString().endsWith(".pdf"))
+                            .map(archivoRutas::relativize)
+                            .map(Path::toString)
+                            .collect(Collectors.toList()));        }
+        model.addAttribute("contenido","Bajar archivos");
+        return "utilerias/bajar-archivo";
     }
 }
