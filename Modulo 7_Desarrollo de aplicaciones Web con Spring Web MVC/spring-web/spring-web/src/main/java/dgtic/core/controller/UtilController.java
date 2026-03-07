@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Locale;
 
 @Controller
@@ -117,5 +118,12 @@ public class UtilController {
         model.addAttribute("alerts","Archivo almacenado");
         model.addAttribute("nombre",imagenNombre);
         return "utilerias/subir-archivo";
+    }
+    @GetMapping("crear-pdf")
+    public String generarPdf(Model model){
+        List<UsuarioBd> usuarios=usuarioService.todosUsuarios();
+        model.addAttribute("datos", usuarios);
+        model.addAttribute("ruta", archivoRuta);
+        return "utilerias/crear-pdf";
     }
 }
