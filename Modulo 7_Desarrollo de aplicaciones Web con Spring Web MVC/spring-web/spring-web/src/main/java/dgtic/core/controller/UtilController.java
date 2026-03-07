@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 
 @Controller
 @RequestMapping(value = "utilerias")
@@ -125,5 +126,60 @@ public class UtilController {
         model.addAttribute("datos", usuarios);
         model.addAttribute("ruta", archivoRuta);
         return "utilerias/crear-pdf";
+    }
+    @GetMapping("mandar-correo")
+    public String email(RedirectAttributes model){
+        List<UsuarioBd> usuarioBds=usuarioService.todosUsuarios();
+        String gmail = "alonsosagrerogranados@gmail.com";
+        String pswd = "Tu clave";
+        Properties p = System.getProperties();
+        p.setProperty("mail.smtps.host", "smpt.gmail.com");
+        p.setProperty("mail.smtps.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        p.setProperty("mail.smtps.socketFactory.fallback", "false");
+        p.setProperty("mail.smtp.port", "465");
+        p.setProperty("mail.smtp.socketFactory.port", "465");
+        p.setProperty("mail.smtps.auth", "true");
+        p.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
+        p.setProperty("mail.smtps.ssl.trust", "smtp.gmail.com");
+        p.setProperty("mail.smtp.ssl.quitwait", "false");
+        //construcción del html
+        String cadena = "<h2>Usuarios</br>";
+        for (UsuarioBd s : usuarioBds) {
+            cadena += "<h2>" +
+                    s.getNombre() +
+                    "</h2></br>";
+        }
+        try {
+            Session session = Session.getInstance(p, null);
+            MimeMessage message = new MimeMessage(session);
+
+            MimeBodyPart texto = new MimeBodyPart();
+            texto.setContent(cadena, "text/html;charset=utf-8");
+            //adjuntar la imagen
+            BodyPart adjunto = new MimeBodyPart();
+            String r = archivoRuta + "temp.pdf";
+            adjunto.setDataHandler(new DataHandler(new FileDataSource(r)));
+            adjunto.setFileName("temp.pdf");
+            Multipart multiple = new MimeMultipart();
+            multiple.addBodyPart(texto);
+            multiple.addBodyPart(adjunto);
+
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse("tu correo donde mandas", false));
+            message.setSubject("Usuario Registrado en B.D");
+            message.setContent(multiple);
+            message.setSentDate(new Date());
+
+
+            Transport transport = (Transport) session.getTransport("smtps");
+            transport.connect("smtp.gmail.com", gmail, pswd);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addFlashAttribute("contenido", "El correo se mando con éxito");
+        return "redirect:/principal";
     }
 }
