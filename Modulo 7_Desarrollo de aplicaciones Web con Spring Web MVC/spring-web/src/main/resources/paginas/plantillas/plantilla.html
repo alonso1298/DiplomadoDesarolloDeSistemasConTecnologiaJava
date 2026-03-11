@@ -87,14 +87,18 @@
                             <li><a class="dropdown-item" th:href="@{/utilerias/mostrar-archivos}" target="_blank">Bajar Archivos</a></li>
                             <li><a class="dropdown-item" th:href="@{/utilerias/ver-drop?version=1}">Dropdown Anidado</a></li>
                             <li><a class="dropdown-item" th:href="@{/utilerias/ver-drop?version=2}">Dropdown Anidado2</a></li>
-
-
                         </ul>
                     </li>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Practica 2
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/utilerias/ver-drop?version=1}">Con Thymeleaf</a></li>
+                            <li><a class="dropdown-item" th:href="@{/utilerias/ver-drop?version=2}">Con JS</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">

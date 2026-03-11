@@ -36,7 +36,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Parámetros
+                            @RequestParam
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" th:href="@{/spring/requestparam?dato=DGTIC-1}">Con parámetro</a></li>
@@ -54,8 +54,6 @@
                             <li><a class="dropdown-item" th:href="@{/spring/ver-usuario-v2}">Data Binding 2</a></li>
                             <li><a class="dropdown-item" th:href="@{/spring/ver-usuario-v3}">Data Binding 3</a></li>
                             <li><a class="dropdown-item" th:href="@{/spring/ver-usuario-v4}">Data Binding 4</a></li>
-                            <li><a class="dropdown-item" th:href="@{/spring/ver-usuario-v5}">Data Binding 5</a></li>
-
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -89,14 +87,18 @@
                             <li><a class="dropdown-item" th:href="@{/utilerias/mostrar-archivos}" target="_blank">Bajar Archivos</a></li>
                             <li><a class="dropdown-item" th:href="@{/utilerias/ver-drop?version=1}">Dropdown Anidado</a></li>
                             <li><a class="dropdown-item" th:href="@{/utilerias/ver-drop?version=2}">Dropdown Anidado2</a></li>
-
-
                         </ul>
                     </li>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Disable
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/utilerias/ver-drop?version=1}">Practica 2 con Thymeleaf</a></li>
+                            <li><a class="dropdown-item" th:href="@{/utilerias/ver-drop?version=2}">Practica 2 con JS</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -110,6 +112,15 @@
     <div class="alert alert-danger" th:if="${error !=null}" th:text=${error}></div>
     <div class="alert alert-warning" th:if="${warning !=null}" th:text=${warning}></div>
     <div class="alert alert-info" th:if="${info !=null}" th:text=${info}></div>
+    <div th:if="${alerts}"
+         class="alert alert-success alert-dismissible fade show"
+         role="alert"
+         id="alertMessage">
+        <span th:text="${alerts}"></span>
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"></button>
+    </div>
 </header>
 <footer th:fragment="footer">
     <div class="container text-center">
@@ -119,6 +130,20 @@
     <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/bootstrap/js/jquery-3.6.3.js}"></script>
 </footer>
+<div th:fragment="paginaScripts">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                let alert = document.getElementById("alertMessage");
+                if (alert) {
+                    let bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                }
+            }, 3000);
+
+        });
+    </script>
+</div>
 </body>
 
 </html>

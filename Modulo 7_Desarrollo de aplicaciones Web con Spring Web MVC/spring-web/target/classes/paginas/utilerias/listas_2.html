@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org"
+        lang="es">
+<head th:replace="~{plantillas/plantilla :: head}"></head>
+<body>
+<header th:replace="~{plantillas/plantilla :: header}"></header>
+<main class="container text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+  <h1 th:text="${contenido}"></h1>
+
+  <select id="categoria">
+    <option value="">Seleccione categoria</option>
+    <option th:each="cat :${categorias}"
+            th:value="${cat.id_categoria}"
+            th:text="${cat.nombre}">
+    </option>
+  </select>
+  <select id="producto">
+    <option value="">Seleccione un producto</option>
+  </select>
+  <button type="submit" onclick="crear()">Guardar</button>
+
+</main>
+<footer th:replace="~{plantillas/plantilla::footer}"></footer>
+<script th:src="@{/js/llamada.js}"></script>
+<script th:src="@{/js/crear_json.js}"></script>
+</body>
+</html>
