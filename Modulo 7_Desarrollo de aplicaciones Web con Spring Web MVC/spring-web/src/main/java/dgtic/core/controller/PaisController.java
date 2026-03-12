@@ -19,7 +19,8 @@ import java.util.List;
 @Controller
 public class PaisController {
 
-    private final PaisCiudadService paisCiudadService = new PaisCiudadService();
+    @Autowired
+    private PaisCiudadService paisCiudadService;
 
     @GetMapping("pagina1")
     public String mostrarDatos(@RequestParam("version") int version, Model model){
@@ -41,7 +42,7 @@ public class PaisController {
         if(formulario2DTO.getPaisId()!=null){
             model.addAttribute("capitales",
                     paisCiudadService.getCiudadPorPais(
-                            formulario2DTO.getPaisId()
+                            Long.valueOf(formulario2DTO.getPaisId())
                     ));
         }else{
             model.addAttribute("capitales", List.of());
