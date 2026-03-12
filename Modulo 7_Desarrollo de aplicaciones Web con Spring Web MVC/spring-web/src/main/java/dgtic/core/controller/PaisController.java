@@ -1,10 +1,6 @@
 package dgtic.core.controller;
 
 import dgtic.core.model.dto.Formulario2DTO;
-import dgtic.core.model.entity.Ciudad;
-import dgtic.core.model.entity.Pais;
-import dgtic.core.repository.ICiudadRepository;
-import dgtic.core.repository.IPaisRepository;
 import dgtic.core.service.PaisCiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

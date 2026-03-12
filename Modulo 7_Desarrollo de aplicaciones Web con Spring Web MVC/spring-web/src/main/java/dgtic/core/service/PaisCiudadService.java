@@ -23,7 +23,7 @@ public class PaisCiudadService {
     }
 
     public List<Ciudad> getCiudadPorPais(Long paisId){
-        return ciudadRepository.findByPaisId(paisId);
+        return ciudadRepository.findByPaisIdPais(paisId);
     }
 
 }
