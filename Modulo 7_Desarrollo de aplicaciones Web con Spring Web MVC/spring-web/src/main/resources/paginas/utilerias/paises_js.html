@@ -6,19 +6,21 @@
 <header th:replace="~{plantillas/plantilla :: header}"></header>
 <main class="container text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
     <h1 th:text="${contenido}"></h1>
-    <form th:action="@{/utilerias/buscar_drop}"
+    <form th:action="@{/utilerias/buscar_pais}"
           th:object="${formulario}"
           method="post">
         <select id="pais">
             <option value="">Seleccione país</option>
-            <option th:each="pais :${paises}"
-                    th:value="${pais.id}"
+            <option th:each="pais : ${paises}"
+                    th:value="${pais.idPais}"
                     th:text="${pais.nombre}">
             </option>
         </select>
+        <br><br>
         <select id="ciudad">
             <option value="">Seleccione ciudad</option>
         </select>
+        <br><br>
         <button type="submit">Guardar</button>
     </form>
 </main>

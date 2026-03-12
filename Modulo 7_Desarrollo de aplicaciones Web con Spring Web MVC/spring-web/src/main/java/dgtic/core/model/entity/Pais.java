@@ -1,7 +1,6 @@
 package dgtic.core.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +15,8 @@ import java.util.List;
 public class Pais {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_pais;
+    @Column(name = "id_pais")
+    private Long idPais;
     private String nombre;
     @OneToMany(mappedBy = "pais",
             cascade = CascadeType.ALL,

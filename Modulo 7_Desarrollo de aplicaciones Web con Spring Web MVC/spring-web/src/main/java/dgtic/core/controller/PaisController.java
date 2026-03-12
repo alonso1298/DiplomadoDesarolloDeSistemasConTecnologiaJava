@@ -5,20 +5,18 @@ import dgtic.core.service.PaisCiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/utilerias")
 public class PaisController {
 
     @Autowired
     private PaisCiudadService paisCiudadService;
 
-    @GetMapping("pagina1")
+    @GetMapping("/pagina1")
     public String mostrarDatos(@RequestParam("version") int version, Model model){
 
         model.addAttribute("contenido", "Dropdown País - Capital");
@@ -28,7 +26,7 @@ public class PaisController {
 
         return version==1 ? "utilerias/paises" : "utilerias/paises_js";
     }
-    @PostMapping("buscar_pais")
+    @PostMapping("/buscar_pais")
     public String procesarFormulario(
             @ModelAttribute("formulario") Formulario2DTO formulario2DTO,
             Model model){
