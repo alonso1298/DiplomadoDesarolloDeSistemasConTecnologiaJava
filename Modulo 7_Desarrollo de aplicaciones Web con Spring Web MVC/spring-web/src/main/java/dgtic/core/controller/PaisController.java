@@ -20,7 +20,7 @@ public class PaisController {
     @GetMapping("/pagina1")
     public String mostrarDatos(@RequestParam("version") int version, Model model){
 
-        model.addAttribute("contenido", "Dropdown País - Capital");
+        model.addAttribute("contenido", "País - Capital");
         model.addAttribute("formulario", new Formulario2DTO());
         model.addAttribute("paises", paisCiudadService.getPaises());
         model.addAttribute("capitales", List.of());

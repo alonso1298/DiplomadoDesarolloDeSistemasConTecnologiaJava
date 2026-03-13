@@ -1,23 +1,37 @@
-document.getElementById("pais").addEventListener("change", function() {
+document.addEventListener("DOMContentLoaded", function(){
 
-    let idPais = this.value;
+    const paisSelect = document.getElementById("pais");
+    const ciudadSelect = document.getElementById("ciudad");
 
-    fetch("/ciudades/" + idPais)
-        .then(response => response.json())
-        .then(data => {
+    paisSelect.addEventListener("change", function(){
 
-            let ciudadSelect = document.getElementById("ciudad");
-            ciudadSelect.innerHTML = "";
+        let idPais = this.value;
 
-            data.forEach(ciudad => {
+        if(idPais === ""){
+            ciudadSelect.innerHTML = '<option value="">Seleccione ciudad</option>';
+            return;
+        }
 
-                let option = document.createElement("option");
-                option.value = ciudad.idCiudad;
-                option.text = ciudad.nombre;
+        fetch("/utilerias/ciudades/" + idPais)
+            .then(response => response.json())
+            .then(data => {
 
-                ciudadSelect.appendChild(option);
-            });
+                ciudadSelect.innerHTML = '<option value="">Seleccione ciudad</option>';
 
-        });
+                data.forEach(ciudad => {
+
+                    let option = document.createElement("option");
+
+                    option.value = ciudad.idCiudad;
+                    option.textContent = ciudad.nombre;
+
+                    ciudadSelect.appendChild(option);
+
+                });
+
+            })
+            .catch(error => console.error("Error:", error));
+
+    });
 
 });
