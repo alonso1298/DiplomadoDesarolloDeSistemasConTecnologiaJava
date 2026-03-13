@@ -15,7 +15,8 @@ import lombok.Setter;
 public class Ciudad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_ciudad;
+    @Column(name = "id_ciudad")
+    private Long idCiudad;
     private String nombre;
     @ManyToOne
     @JoinColumn(name = "id_pais")
