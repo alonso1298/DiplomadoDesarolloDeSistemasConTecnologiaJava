@@ -1,27 +1,23 @@
-document.getElementById("pais").addEventListener("change", function () {
+document.getElementById("pais").addEventListener("change", function() {
 
-    const paisId = this.value;
-    const ciudadSelect = document.getElementById("ciudad");
+    let idPais = this.value;
 
-    ciudadSelect.innerHTML = '<option value="">Seleccione ciudad</option>';
+    fetch("/ciudades/" + idPais)
+        .then(response => response.json())
+        .then(data => {
 
-    if (paisId) {
+            let ciudadSelect = document.getElementById("ciudad");
+            ciudadSelect.innerHTML = "";
 
-        fetch('/utilerias/capitales/' + paisId)
-            .then(res => res.json())
-            .then(data => {
+            data.forEach(ciudad => {
 
-                data.forEach(c => {
+                let option = document.createElement("option");
+                option.value = ciudad.idCiudad;
+                option.text = ciudad.nombre;
 
-                    let option = document.createElement("option");
-
-                    option.value = c.id;
-                    option.text = c.nombre;
-
-                    ciudadSelect.appendChild(option);
-
-                });
-
+                ciudadSelect.appendChild(option);
             });
-    }
+
+        });
+
 });
