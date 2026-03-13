@@ -20,7 +20,7 @@
         <select th:field="*{ciudadId}">
             <option value="">Seleccione ciudad</option>
             <option th:each="ciudad : ${capitales}"
-                    th:value="${ciudad.id_ciudad}"
+                    th:value="${ciudad.idCiudad}"
                     th:text="${ciudad.nombre}">
             </option>
         </select>
