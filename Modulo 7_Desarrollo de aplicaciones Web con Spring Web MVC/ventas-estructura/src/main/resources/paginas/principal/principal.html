@@ -2,16 +2,10 @@
 <html   xmlns:th="http://www.thymeleaf.org"
         lang="es">
 <head th:replace="~{plantillas/plantilla :: head}"></head>
-    <div>
-        <meta http-equiv="refresh" content="2;URL=http://localhost:8080/principal">
-    </div>
 <body>
     <header th:replace="~{plantillas/plantilla :: header}"></header>
     <main class="container text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-        <div class="container text-center">
-            <br/> <img th:src="@{/image/leon.gif}" height="150" width="300"/>
-            <h2>Abarrotes León</h2>
-        </div>
+    <h1 th:text="${contenido}"></h1>
     </main>
     <footer th:replace="~{plantillas/plantilla::footer}"></footer>
 </body>
