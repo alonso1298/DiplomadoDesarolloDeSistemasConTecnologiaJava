@@ -10,9 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -53,5 +51,23 @@ public class ClienteController {
         model.addAttribute("datos",new ClienteDTO());
         model.addAttribute("contenido","Alta Cliente");
         return "clientes/alta_cliente";
+    }
+    @PostMapping(value = "salvar-cliente")
+    public String guardarCliente(@ModelAttribute("datos") ClienteDTO cliente,
+                                 Model model){
+
+        model.addAttribute("alerts","Se almaceno con éxito");
+        model.addAttribute("contenido","Alta Cliente");
+        if(cliente.getId_cliente()!=null){
+            clienteService.save(cliente);
+            model.addAttribute("datos",null);
+            return "clientes/modificar-cliente";
+        }else{
+            clienteService.save(cliente);
+            model.addAttribute("selectciudad",clienteService.findCiudadView());
+            model.addAttribute("datos",new ClienteDTO());
+            return "clientes/alta_cliente";
+        }
+
     }
 }
