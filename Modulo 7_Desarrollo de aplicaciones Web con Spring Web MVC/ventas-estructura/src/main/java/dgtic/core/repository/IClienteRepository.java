@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IClienteRepository extends JpaRepository<Cliente, Long> {
-    
+
     @Query("""
             SELECT c
                    FROM Cliente c
