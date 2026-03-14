@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -47,12 +48,13 @@ public class LibroRestController {
     }
 
     @PostMapping("/libro/")
-    public Libro agregarLibro(@RequestBody Libro libro){ // Se utiliza @RequestBody, ya que en post los datos se mandan en el cuerpo
-        int id = 1;
-        while (libreria.containsKey(id)) id++;
+    public ResponseEntity<Libro> agregarLibro(@RequestBody Libro libro){ // Se utiliza @RequestBody, ya que en post los datos se mandan en el cuerpo
+        int id = 1; // simular ID de BD
+        while (libreria.containsKey(id)) id++; // Simula el auto incremet
         libro.setId(id);
         libreria.put(id, libro); // simula insert
-        return libreria.get(id);
+        //return libreria.get(id);
+        return new ResponseEntity<>(libreria.get(id), HttpStatus.CREATED);
     }
 
     @PutMapping("/libro/{id}")
