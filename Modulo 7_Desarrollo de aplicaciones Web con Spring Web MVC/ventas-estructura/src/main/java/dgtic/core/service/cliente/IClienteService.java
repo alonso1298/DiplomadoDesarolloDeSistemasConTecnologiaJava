@@ -1,7 +1,7 @@
 package dgtic.core.service.cliente;
 
-import dgtic.core.model.dto.dto.cliente.ClienteBusquedaDTO;
-import dgtic.core.model.dto.dto.cliente.ClienteDTO;
+import dgtic.core.model.dto.cliente.ClienteBusquedaDTO;
+import dgtic.core.model.dto.cliente.ClienteDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -1,35 +1,34 @@
 package dgtic.core.mapping;
 
-import dgtic.core.model.dto.dto.cliente.ClienteDTO;
+import dgtic.core.model.dto.cliente.ClienteDTO;
 import dgtic.core.model.entity.Cliente;
-import dgtic.core.model.entity.Producto;
 
 public class Mapper {
-    public static ProductoDTO toProductoDTO(Producto producto){
-        if(producto==null){
-            return null;
-        }
-        return ProductoDTO.builder()
-                .id_producto(producto.getId_producto())
-                .nombre(producto.getNombre())
-                .precio(producto.getPrecio())
-                .stock(producto.getStock())
-                .imagen(producto.getImagen())
-                .build();
-    }
+//    public static ProductoDTO toProductoDTO(Producto producto){
+//        if(producto==null){
+//            return null;
+//        }
+//        return ProductoDTO.builder()
+//                .id_producto(producto.getId_producto())
+//                .nombre(producto.getNombre())
+//                .precio(producto.getPrecio())
+//                .stock(producto.getStock())
+//                .imagen(producto.getImagen())
+//                .build();
+//    }
     //ProductoDTO a Producto
-    public static Producto toProducto(ProductoDTO producto){
-        if(producto==null){
-            return null;
-        }
-        return Producto.builder()
-                .id_producto(producto.getId_producto())
-                .nombre(producto.getNombre())
-                .precio(producto.getPrecio())
-                .stock(producto.getStock())
-                .imagen(producto.getImagen())
-                .build();
-    }
+//    public static Producto toProducto(ProductoDTO producto){
+//        if(producto==null){
+//            return null;
+//        }
+//        return Producto.builder()
+//                .id_producto(producto.getId_producto())
+//                .nombre(producto.getNombre())
+//                .precio(producto.getPrecio())
+//                .stock(producto.getStock())
+//                .imagen(producto.getImagen())
+//                .build();
+//    }
 
     //Cliente a ClienteDTO
     public static ClienteDTO toClienteDTO(Cliente cliente){
@@ -61,15 +60,15 @@ public class Mapper {
     }
 
     //Venta a VentaDTO
-    public static VentaDTO toVentaDTO(Venta venta){
-        if(venta==null){
-            return null;
-        }
-        return VentaDTO.builder()
-                .id_venta(venta.getId_venta())
-                .cliente(venta.getCliente().getId_cliente())
-                .fecha(venta.getFecha())
-                .total(venta.getTotal())
-                .build();
-    }
+//    public static VentaDTO toVentaDTO(Venta venta){
+//        if(venta==null){
+//            return null;
+//        }
+//        return VentaDTO.builder()
+//                .id_venta(venta.getId_venta())
+//                .cliente(venta.getCliente().getId_cliente())
+//                .fecha(venta.getFecha())
+//                .total(venta.getTotal())
+//                .build();
+//    }
 }

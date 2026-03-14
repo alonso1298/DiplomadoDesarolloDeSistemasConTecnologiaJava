@@ -1,6 +1,6 @@
 package dgtic.core.controller;
 
-import dgtic.core.model.dto.dto.cliente.ClienteDTO;
+import dgtic.core.model.dto.cliente.ClienteDTO;
 import dgtic.core.service.cliente.IClienteService;
 import dgtic.core.util.RenderPagina;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package dgtic.core.repository;
 
-import dgtic.core.model.dto.dto.cliente.ClienteBusquedaDTO;
+import dgtic.core.model.dto.cliente.ClienteBusquedaDTO;
 import dgtic.core.model.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

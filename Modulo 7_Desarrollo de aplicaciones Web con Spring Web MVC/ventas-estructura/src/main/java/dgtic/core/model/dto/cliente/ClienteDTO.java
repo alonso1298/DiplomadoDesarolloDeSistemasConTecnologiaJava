@@ -1,4 +1,4 @@
-package dgtic.core.model.dto.dto.cliente;
+package dgtic.core.model.dto.cliente;
 
 import lombok.*;
 
