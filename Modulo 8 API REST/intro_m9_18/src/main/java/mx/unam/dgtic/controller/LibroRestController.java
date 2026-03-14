@@ -67,7 +67,14 @@ public class LibroRestController {
     }
 
     @DeleteMapping("/libro/{id}")
-    public Libro eliminarLibro(){
-        
+    public Libro eliminarLibro(@PathVariable Integer id){
+        Libro libro = libreria.get(id);
+        if (libro != null){
+            libreria.remove(id);
+            return libro;
+        }else {
+            // return 404
+            return null;
+        }
     }
 }
