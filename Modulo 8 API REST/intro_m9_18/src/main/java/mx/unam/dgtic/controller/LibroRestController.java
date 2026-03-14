@@ -1,10 +1,7 @@
 package mx.unam.dgtic.controller;
 
 import mx.unam.dgtic.model.Libro;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
@@ -32,6 +29,15 @@ public class LibroRestController {
 
     @GetMapping("/libro/{id}") // PathVariable
     public Libro getLibro(@PathVariable Integer id){
+        return libreria.get(id);
+    }
+
+    @PostMapping("/libro/")
+    public Libro agregarLibro(@RequestBody Libro libro){ // Se utiliza @RequestBody ya que en post los datos se mandan en el cuerpo
+        int id = 1;
+        while (libreria.containsKey(id)) id++;
+        libro.setId(id);
+        libreria.put(id, libro); // simula insert
         return libreria.get(id);
     }
 }
