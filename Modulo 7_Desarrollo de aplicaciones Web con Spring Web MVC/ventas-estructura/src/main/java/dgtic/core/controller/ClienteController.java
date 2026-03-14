@@ -47,4 +47,11 @@ public class ClienteController {
         model.addAttribute("ruta", archivoRuta);
         return "clientes/clientes-pdf";
     }
+    @GetMapping("ver-alta-cliente")
+    public String verAlta(Model model){
+        model.addAttribute("selectciudad",clienteService.findCiudadView());
+        model.addAttribute("datos",new ClienteDTO());
+        model.addAttribute("contenido","Alta Cliente");
+        return "clientes/alta_cliente";
+    }
 }
