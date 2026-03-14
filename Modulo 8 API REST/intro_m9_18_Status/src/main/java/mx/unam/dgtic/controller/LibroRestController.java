@@ -1,6 +1,10 @@
 package mx.unam.dgtic.controller;
 
 import mx.unam.dgtic.model.Libro;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -23,14 +27,23 @@ public class LibroRestController {
         return "OK";
     }
 
-    @GetMapping("/libro/")
-    public HashMap<Integer, Libro> getTodos(){
-        return libreria;
+    //@GetMapping("/libro/")
+    @GetMapping(path = "/libro/",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<HashMap<Integer, Libro>> getTodos(){
+        //return libreria;
+        return new ResponseEntity<>(libreria, HttpHeaders.EMPTY ,HttpStatus.OK); // 200
     }
 
     @GetMapping("/libro/{id}") // PathVariable
-    public Libro getLibro(@PathVariable Integer id){
-        return libreria.get(id);
+    public ResponseEntity<Libro> getLibro(@PathVariable Integer id){
+        //return libreria.get(id);
+        Libro libro = libreria.get(id);
+        if (libro != null){
+            return ResponseEntity.ok(libro);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("/libro/")
