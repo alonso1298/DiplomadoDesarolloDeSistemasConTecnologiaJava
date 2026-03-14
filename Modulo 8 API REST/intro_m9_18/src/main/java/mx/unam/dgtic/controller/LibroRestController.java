@@ -2,6 +2,7 @@ package mx.unam.dgtic.controller;
 
 import mx.unam.dgtic.model.Libro;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,4 +30,8 @@ public class LibroRestController {
         return libreria;
     }
 
+    @GetMapping("/libro/{id}") // PathVariable
+    public Libro getLibro(@PathVariable Integer id){
+        return libreria.get(id);
+    }
 }
