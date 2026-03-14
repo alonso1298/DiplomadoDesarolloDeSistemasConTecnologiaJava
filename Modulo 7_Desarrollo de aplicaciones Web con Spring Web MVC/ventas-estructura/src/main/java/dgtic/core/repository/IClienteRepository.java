@@ -11,13 +11,13 @@ import java.util.Optional;
 
 public interface IClienteRepository extends JpaRepository<Cliente, Long> {
 
-    @Query("""
-            SELECT c
-                   FROM Cliente c
-                   JOIN FETCH c.ventas p         
-                   WHERE c.id_cliente = :id
-            """)
-    Optional<Cliente> findById(@Param("id") Long id);
+//    @Query("""
+//            SELECT c
+//                   FROM Cliente c
+//                   JOIN FETCH c.ventas p
+//                   WHERE c.id_cliente = :id
+//            """)
+//    Optional<Cliente> findById(@Param("id") Long id);
 
     @Query("SELECT new dgtic.core.model.dto.cliente.ClienteBusquedaDTO(a.id_cliente,a.nombre)" +
             " FROM Cliente a WHERE a.nombre LIKE %?1% or a.email LIKE %?1%")
