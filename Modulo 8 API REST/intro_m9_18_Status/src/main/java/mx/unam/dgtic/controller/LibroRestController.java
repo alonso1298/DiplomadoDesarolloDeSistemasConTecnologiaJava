@@ -58,38 +58,39 @@ public class LibroRestController {
     }
 
     @PutMapping("/libro/{id}")
-    public Libro actualizaLibro(@PathVariable Integer id, @RequestBody Libro libro){
+    public ResponseEntity<Libro>  actualizaLibro(@PathVariable Integer id, @RequestBody Libro libro){
         if (libreria.containsKey(id)){
             libro.setId(id);
             libreria.replace(id, libro);
+            return ResponseEntity.ok(libro); // 200
         }else {
-            return null;
+            return ResponseEntity.notFound().build();
         }
-        return libreria.get(id);
     }
 
     @PatchMapping("/libro/{id}")
-    public Libro parcheoLibro(@PathVariable Integer id, @RequestBody Libro libro){
+    public ResponseEntity<Libro> parcheoLibro(@PathVariable Integer id, @RequestBody Libro libro){
         Libro libroBD = libreria.get(id);
         if (libroBD == null){
-            return null; // STATUS CODE 404
+            return ResponseEntity.notFound().build(); // STATUS CODE 404
         }
         if (libro.getTitulo() != null) libroBD.setTitulo(libro.getTitulo());
-        if (libro.getTitulo() != null) libroBD.setAutor(libro.getAutor());
+        if (libro.getAutor() != null) libroBD.setAutor(libro.getAutor());
 
         libreria.replace(id, libroBD);
-        return libreria.get(id);
+        //return libreria.get(id)
+        return ResponseEntity.ok(libreria.get(id));
     }
 
     @DeleteMapping("/libro/{id}")
-    public Libro eliminarLibro(@PathVariable Integer id){
+    public ResponseEntity<Libro> eliminarLibro(@PathVariable Integer id){
         Libro libro = libreria.get(id);
         if (libro != null){
             libreria.remove(id);
-            return libro;
+            return ResponseEntity.ok(libro);
         }else {
             // return 404
-            return null;
+            return ResponseEntity.notFound().build();
         }
     }
 }
