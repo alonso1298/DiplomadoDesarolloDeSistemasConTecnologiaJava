@@ -41,17 +41,17 @@ public class AlumnoServiceImpl implements IAlumnoService {
     }
 
     @Override
-    public Alumno actualizarCompleto(Long id, Alumno alumno) {
+    public Alumno actualizarCompleto(Long id, Alumno alumnoNuevo) {
         Alumno alumnoDb = alumnoRepository.findById(id)
                 .orElseThrow(() -> new  RuntimeException("Alumno no encontrado con id: " + id));
         // forzando a actualizar todos los campos
-        alumnoDb.setNombre(alumno.getNombre());
-        alumnoDb.setApellido(alumno.getApellido());
-        alumnoDb.setCorreo(alumno.getCorreo());
+        alumnoDb.setNombre(alumnoNuevo.getNombre());
+        alumnoDb.setApellido(alumnoNuevo.getApellido());
+        alumnoDb.setCorreo(alumnoNuevo.getCorreo());
 
-        if (alumno.getCalificaciones() != null){
-            alumnoDb.setCalificaciones(new ArrayList<>(alumno.getCalificaciones()));
-            for (Calificacion calificacion : alumno.getCalificaciones()){
+        if (alumnoNuevo.getCalificaciones() != null){
+            alumnoDb.setCalificaciones(new ArrayList<>(alumnoNuevo.getCalificaciones()));
+            for (Calificacion calificacion : alumnoNuevo.getCalificaciones()){
                 calificacion.setAlumno(alumnoDb);
             }
         }else {
@@ -61,12 +61,21 @@ public class AlumnoServiceImpl implements IAlumnoService {
     }
 
     @Override
-    public Alumno actualizarParcial(Long id, Alumno alumno) {
-        return null;
+    public Alumno actualizarParcial(Long id, Alumno cambios) {
+        Alumno alumnoDb = alumnoRepository.findById(id)
+                .orElseThrow(() -> new  RuntimeException("Alumno no encontrado con id: " + id));
+        if(cambios.getNombre() != null) alumnoDb.setNombre(cambios.getNombre());
+        if(cambios.getApellido() != null) alumnoDb.setApellido(cambios.getApellido());
+        if(cambios.getCorreo() != null) alumnoDb. setCorreo(cambios. getCorreo());
+        // no actualizamos calificaiones
+        return alumnoRepository.save(alumnoDb);
     }
 
     @Override
     public Alumno eliminar(Long id) {
-        return null;
+        Alumno alumnoDb = alumnoRepository.findById(id)
+                .orElseThrow(() -> new  RuntimeException("Alumno no encontrado con id: " + id));
+        alumnoRepository.delete(alumnoDb);
+        return alumnoDb;
     }
 }
