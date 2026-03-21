@@ -37,7 +37,14 @@ public class AlumnoRestController {
     @PutMapping("/{id}")
     public ResponseEntity<Alumno> updateAlumno(@PathVariable Long id,
                                                @RequestBody Alumno alumnoNuevo) {
-        Alumno actualizado = alumnoService.obtenerAlumnoPorId(id);
         return ResponseEntity.ok(alumnoService.actualizarCompleto(id, alumnoNuevo));
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Alumno> updateParcialAlumno(
+            @PathVariable Long id, @RequestBody Alumno alumnoNuevo){
+        return ResponseEntity.ok(alumnoService.actualizarParcial(id, alumnoNuevo));
+    }
+
+    @DeleteMapping
 }
