@@ -49,7 +49,10 @@ public class AlumnoDtoServiceImpl implements IAlumnoDtoService {
 
     @Override
     public AlumnoDto deleteAlumno(Long id) {
-        return null;
+        Alumno alumnoDB = alumnoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado"));
+        alumnoRepository.delete(alumnoDB);
+        return entityToDto(alumnoDB);
     }
 
     private AlumnoDto entityToDto(Alumno alumno){
