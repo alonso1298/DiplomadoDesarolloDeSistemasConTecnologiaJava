@@ -46,5 +46,8 @@ public class AlumnoRestController {
         return ResponseEntity.ok(alumnoService.actualizarParcial(id, alumnoNuevo));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Alumno> deleteAlumno(@PathVariable Long id) {
+        return ResponseEntity.ok(alumnoService.eliminar(id));
+    }
 }
