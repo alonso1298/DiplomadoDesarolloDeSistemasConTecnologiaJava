@@ -9,7 +9,7 @@ public interface IAlumnoDtoService {
     List<AlumnoDto> getAlumnos();
     AlumnoDto getAlumno(Long id);
     AlumnoDto createAlumno(AlumnoDto alumnoDto);
-    AlumnoDto updateAlumno(AlumnoDto alumnoDto);
+    AlumnoDto updateAlumno(Long id, AlumnoDto alumnoDto);
     AlumnoDto deleteAlumno(Long id);
 
 }

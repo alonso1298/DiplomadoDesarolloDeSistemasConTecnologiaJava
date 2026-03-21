@@ -22,22 +22,29 @@ public class AlumnoDtoServiceImpl implements IAlumnoDtoService {
 
     @Override
     public List<AlumnoDto> getAlumnos() {
-        return List.of();
+        return alumnoRepository.findAll().stream()
+                .map(this::entityToDto)
+                .toList();
     }
 
     @Override
     public AlumnoDto getAlumno(Long id) {
-        return null;
+        return entityToDto(alumnoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado")));
     }
 
     @Override
     public AlumnoDto createAlumno(AlumnoDto alumnoDto) {
-        return null;
+        Alumno alumno = modelMapper.map(alumnoDto, Alumno.class);
+        Alumno alumnoNuevo = alumnoRepository.save(alumno);
+        return entityToDto(alumnoNuevo);
     }
 
     @Override
-    public AlumnoDto updateAlumno(AlumnoDto alumnoDto) {
-        return null;
+    public AlumnoDto updateAlumno(Long id, AlumnoDto alumnoDto) {
+        Alumno alumno = alumnoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado"));
+        return entityToDto(alumnoRepository.save(modelMapper.map(alumnoDto, Alumno.class)));
     }
 
     @Override
