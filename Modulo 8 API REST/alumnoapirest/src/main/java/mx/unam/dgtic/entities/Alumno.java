@@ -33,10 +33,14 @@ public class Alumno {
     @JsonManagedReference
     private List<Calificacion> calificaciones;
 
-    public Double calcularPromedio(){
-        return this.calificaciones.stream()
-                .mapToDouble(Calificacion::getNota)
-                .average()
-                .orElse(0.0);
+    public Double calcularPromedio() {
+        if (this.calificaciones == null) {
+            return 0.0;
+        } else {
+            return this.calificaciones.stream()
+                    .mapToDouble(Calificacion::getNota)
+                    .average()
+                    .orElse(0.0);
+        }
     }
 }
