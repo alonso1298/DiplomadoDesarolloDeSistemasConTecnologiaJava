@@ -50,7 +50,7 @@ public class CalificacionServiceImpl implements ICalificacionService {
     @Override
     public Calificacion actualizarCompleto(Long idAlumno, Calificacion nueva) {
         Calificacion calificacionDb = calificacionRepository.findById(idAlumno)
-                .orElseThrow(() -> new RuntimeException("Calificacion no encontrada con id:" ));
+                .orElseThrow(() -> new RuntimeException("Calificacion no encontrada con id:" + idAlumno));
         calificacionDb.setCurso(nueva.getCurso());
         calificacionDb.setNota(nueva.getNota());
         if (nueva.getAlumno() != null){
@@ -63,11 +63,19 @@ public class CalificacionServiceImpl implements ICalificacionService {
 
     @Override
     public Calificacion actualizarParcial(Long id, Calificacion calificacion) {
-        return null;
+        Calificacion calificacionBd = calificacionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Calificacion no encontrada"));
+        if (calificacionBd.getCurso() != null) calificacionBd.setCurso(calificacion.getCurso());
+        if (calificacionBd.getNota() != null) calificacionBd.setNota(calificacion.getNota());
+
+        return calificacionRepository.save(calificacionBd);
     }
 
     @Override
     public Calificacion eliminar(Long id) {
-        return null;
+        Calificacion calificacionBd = calificacionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Calificacion no encontrada con id:" + id));
+        calificacionRepository.delete(calificacionBd);
+        return calificacionBd;
     }
 }
