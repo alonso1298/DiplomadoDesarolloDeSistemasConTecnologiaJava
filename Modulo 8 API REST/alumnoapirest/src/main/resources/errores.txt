@@ -1,0 +1,13 @@
+
+HttpMessageNotReadableException
+--> La peticion esta mal formada.
+
+MysqlDataTruncation
+--> Se excede la precision dle campo
+
+RuntimeException --> Mapearlo a ua clase personalizada de excepciones AlumnoNoEncontradoException
+--> alumno no encontrado
+
+SQLIntegrityConstraintViolationException 
+--> Hay campos que no cumplen la integridad DDL de la BD
+
