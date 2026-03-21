@@ -2,7 +2,7 @@ package mx.unam.dgtic;
 
 import mx.unam.dgtic.entities.Alumno;
 import mx.unam.dgtic.entities.Calificacion;
-import mx.unam.dgtic.repositorios.IAlumnoRepository;
+import mx.unam.dgtic.repositories.IAlumnoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;

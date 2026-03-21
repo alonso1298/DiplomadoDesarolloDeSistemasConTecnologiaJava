@@ -1,4 +1,4 @@
-package mx.unam.dgtic.repositorios;
+package mx.unam.dgtic.repositories;
 
 import mx.unam.dgtic.entities.Alumno;
 import org.springframework.data.jpa.repository.JpaRepository;
