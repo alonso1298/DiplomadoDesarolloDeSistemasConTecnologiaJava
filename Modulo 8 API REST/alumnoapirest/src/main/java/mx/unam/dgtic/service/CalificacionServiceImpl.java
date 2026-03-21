@@ -48,8 +48,17 @@ public class CalificacionServiceImpl implements ICalificacionService {
     }
 
     @Override
-    public Calificacion actualizarCompleto(Long id, Calificacion calificacion) {
-        return null;
+    public Calificacion actualizarCompleto(Long idAlumno, Calificacion nueva) {
+        Calificacion calificacionDb = calificacionRepository.findById(idAlumno)
+                .orElseThrow(() -> new RuntimeException("Calificacion no encontrada con id:" ));
+        calificacionDb.setCurso(nueva.getCurso());
+        calificacionDb.setNota(nueva.getNota());
+        if (nueva.getAlumno() != null){
+            Alumno alumno = alumnoRepository.findById(idAlumno)
+                    .orElseThrow(() -> new RuntimeException("Alumno no encontrado con id:" + idAlumno));
+            calificacionDb.setAlumno(alumno);
+        }
+        return calificacionRepository.save(calificacionDb);
     }
 
     @Override
