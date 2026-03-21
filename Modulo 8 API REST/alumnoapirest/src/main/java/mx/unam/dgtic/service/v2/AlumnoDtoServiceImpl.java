@@ -45,9 +45,18 @@ public class AlumnoDtoServiceImpl implements IAlumnoDtoService {
         return null;
     }
 
-    public AlumnoDto entityToDto(Alumno alumno){
+    private AlumnoDto entityToDto(Alumno alumno){
         AlumnoDto alumnoDto = modelMapper.map(alumno, AlumnoDto.class);
         // alumno sstream --> convertir DOuble, averag().
-        alumnoDto.setPromedio()
+        alumnoDto.setPromedio(alumno.calcularPromedio());
+        return alumnoDto;
+    }
+
+    private Alumno dtoToEntity(AlumnoDto alumnoDto){
+        return modelMapper.map(alumnoDto, Alumno.class);
+    }
+
+    private void updateAlumnoFromDto(Alumno alumno, AlumnoDto alumnoDto){
+        modelMapper.map(alumnoDto, alumno);
     }
 }
