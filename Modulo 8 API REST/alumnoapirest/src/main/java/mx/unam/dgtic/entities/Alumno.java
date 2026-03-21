@@ -32,4 +32,11 @@ public class Alumno {
             cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<Calificacion> calificaciones;
+
+    public Double calcularPromedio(){
+        return this.calificaciones.stream()
+                .mapToDouble(Calificacion::getNota)
+                .average()
+                .orElse(0.0);
+    }
 }

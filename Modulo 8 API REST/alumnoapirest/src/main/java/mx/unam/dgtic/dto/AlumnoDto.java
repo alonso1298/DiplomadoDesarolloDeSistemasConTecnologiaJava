@@ -20,4 +20,6 @@ public class AlumnoDto {
 
     private String correo;
 
+    private Double promedio;
+
 }
