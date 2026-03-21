@@ -8,6 +8,6 @@ MysqlDataTruncation
 RuntimeException --> Mapearlo a ua clase personalizada de excepciones AlumnoNoEncontradoException
 --> alumno no encontrado
 
-SQLIntegrityConstraintViolationException 
+SQLIntegrityConstraintViolationException
 --> Hay campos que no cumplen la integridad DDL de la BD
 
