@@ -44,7 +44,11 @@ public class AlumnoDtoServiceImpl implements IAlumnoDtoService {
     public AlumnoDto updateAlumno(Long id, AlumnoDto alumnoDto) {
         Alumno alumno = alumnoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Alumno no encontrado"));
-        return entityToDto(alumnoRepository.save(modelMapper.map(alumnoDto, Alumno.class)));
+        alumnoDto.setId(alumno.getId());
+        //updateAlumnoFromDto(alumno, alumnoDto);
+        alumno = dtoToEntity(alumnoDto);
+        alumnoRepository.save(alumno);
+        return entityToDto(alumno);
     }
 
     @Override
@@ -55,18 +59,18 @@ public class AlumnoDtoServiceImpl implements IAlumnoDtoService {
         return entityToDto(alumnoDB);
     }
 
-    private AlumnoDto entityToDto(Alumno alumno){
+    private AlumnoDto entityToDto(Alumno alumno) {
         AlumnoDto alumnoDto = modelMapper.map(alumno, AlumnoDto.class);
         // alumno sstream --> convertir DOuble, averag().
         alumnoDto.setPromedio(alumno.calcularPromedio());
         return alumnoDto;
     }
 
-    private Alumno dtoToEntity(AlumnoDto alumnoDto){
+    private Alumno dtoToEntity(AlumnoDto alumnoDto) {
         return modelMapper.map(alumnoDto, Alumno.class);
     }
 
-    private void updateAlumnoFromDto(Alumno alumno, AlumnoDto alumnoDto){
+    private void updateAlumnoFromDto(Alumno alumno, AlumnoDto alumnoDto) {
         modelMapper.map(alumnoDto, alumno);
     }
 }
