@@ -6,15 +6,14 @@ import mx.unam.dgtic.entities.Calificacion;
 import mx.unam.dgtic.repositories.IAlumnoRepository;
 import mx.unam.dgtic.repositories.ICalificacionRepository;
 import mx.unam.dgtic.service.interfaces.ICalificacionDtoService;
-import mx.unam.dgtic.service.interfaces.ICalificacionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
-public class CalificacionServiceImpl implements ICalificacionDtoService {
+@Service
+public class CalificacionServiceDtoImpl implements ICalificacionDtoService {
     @Autowired
     private ICalificacionRepository calificacionRepository;
 
