@@ -32,7 +32,7 @@ public class CalificacionRestController {
         return ResponseEntity.status(HttpStatus.CREATED).body(nueva);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public ResponseEntity<Calificacion> actualizar(@PathVariable Long id, @RequestBody Calificacion calificacion){
         return ResponseEntity.ok(calificacionService.actualizarCompleto(id, calificacion));
     }
