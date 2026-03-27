@@ -5,13 +5,16 @@ import mx.unam.dgtic.entities.Alumno;
 import mx.unam.dgtic.entities.Calificacion;
 import mx.unam.dgtic.repositories.IAlumnoRepository;
 import mx.unam.dgtic.repositories.ICalificacionRepository;
+import mx.unam.dgtic.service.interfaces.ICalificacionDtoService;
 import mx.unam.dgtic.service.interfaces.ICalificacionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class CalificacionServiceImpl implements ICalificacionService {
+import static java.util.stream.Collectors.toList;
+
+public class CalificacionServiceImpl implements ICalificacionDtoService {
     @Autowired
     private ICalificacionRepository calificacionRepository;
 
@@ -22,48 +25,47 @@ public class CalificacionServiceImpl implements ICalificacionService {
     private ModelMapper modelMapper;
 
     @Override
-    public List<Calificacion> obtenerTodos() {
-        return List.of();
+    public List<CalificacionDto> findAll() {
+        return calificacionRepository.findAll()
+                .stream()
+                .map(this::mapToDto)
+                .toList();
     }
 
     @Override
-    public Calificacion obtenerCalificacionPorId(Long id) {
+    public CalificacionDto findById(Long idCalificacion) {
         return null;
     }
 
     @Override
-    public List<Calificacion> obtenerCalificacionesPorAlumnoId(Long id) {
-        return List.of();
+    public CalificacionDto create(CalificacionDto calificacionDto) {
+        Calificacion calificacion = mapToEntity(calificacionDto);
+        return mapToDto(calificacionRepository.save(calificacion));
     }
 
     @Override
-    public Calificacion guardar(Long alumnoId, Calificacion calificacion) {
+    public CalificacionDto update(Long idCalificacion, CalificacionDto calificacionDto) {
         return null;
     }
 
     @Override
-    public Calificacion actualizarCompleto(Long id, Calificacion calificacion) {
+    public CalificacionDto updateParcial(Long idCalificacion, CalificacionDto calificacionDto) {
         return null;
     }
 
     @Override
-    public Calificacion actualizarParcial(Long id, Calificacion calificacion) {
-        return null;
-    }
+    public void delete(Long idCalificacion) {
 
-    @Override
-    public Calificacion eliminar(Long id) {
-        return null;
     }
-
     private CalificacionDto mapToDto(Calificacion calificacion) {
         return modelMapper.map(calificacion, CalificacionDto.class);
     }
 
     private Calificacion mapToEntity(CalificacionDto calificacionDto) {
         Alumno alumno = alumnoRepository.findById(calificacionDto.getIdAlumno()).get();
-        Calificacion calificacion = mapToEntity(calificacionDto);
+        Calificacion calificacion = modelMapper.map(calificacionDto, Calificacion.class);
         calificacion.setAlumno(alumno);
         return calificacion;
     }
+
 }
