@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Actualizar alumno</h1>
+
+    <form th:action="@{/web/actualizar/}"
+          method="put"
+          th:object="${alumno}">
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" th:field="*{nombre}">
+        </div>
+        <div>
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" th:field="*{apellido}">
+        </div>
+        <div>
+            <label for="correo">Correo</label>
+            <input type="text" id="correo" name="correo" th:field="*{correo}">
+        </div>
+        <div>
+            <label for="promedio">Promedio</label>
+            <input type="text" id="promedio" name="promedio" th:field="*{promedio}">
+        </div>
+        <div>
+            <button type="button">Guardar cambios</button>
+        </div>
+    </form>
+</body>
+</html>

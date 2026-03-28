@@ -11,7 +11,8 @@
   <div th:each="alumno : ${alumnos}" >
     <p th:text="${alumno.id + ' --> ' + alumno.nombre}" ></p>
     <a th:href="@{/web/{id}(id=${alumno.id})}">Ver detalle</a>
-    <a href="#">Editar</a>
+      <!--         /web/22/editar       -->
+    <a th:href="@{/web/{id}/editar(id=${alumno.id})}">Editar</a>
   </div>
 </body>
 </html>

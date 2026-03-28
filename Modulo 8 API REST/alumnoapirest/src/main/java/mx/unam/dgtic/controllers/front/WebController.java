@@ -51,4 +51,11 @@ public class WebController {
         webClientAlumnoDtoService.guardarAlumno(alumnoDto).block();
         return "redirect:/web/";
     }
+
+    @GetMapping("/{id}/editar")
+    public String mostrarFormularioEditar(Model modelo, @PathVariable Long id){
+        AlumnoDto alumno = webClientAlumnoDtoService.getAlumnoById(id).block();
+        modelo.addAttribute("alumno", alumno);
+        return "vista/actualizarAlumno";
+    }
 }
