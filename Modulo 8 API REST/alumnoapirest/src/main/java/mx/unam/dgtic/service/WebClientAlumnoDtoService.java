@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class WebClientAlumnoDtoService {
@@ -17,5 +18,12 @@ public class WebClientAlumnoDtoService {
                 .uri("/")
                 .retrieve()
                 .bodyToFlux(AlumnoDto.class);
+    }
+
+    public Mono<AlumnoDto> getAlumnoById(Long id){
+        return webClient.get()
+                .uri("/{id}", id)
+                .retrieve()
+                .bodyToMono(AlumnoDto.class);
     }
 }

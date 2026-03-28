@@ -27,6 +27,6 @@ public class WebController {
                 .collectList()
                 .block();
         modelo.addAttribute("alumnos", alumnos);
-        return "todosVista";
+        return "vista/todosVista";
     }
 }
