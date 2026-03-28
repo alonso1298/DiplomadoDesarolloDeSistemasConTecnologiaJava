@@ -35,12 +35,4 @@ public class WebClientAlumnoDtoService {
                 .retrieve()
                 .bodyToMono(AlumnoDto.class);
     }
-
-    //GET: /web/nuevo --> Vista -> HTML forma para dar el alta
-    // POST: /web/alumno/
-    @GetMapping("/web/nuevo/")
-    public String mostrarFormulario(Model model){
-        model.addAttribute("alumno", new AlumnoDto());
-        return "vista/formulario";
-    }
 }

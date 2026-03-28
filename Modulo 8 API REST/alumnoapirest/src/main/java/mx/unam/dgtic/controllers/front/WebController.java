@@ -6,10 +6,7 @@ import mx.unam.dgtic.service.WebClientAlumnoDtoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
@@ -37,5 +34,21 @@ public class WebController {
         AlumnoDto alumnoDto = webClientAlumnoDtoService.getAlumnoById(id).block();
         modelo.addAttribute("alumno", alumnoDto);
         return "vista/detalleAlumno";
+    }
+
+    //GET: /web/nuevo --> Vista -> HTML forma para dar el alta
+    // POST: /web/alumno/
+    @GetMapping("/web/nuevo/")
+    public String mostrarFormulario(Model model){
+        model.addAttribute("alumno", new AlumnoDto());
+        return "vista/formulario";
+    }
+
+    //POST /web/nuevo/alumno/ recibir @modelAtribute de alumno DT
+    // utilizara el servicio de webClient
+    @PostMapping("/nuevo/alumno/")
+    public String guardarAlumno(@ModelAttribute("alumno") AlumnoDto alumnoDto){
+        webClientAlumnoDtoService.guardarAlumno(alumnoDto);
+        return "redirect:/web/";
     }
 }
