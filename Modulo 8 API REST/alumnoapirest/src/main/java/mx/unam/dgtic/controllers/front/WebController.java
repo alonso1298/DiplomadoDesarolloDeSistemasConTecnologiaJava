@@ -1,11 +1,13 @@
 package mx.unam.dgtic.controllers.front;
 
 import mx.unam.dgtic.dto.AlumnoDto;
+import mx.unam.dgtic.entities.Alumno;
 import mx.unam.dgtic.service.WebClientAlumnoDtoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -28,5 +30,12 @@ public class WebController {
                 .block();
         modelo.addAttribute("alumnos", alumnos);
         return "vista/todosVista";
+    }
+
+    @GetMapping("/{id}")
+    public String getDetalleAlumnoVista(Model modelo, @PathVariable Long id){
+        AlumnoDto alumnoDto = webClientAlumnoDtoService.getAlumnoById(id).block();
+        modelo.addAttribute("alumno", alumnoDto);
+        return "vista/detalleAlumno";
     }
 }
