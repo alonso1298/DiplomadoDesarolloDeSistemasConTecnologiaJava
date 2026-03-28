@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,6 +19,7 @@ public class ClienteRestTemplate {
     @Autowired
     private RestTemplate restTemplate;
 
+    // Esta URL deberia ser recuperada desde la properties
     private String url_base = "http://localhost:8080/api/v2/alumno/";
 
     @GetMapping("/home/")
@@ -31,5 +33,12 @@ public class ClienteRestTemplate {
         LoggerFactory.getLogger(ClienteRestTemplate.class).info("Alumnos REST TEMPLATE" + alumnos.toString());
         model.addAttribute("alumnos", alumnos);
         return "todos";
+    }
+
+    @GetMapping("/{id}")
+    public String getDetalleAlumno(Model model, @PathVariable Long id){
+        AlumnoDto alumnoDto = restTemplate.getForObject(url_base+id, AlumnoDto.class);
+        model.addAttribute("alumno", alumnoDto);
+        return "detalle_alumno";
     }
 }

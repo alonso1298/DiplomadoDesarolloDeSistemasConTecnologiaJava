@@ -9,7 +9,7 @@
     <h1>Todos</h1>
 
     <div th:each="alumno : ${alumnos}" >
-        <p th:text="${alumno.nombre}" ></p>
+        <p th:text="${alumno.id + ' : ' + alumno.nombre + ' ' + alumno.apellido}" ></p>
     </div>
 </body>
 </html>
