@@ -38,7 +38,7 @@ public class WebController {
 
     //GET: /web/nuevo --> Vista -> HTML forma para dar el alta
     // POST: /web/alumno/
-    @GetMapping("/web/nuevo/")
+    @GetMapping("/nuevo/")
     public String mostrarFormulario(Model model){
         model.addAttribute("alumno", new AlumnoDto());
         return "vista/formulario";
@@ -48,7 +48,7 @@ public class WebController {
     // utilizara el servicio de webClient
     @PostMapping("/nuevo/alumno/")
     public String guardarAlumno(@ModelAttribute("alumno") AlumnoDto alumnoDto){
-        webClientAlumnoDtoService.guardarAlumno(alumnoDto);
+        webClientAlumnoDtoService.guardarAlumno(alumnoDto).block();
         return "redirect:/web/";
     }
 }

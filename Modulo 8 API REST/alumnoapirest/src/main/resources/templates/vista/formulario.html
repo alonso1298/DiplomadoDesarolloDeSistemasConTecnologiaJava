@@ -8,7 +8,7 @@
 <body>
   <h1>Alta de alumno</h1>
   <form method="post"
-        action="@{/web/nuevo/alumno/}"
+        th:action="@{/web/nuevo/alumno/}"
         th:object="${alumno}">
     <p>
       <label for="nombre">Nombre</label>
@@ -20,13 +20,13 @@
     </p>
     <p>
       <label for="correo">e-mail</label>
-      <input type="text" name="correo" id="correo" th:field="*{coreo}">
+      <input type="text" name="correo" id="correo" th:field="*{correo}">
     </p>
     <p>
       <label for="promedio">Promedio</label>
       <input type="text" name="promedio" id="promedio" th:field="*{promedio}">
     </p>
-    <button type="submit" >Guardar</button>
+    <button type="submit">Guardar</button>
   </form>
 </body>
 </html>
