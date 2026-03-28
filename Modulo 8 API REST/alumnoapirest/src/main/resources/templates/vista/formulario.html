@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>Alta de alumno</h1>
+  <form method="post"
+        action="@{/web/nuevo/alumno/}"
+        th:object="${alumno}">
+    <p>
+      <label for="nombre">Nombre</label>
+      <input type="text" name="nombre" id="nombre" th:field="*{nombre}">
+    </p>
+    <p>
+      <label for="apellido">Apellido</label>
+      <input type="text" name="apellido" id="apellido" th:field="*{apellido}">
+    </p>
+    <p>
+      <label for="correo">e-mail</label>
+      <input type="text" name="correo" id="correo" th:field="*{coreo}">
+    </p>
+    <p>
+      <label for="promedio">Promedio</label>
+      <input type="text" name="promedio" id="promedio" th:field="*{promedio}">
+    </p>
+  </form>
+</body>
+</html>
