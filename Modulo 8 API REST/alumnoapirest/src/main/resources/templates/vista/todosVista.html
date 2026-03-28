@@ -9,7 +9,9 @@
   <h1>Todos con WebClient</h1>
 
   <div th:each="alumno : ${alumnos}" >
-    <p th:text="${alumno.nombre}" ></p>
+    <p th:text="${alumno.id + '-->' + alumno.nombre}" ></p>
+    <p th:href="@{/web/{id}(id=${alumno.id})}">Ver detalle</p>
+    <a href="#">Editar</a>
   </div>
 </body>
 </html>
