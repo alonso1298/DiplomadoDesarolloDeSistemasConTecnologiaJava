@@ -1,6 +1,7 @@
 package mx.unam.dgtic.service;
 
 import mx.unam.dgtic.dto.AlumnoDto;
+import mx.unam.dgtic.entities.Alumno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -31,6 +32,15 @@ public class WebClientAlumnoDtoService {
     public Mono<AlumnoDto> guardarAlumno(AlumnoDto alumnoDto){
         return webClient.post()
                 .uri("/")
+                .bodyValue(alumnoDto)
+                .retrieve()
+                .bodyToMono(AlumnoDto.class);
+    }
+
+    // Actulizar alumno PUT
+    public Mono<AlumnoDto> actualizarAlumno(Long id, AlumnoDto alumnoDto){
+        return webClient.put()
+                .uri("/{id}", id)
                 .bodyValue(alumnoDto)
                 .retrieve()
                 .bodyToMono(AlumnoDto.class);

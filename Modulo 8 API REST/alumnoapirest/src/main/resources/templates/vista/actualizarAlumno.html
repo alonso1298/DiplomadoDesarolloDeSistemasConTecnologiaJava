@@ -9,7 +9,7 @@
     <h1>Actualizar alumno</h1>
 
     <form th:action="@{/web/actualizar/}"
-          method="put"
+          method="post"
           th:object="${alumno}">
         <input type="hidden" th:field="*{id}">
         <div>
@@ -29,7 +29,7 @@
             <input type="text" id="promedio" name="promedio" th:field="*{promedio}">
         </div>
         <div>
-            <button type="button">Guardar cambios</button>
+            <button type="submit">Guardar cambios</button>
         </div>
     </form>
 </body>
