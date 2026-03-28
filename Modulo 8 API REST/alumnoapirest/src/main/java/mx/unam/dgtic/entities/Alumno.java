@@ -3,6 +3,7 @@ package mx.unam.dgtic.entities;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class Alumno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, length = 100)
+    @Size(min = 5, message = "No debe ser menor de 5")
     private String nombre;
     @Column(nullable = false, length = 150)
     private String apellido;

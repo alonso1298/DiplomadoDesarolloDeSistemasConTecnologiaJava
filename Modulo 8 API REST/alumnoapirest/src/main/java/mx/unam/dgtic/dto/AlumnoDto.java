@@ -19,7 +19,7 @@ public class AlumnoDto {
     private String apellido;
 
     @Email
-    @Min(value = 5 , message = "El correo debe tener al menos 10 caracteres")
+    @Size(min = 5 , message = "El correo debe tener al menos 5 caracteres")
     private String correo;
 
     @Positive(message = "La calificacion debe ser positiva")
