@@ -12,7 +12,7 @@ public class HelloWordController {
 
     @GetMapping("/welcome")
     public String helloWord(){
-        log.info("estoy en mi looooog!!");
+        log.info("estoy en mi log!!!!");
         return "Hello Word";
     }
 }
