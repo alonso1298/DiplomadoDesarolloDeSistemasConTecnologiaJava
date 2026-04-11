@@ -21,7 +21,10 @@ public class SecurityConfiguration {
         http
                 // autorizar mis endopoints
                 .authorizeHttpRequests((authorize) -> authorize
-                        .anyRequest().authenticated()
+                        .requestMatchers("auth/welcome").permitAll()
+                        // Para cualquier endopoint
+                        // .requestMatchers("/auth/**")
+                        .anyRequest().authenticated() // Es zero trust fuerte
                 )
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults());

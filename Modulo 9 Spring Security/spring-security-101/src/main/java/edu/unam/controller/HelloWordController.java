@@ -15,4 +15,10 @@ public class HelloWordController {
         log.info("estoy en mi log!!!!");
         return "Hello Word";
     }
+
+    @GetMapping("/goodbye")
+    public String goodByeWorld(){
+        log.info("estoy en mi log!!!!");
+        return "God Bye Word";
+    }
 }
