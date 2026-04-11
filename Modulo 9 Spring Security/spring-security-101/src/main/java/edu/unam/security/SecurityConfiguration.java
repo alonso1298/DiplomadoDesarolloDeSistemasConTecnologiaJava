@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,13 +26,27 @@ public class SecurityConfiguration {
         http
                 // autorizar mis endopoints
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("auth/welcome").permitAll()
+                        .requestMatchers("auth/welcome").authenticated()
+                        .requestMatchers("/user").hasAnyRole("USER")
+                        .requestMatchers( "/admin").hasAnyRole("ADMIN")
+                        .requestMatchers("/static", "/css/**", "/", "/index").permitAll()
                         // Para cualquier endopoint
                         // .requestMatchers("/auth/**")
                         .anyRequest().authenticated() // Es zero trust fuerte
                 )
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults());
+                .formLogin(
+                        //Customizer.withDefaults()
+                        (FormLoginConfigurer<HttpSecurity> login) -> login
+                                .usernameParameter("usuario")
+                                .passwordParameter("contrasenia")
+                                .defaultSuccessUrl("/")
+                                .permitAll()
+                        )
+                .logout(
+                        (LogoutConfigurer<HttpSecurity> logout) -> logout
+                                .logoutSuccessUrl("/")
+                );
 
         return http.build();
     }
@@ -45,9 +61,11 @@ public class SecurityConfiguration {
                 Collections.singletonList(new SimpleGrantedAuthority("Admin")));
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
 
+
         UserDetails userDetails2 = User.withDefaultPasswordEncoder()
                 .username("admin")
-                .password("123456") // esta codificados?
+                .password("123456")
+                .roles("ADMIN")// esta codificados?
                 .build();
 
         return new InMemoryUserDetailsManager(userDetails, userDetails2);
