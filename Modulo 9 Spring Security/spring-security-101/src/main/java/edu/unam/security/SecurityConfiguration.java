@@ -5,11 +5,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -34,12 +37,20 @@ public class SecurityConfiguration {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
-                .username("pepe")
-                .password("sanchez")
+
+        //Escuela
+        UserDetails userDetails = new User("pepe", "sanchez",
+                true, true, true,
+                true,
+                Collections.singletonList(new SimpleGrantedAuthority("Admin")));
+        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
+
+        UserDetails userDetails2 = User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("123456") // esta codificados?
                 .build();
 
-        return new InMemoryUserDetailsManager(userDetails);
+        return new InMemoryUserDetailsManager(userDetails, userDetails2);
     }
 
 }

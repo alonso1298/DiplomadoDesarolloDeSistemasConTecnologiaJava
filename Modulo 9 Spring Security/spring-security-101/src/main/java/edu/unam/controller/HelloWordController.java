@@ -12,13 +12,13 @@ public class HelloWordController {
 
     @GetMapping("/welcome")
     public String helloWord(){
-        log.info("estoy en mi log!!!!");
+        log.info("Estoy entrando a Hello World Endpoint");
         return "Hello Word";
     }
 
     @GetMapping("/goodbye")
     public String goodByeWorld(){
-        log.info("estoy en mi log!!!!");
+        log.info("Estoy entrando a Good Bye Endpoint");
         return "God Bye Word";
     }
 }
