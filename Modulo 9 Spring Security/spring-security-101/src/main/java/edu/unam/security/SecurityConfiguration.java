@@ -11,9 +11,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.security.SecureRandom;
 import java.util.Collections;
 
 @Configuration
@@ -55,13 +58,29 @@ public class SecurityConfiguration {
     public UserDetailsService userDetailsService() {
 
         //Escuela
-        UserDetails userDetails = new User("pepe", "sanchez",
+        /*UserDetails userDetails = new User("pepe", "sanchez",
                 true, true, true,
                 true,
                 Collections.singletonList(new SimpleGrantedAuthority("Admin")));
-        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
+        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();*/
 
+        UserDetails userDetails = User.withUsername("pepe")
+                . password ("{scrypt}sanchez") // esta codificado?
+                . roles ("USER")
+                .build ();
 
+        String secret = "misecreto";
+        int iteration = 1232435456;
+        int keyLength = 256;
+        Pbkdf2PasswordEncoder pbkdf2PasswordEncoder
+                = new Pbkdf2PasswordEncoder(secret, iteration, keyLength);
+        String password = pbkdf2PasswordEncoder.encode ( "123456");
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(11, new SecureRandom());
+        String encodePassword = encoder.encode("12345");
+        System.out.println(encodePassword);
+
+        //Builder
         UserDetails userDetails2 = User.withDefaultPasswordEncoder()
                 .username("admin")
                 .password("123456")
