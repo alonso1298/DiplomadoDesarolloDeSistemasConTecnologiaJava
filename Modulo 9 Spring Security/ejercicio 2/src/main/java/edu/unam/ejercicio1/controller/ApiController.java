@@ -6,13 +6,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-public class HomeController {
+public class ApiController {
 
-    @GetMapping("/home")
-    public String home(){
-        return "Home!!";
+    @@GetMapping("/api/public/info")
+    public String publicInfo() {
+        return "Información pública";
     }
 
-
+    @GetMapping("/api/admin/dashboard")
+    public String adminDashboard() {
+        return "Dashboard de administrador";
+    }
 
 }
