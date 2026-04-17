@@ -80,6 +80,7 @@ public class SecurityConfiguration {
         String encodePassword = encoder.encode("12345");
         System.out.println(encodePassword);
 
+
         //Builder
         UserDetails userDetails2 = User.withDefaultPasswordEncoder()
                 .username("admin")
