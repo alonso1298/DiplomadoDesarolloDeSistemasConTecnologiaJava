@@ -1,4 +1,4 @@
-package edu.unam.ejercicio3.controller;
+package unam.edu.ejercicio_tres.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

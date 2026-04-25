@@ -29,7 +29,7 @@ objectClass: top
 objectClass: person
 objectClass: organizationalPerson
 objectClass: inetOrgPerson
-cn: Fabiola Morena
+cn: Fabiola Moreno
 sn: Moreno
 uid: fabiola
 userPassword: fabiola123
