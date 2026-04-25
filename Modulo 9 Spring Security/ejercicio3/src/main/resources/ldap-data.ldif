@@ -1,0 +1,76 @@
+dn: dc=unam,dc=mx
+objectClass: top
+objectClass: domain
+objectClass: extensibleObject
+dc: unam
+
+dn: ou=people,dc=unam,dc=mx
+objectClass: top
+objectClass: organizationalUnit
+ou: people
+
+dn: ou=groups,dc=unam,dc=mx
+objectClass: top
+objectClass: organizationalUnit
+ou: groups
+
+dn: uid=antoni,ou=people,dc=unam,dc=mx
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Antoni
+sn: Calderon
+uid: antoni
+userPassword: 1234
+
+dn: uid=fabiola,ou=people,dc=unam,dc=mx
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Fabiola Morena
+sn: Moreno
+uid: fabiola
+userPassword: fabiola123
+
+dn: uid=alonso,ou=people,dc=unam,dc=mx
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Alonso Sagrero
+sn: Sagrero
+uid: alonso
+userPassword: alonso123
+
+dn: uid=oswaldo,ou=people,dc=unam,dc=mx
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Oswaldo Casique
+sn: Casique
+uid: oswaldo
+userPassword: oswaldo123
+
+dn: cn=developers,ou=groups,dc=unam,dc=mx
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: developers
+ou: developer
+uniqueMember: uid=antonio,ou=people,dc=unam,dc=mx
+
+dn: cn=admins,ou=groups,dc=unam,dc=mx
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: admins
+ou: admin
+uniqueMember: uid=admin,ou=people,dc=unam,dc=mx
+
+dn: cn=teachers,ou=groups,dc=unam,dc=mx
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: teachers
+ou: teacher
+uniqueMember: uid=profesor,ou=people,dc=unam,dc=mx
