@@ -29,6 +29,7 @@ public class SecurityConfiguration {
                         ).permitAll()
                         // Página pública
                         .requestMatchers("/").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login") // login personalizado
