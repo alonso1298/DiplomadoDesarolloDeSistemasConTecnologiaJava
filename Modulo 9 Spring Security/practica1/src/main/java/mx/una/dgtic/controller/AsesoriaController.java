@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AsesoriaController {
     @GetMapping
     public String asesorias(){
-        return "asesorias";
+        return "paginas/asesorias";
     }
 }

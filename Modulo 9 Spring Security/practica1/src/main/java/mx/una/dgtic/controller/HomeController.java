@@ -9,6 +9,6 @@ public class HomeController {
     @GetMapping("/")
     public String inicio(Model model) {
         model.addAttribute("contenido", "Bienvenido al Sistema AAU");
-        return "principal";
+        return "pagians/principal";
     }
 }
