@@ -22,13 +22,13 @@ public class SecurityConfiguration {
                                 "/image/**",
                                 "/iconos/**"
                         ).permitAll()
-                        // Pagina publica
+                        // Página pública
                         .requestMatchers("/").permitAll()
                 )
                 .formLogin(form -> form
                         .loginPage("/login") // login personalizado
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/", true) // direccion de donde va despues del login
+                        .defaultSuccessUrl("/", true) // direccion de donde va después del login
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )
